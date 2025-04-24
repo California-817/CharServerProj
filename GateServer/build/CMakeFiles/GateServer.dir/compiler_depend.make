@@ -2119,6 +2119,8 @@ CMakeFiles/GateServer.dir/src/CServer.cpp.o: /home/xxxten/ChatProj/CharServerPro
   /usr/include/c++/12/bits/hashtable_policy.h \
   /usr/include/c++/12/bits/enable_special_members.h \
   /usr/include/c++/12/bits/unordered_map.h \
+  /usr/local/include/json/reader.h \
+  /usr/local/include/json/value.h \
   /home/xxxten/ChatProj/CharServerProj/GateServer/include/HttpConnection.h
 
 CMakeFiles/GateServer.dir/src/GateServer.cpp.o: /home/xxxten/ChatProj/CharServerProj/GateServer/src/GateServer.cpp \
