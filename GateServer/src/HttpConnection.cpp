@@ -38,6 +38,40 @@ void HttpConnection::start() // 不断读取数据
             std::cout<<"Recv http req err "<<err.what()<<std::endl;
         } });
 }
+void HttpConnection::PreParseGetParam() {
+    // 提取 URI  /get_html?key1=value1&key2=value2
+    auto uri = _request.target();
+    // 查找查询字符串的开始位置（即 '?' 的位置）  
+    auto query_pos = uri.find('?');
+    if (query_pos == std::string::npos) {
+        _get_url = uri;
+        return;
+    }
+    _get_url = uri.substr(0, query_pos);
+    std::string query_string = uri.substr(query_pos + 1);
+    std::string key;
+    std::string value;
+    size_t pos = 0;
+    while ((pos = query_string.find('&')) != std::string::npos) {
+        auto pair = query_string.substr(0, pos);
+        size_t eq_pos = pair.find('=');
+        if (eq_pos != std::string::npos) {
+            key = HttpConnection::UrlDecode(pair.substr(0, eq_pos)); // 假设有 url_decode 函数来处理URL解码  
+            value = HttpConnection::UrlDecode(pair.substr(eq_pos + 1));
+            _get_params[key] = value;
+        }
+        query_string.erase(0, pos + 1);
+    }
+    // 处理最后一个参数对（如果没有 & 分隔符）  
+    if (!query_string.empty()) {
+        size_t eq_pos = query_string.find('=');
+        if (eq_pos != std::string::npos) {
+            key = HttpConnection::UrlDecode(query_string.substr(0, eq_pos));
+            value = HttpConnection::UrlDecode(query_string.substr(eq_pos + 1));
+            _get_params[key] = value;
+        }
+    }
+}
 
 void HttpConnection::handleReq() // 处理各种请求 GET　POST
 {
@@ -46,7 +80,9 @@ void HttpConnection::handleReq() // 处理各种请求 GET　POST
     _response.keep_alive(false);
     if (_request.method() == boost::beast::http::verb::get) // get请求
     {
-        bool success = LogicSystem::GetInstance()->HandleGet(_request.target(), shared_from_this());
+        //先进行解析get请求的url和参数
+        HttpConnection::PreParseGetParam();
+        bool success = LogicSystem::GetInstance()->HandleGet(_get_url, shared_from_this());
         if (!success)
         { // 逻辑系统中没有存储这个url对应的处理函数
             _response.result(boost::beast::http::status::not_found);
@@ -55,7 +91,24 @@ void HttpConnection::handleReq() // 处理各种请求 GET　POST
             WriteResponse();                                                // 发送响应
             return;
         }
-        // 逻辑系统中没有存储这个url对应的处理函数
+        // 逻辑系统中存储这个url对应的处理函数 向响应正文中写入响应
+        _response.result(boost::beast::http::status::ok);
+        _response.set(boost::beast::http::field::server, "GateServer");
+        WriteResponse(); // 发送响应
+        return;
+    }
+    else if(_request.method() == boost::beast::http::verb::post) //post请求
+    {
+        bool success = LogicSystem::GetInstance()->HandlePost(_request.target(), shared_from_this());
+        if (!success)
+        { // 逻辑系统中没有存储这个url对应的处理函数
+            _response.result(boost::beast::http::status::not_found);
+            _response.set(boost::beast::http::field::content_type, "text/plain");
+            boost::beast::ostream(_response.body()) << "url not found\r\n"; // 向响应正文写入数据
+            WriteResponse();                                                // 发送响应
+            return;
+        }
+        // 逻辑系统中存储这个url对应的处理函数 向响应正文中写入响应
         _response.result(boost::beast::http::status::ok);
         _response.set(boost::beast::http::field::server, "GateServer");
         WriteResponse(); // 发送响应
@@ -108,4 +161,64 @@ std::shared_ptr<boost::asio::ip::tcp::socket> &HttpConnection::get_socket()
 std::shared_ptr<CServer> &HttpConnection::get_server()
 {
     return _server;
+}
+
+unsigned char HttpConnection::ToHex(unsigned char x)  //转16进制
+{
+    return  x > 9 ? x + 55 : x + 48;
+}
+
+unsigned char HttpConnection::FromHex(unsigned char x) //转10进制
+{
+    unsigned char y;
+    if (x >= 'A' && x <= 'Z') y = x - 'A' + 10;
+    else if (x >= 'a' && x <= 'z') y = x - 'a' + 10;
+    else if (x >= '0' && x <= '9') y = x - '0';
+    else assert(0);
+    return y;
+}
+std::string HttpConnection::UrlEncode(const std::string& str) //url的编码工作
+{
+    std::string strTemp = "";
+    size_t length = str.length();
+    for (size_t i = 0; i < length; i++)
+    {
+        //判断是否仅有数字和字母构成
+        if (isalnum((unsigned char)str[i]) ||
+            (str[i] == '-') ||
+            (str[i] == '_') ||
+            (str[i] == '.') ||
+            (str[i] == '~'))
+            strTemp += str[i];
+        else if (str[i] == ' ') //为空字符
+            strTemp += "+";
+        else
+        {
+            //其他字符需要提前加%并且高四位和低四位分别转为16进制
+            strTemp += '%';
+            strTemp += HttpConnection::ToHex((unsigned char)str[i] >> 4);
+            strTemp += HttpConnection::ToHex((unsigned char)str[i] & 0x0F);
+        }
+    }
+    return strTemp;
+}
+std::string HttpConnection::UrlDecode(const std::string& str) //url解码工作
+{
+    std::string strTemp = "";
+    size_t length = str.length();
+    for (size_t i = 0; i < length; i++)
+    {
+        //还原+为空
+        if (str[i] == '+') strTemp += ' ';
+        //遇到%将后面的两个字符从16进制转为char再拼接
+        else if (str[i] == '%')
+        {
+            assert(i + 2 < length);
+            unsigned char high = HttpConnection::FromHex((unsigned char)str[++i]);
+            unsigned char low = HttpConnection::FromHex((unsigned char)str[++i]);
+            strTemp += high * 16 + low;
+        }
+        else strTemp += str[i];
+    }
+    return strTemp;
 }

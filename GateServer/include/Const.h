@@ -13,3 +13,14 @@
 #include<memory>
 #include<chrono>
 #include<unordered_map>
+#include<json/json.h>
+#include<json/reader.h>
+#include<json/value.h>
+
+//post请求的正文json数据对应error的各种值
+enum ErrorCodes
+{
+    Success = 0,  //成功
+    Error_Json = 1001,  //Json解析错误
+    RPCFailed = 1002,  //RPC请求错误
+};
