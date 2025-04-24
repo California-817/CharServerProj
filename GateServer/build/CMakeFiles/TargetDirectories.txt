@@ -1,0 +1,3 @@
+/home/xxxten/ChatProj/CharServerProj/GateServer/build/CMakeFiles/GateServer.dir
+/home/xxxten/ChatProj/CharServerProj/GateServer/build/CMakeFiles/edit_cache.dir
+/home/xxxten/ChatProj/CharServerProj/GateServer/build/CMakeFiles/rebuild_cache.dir

@@ -4,6 +4,7 @@ class CServer;
 class HttpConnection : public std::enable_shared_from_this<HttpConnection>
 {
 public:
+    friend class LogicSystem;
     HttpConnection(std::shared_ptr<CServer> server,std::shared_ptr<boost::asio::ip::tcp::socket> socket);
     std::string& get_uuid();
     std::shared_ptr<CServer>& get_server();
@@ -11,6 +12,7 @@ public:
     void start(); //不断读取数据
     void checkDeadline();
     void handleReq(); //处理请求
+    void WriteResponse();
     ~HttpConnection();
 private:
     std::shared_ptr<CServer> _server; //所属的服务器
