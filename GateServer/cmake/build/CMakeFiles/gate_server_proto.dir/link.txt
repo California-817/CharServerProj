@@ -1,0 +1,2 @@
+/usr/bin/ar qc libgate_server_proto.a CMakeFiles/gate_server_proto.dir/home/xxxten/ChatProj/CharServerProj/GateServer/include/GateServer.Varify.grpc.pb.cc.o CMakeFiles/gate_server_proto.dir/home/xxxten/ChatProj/CharServerProj/GateServer/include/GateServer.Varify.pb.cc.o
+/usr/bin/ranlib libgate_server_proto.a
