@@ -16,29 +16,34 @@ LogicSystem::LogicSystem()
         auto body_str = boost::beast::buffers_to_string(httpcon->_request.body().data()); //获取请求正文
         std::cout << "receive body is " << body_str << std::endl;
         httpcon->_response.set(boost::beast::http::field::content_type, "text/json");
-        Json::Value root;
-        Json::Reader reader;//反序列化
-        Json::StyledWriter writer;//序列化
-        Json::Value src_root;
-        if(!reader.parse(body_str,src_root))
-        {   //json解析失败
-            std::cout << "Failed to parse JSON data!" << std::endl;
-            root["error"] = ErrorCodes::Error_Json;
-            std::string jsonstr = writer.write(root);
-            boost::beast::ostream(httpcon->_response.body()) << jsonstr;
-            return;
-        }//json解析成功
-        if(src_root.isMember("email"))
-        { //客户端json中email字段
-            std::cout<<"email is "<<src_root["email"].asString()<<std::endl;
-            root["error"]=ErrorCodes::Success;
-            root["email"]=src_root["email"].asString();
-            std::string jsonstr = writer.write(root);
+        nlohmann::json root;                            
+        nlohmann::json src_root;                  
+        try{           
+             src_root=nlohmann::json::parse(body_str);} //反序列化
+        catch(const nlohmann::json::parse_error& err)
+        { //反序列化失败
+            std::cout<<"Fail to parse json "<<err.what()<<std::endl;
+            root["error"]=ErrorCodes::Error_Json;
+            auto jsonstr=root.dump(4); //序列化
             boost::beast::ostream(httpcon->_response.body()) << jsonstr;
             return;
         }
+        if(!src_root.contains("email")) //不含有email字段
+        {
+            std::cout<<"Fail to get email "<<std::endl;
+            root["error"]=ErrorCodes::Error_Json;
+            auto jsonstr=root.dump(4); //序列化
+            boost::beast::ostream(httpcon->_response.body()) << jsonstr;
+            return;
+        }
+        //客户端json中email字段
+        std::cout<<"email is "<<src_root["email"].get<std::string>()<<std::endl;
+        root["error"]=ErrorCodes::Success;
+        root["email"]=src_root["email"].get<std::string>();
+        std::string jsonstr = root.dump(4); //序列化
+        boost::beast::ostream(httpcon->_response.body()) << jsonstr;
         return;
-    });
+     });
 }
 void LogicSystem::RegisterGet(std::string path,HttpHandler handler) 
 {

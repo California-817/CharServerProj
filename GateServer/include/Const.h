@@ -13,10 +13,7 @@
 #include<memory>
 #include<chrono>
 #include<unordered_map>
-#include<json/json.h>
-#include<json/reader.h>
-#include<json/value.h>
-
+#include"nlohmann/json.hpp"
 //post请求的正文json数据对应error的各种值
 enum ErrorCodes
 {
