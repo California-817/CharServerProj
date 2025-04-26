@@ -38,7 +38,8 @@ LogicSystem::LogicSystem()
         }
         //客户端json中email字段
         std::cout<<"email is "<<src_root["email"].get<std::string>()<<std::endl;
-        root["error"]=ErrorCodes::Success;
+        GateServer::Varify::GetVarifyRsp grpc_rsp=VarifyGrpcClient::GetInstance()->GetVarify(src_root["email"].get<std::string>());
+        root["error"]=grpc_rsp.error();  //1.成功则nodejs设置 2.失败则函数内部设置
         root["email"]=src_root["email"].get<std::string>();
         std::string jsonstr = root.dump(4); //序列化
         boost::beast::ostream(httpcon->_response.body()) << jsonstr;

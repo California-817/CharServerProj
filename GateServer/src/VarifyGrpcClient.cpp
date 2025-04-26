@@ -18,6 +18,7 @@ GetVarifyRsp VarifyGrpcClient::GetVarify(const std::string& email)
     }else{
         std::cout << status.error_code() << ": " << status.error_message()
         << std::endl;
+        rsp.set_error(ErrorCodes::RPCFailed); //调用失败 自己这端给响应设置错误值
         return rsp;
     }
     return rsp;
