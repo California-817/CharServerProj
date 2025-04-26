@@ -19,6 +19,7 @@
 #include<condition_variable>
 #include<thread>
 #include"nlohmann/json.hpp"
+#include"mini/ini.h"
 //post请求的正文json数据对应error的各种值
 enum ErrorCodes
 {

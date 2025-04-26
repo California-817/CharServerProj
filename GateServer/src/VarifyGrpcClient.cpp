@@ -51,8 +51,11 @@ GrpcConPool::~GrpcConPool()
 VarifyGrpcClient::VarifyGrpcClient()
 {
     //初始化pool
-    std::string host="127.0.0.1";
-    std::string port="8081";
+    mINI::INIFile file("../conf/config.ini");
+    mINI::INIStructure ini;
+    file.read(ini);
+    std::string host=ini["VarifyServer"]["host"];
+    std::string port=ini["VarifyServer"]["port"];
     _grpc_con_pool.reset(new GrpcConPool(host,port));
 }
 GetVarifyRsp VarifyGrpcClient::GetVarify(const std::string& email)

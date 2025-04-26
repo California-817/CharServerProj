@@ -4,7 +4,10 @@
 int main()
 {
     try{
-        u_int16_t port=static_cast<uint16_t>(8080);
+        mINI::INIFile file("../conf/config.ini");
+        mINI::INIStructure ini;
+        file.read(ini);
+        u_int16_t port=static_cast<uint16_t>(atoi(ini["GateServer"]["port"].c_str()));
         boost::asio::io_context io_context{1};
         boost::asio::signal_set signals(io_context,SIGINT,SIGTERM);
         signals.async_wait([&io_context](boost::system::error_code ec, int n){  //void (boost::system::error_code, int)
