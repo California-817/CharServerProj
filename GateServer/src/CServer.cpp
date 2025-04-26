@@ -15,6 +15,7 @@ void CServer::handleAccept(std::shared_ptr<CServer> self, std::shared_ptr<boost:
         if (ec) // 错误
         {
             _socket.reset();
+            IOServerPool::GetInstance()->ResetIndex();//index--
             //再次开始接收连接
             self->start();
             return;
@@ -40,8 +41,9 @@ void CServer::start() // 开始接收连接
 {
     //调用这个函数的前提是外部已经有了这个this指针的智能指针 否则会报错 
     auto self = shared_from_this(); // 创建伪闭包
-    // 创建一个用来与一个客户端通信的socket
-    std::shared_ptr<boost::asio::ip::tcp::socket> _socket = std::make_shared<boost::asio::ip::tcp::socket>(_io_context);
+    // 创建一个用来与一个客户端通信的socket 从IOServerPool中挑选一个io_context
+    auto& io_context=IOServerPool::GetInstance()->GetIOService(); //这条语句单例生成 线程跑起来了
+    std::shared_ptr<boost::asio::ip::tcp::socket> _socket = std::make_shared<boost::asio::ip::tcp::socket>(io_context);
     //这里的_socket不能用std::move 因为这个async_accept正在使用_socket
     _acceptor.async_accept(*_socket, std::bind(&CServer::handleAccept, this, self, _socket, std::placeholders::_1));
 }

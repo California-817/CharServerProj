@@ -13,6 +13,11 @@
 #include<memory>
 #include<chrono>
 #include<unordered_map>
+#include<queue>
+#include<vector>
+#include<atomic>
+#include<condition_variable>
+#include<thread>
 #include"nlohmann/json.hpp"
 //post请求的正文json数据对应error的各种值
 enum ErrorCodes

@@ -1,6 +1,7 @@
 #pragma once
 #include"Const.h"
 #include"HttpConnection.h"
+#include"IOServicePool.h"
 class CServer:public std::enable_shared_from_this<CServer>
 {
 public:

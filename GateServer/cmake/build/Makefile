@@ -262,6 +262,30 @@ home/xxxten/ChatProj/CharServerProj/GateServer/src/HttpConnection.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/GateServer.dir/build.make CMakeFiles/GateServer.dir/home/xxxten/ChatProj/CharServerProj/GateServer/src/HttpConnection.cpp.s
 .PHONY : home/xxxten/ChatProj/CharServerProj/GateServer/src/HttpConnection.cpp.s
 
+home/xxxten/ChatProj/CharServerProj/GateServer/src/IOServerPool.o: home/xxxten/ChatProj/CharServerProj/GateServer/src/IOServerPool.cpp.o
+.PHONY : home/xxxten/ChatProj/CharServerProj/GateServer/src/IOServerPool.o
+
+# target to build an object file
+home/xxxten/ChatProj/CharServerProj/GateServer/src/IOServerPool.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/GateServer.dir/build.make CMakeFiles/GateServer.dir/home/xxxten/ChatProj/CharServerProj/GateServer/src/IOServerPool.cpp.o
+.PHONY : home/xxxten/ChatProj/CharServerProj/GateServer/src/IOServerPool.cpp.o
+
+home/xxxten/ChatProj/CharServerProj/GateServer/src/IOServerPool.i: home/xxxten/ChatProj/CharServerProj/GateServer/src/IOServerPool.cpp.i
+.PHONY : home/xxxten/ChatProj/CharServerProj/GateServer/src/IOServerPool.i
+
+# target to preprocess a source file
+home/xxxten/ChatProj/CharServerProj/GateServer/src/IOServerPool.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/GateServer.dir/build.make CMakeFiles/GateServer.dir/home/xxxten/ChatProj/CharServerProj/GateServer/src/IOServerPool.cpp.i
+.PHONY : home/xxxten/ChatProj/CharServerProj/GateServer/src/IOServerPool.cpp.i
+
+home/xxxten/ChatProj/CharServerProj/GateServer/src/IOServerPool.s: home/xxxten/ChatProj/CharServerProj/GateServer/src/IOServerPool.cpp.s
+.PHONY : home/xxxten/ChatProj/CharServerProj/GateServer/src/IOServerPool.s
+
+# target to generate assembly for a file
+home/xxxten/ChatProj/CharServerProj/GateServer/src/IOServerPool.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/GateServer.dir/build.make CMakeFiles/GateServer.dir/home/xxxten/ChatProj/CharServerProj/GateServer/src/IOServerPool.cpp.s
+.PHONY : home/xxxten/ChatProj/CharServerProj/GateServer/src/IOServerPool.cpp.s
+
 home/xxxten/ChatProj/CharServerProj/GateServer/src/LogicSystem.o: home/xxxten/ChatProj/CharServerProj/GateServer/src/LogicSystem.cpp.o
 .PHONY : home/xxxten/ChatProj/CharServerProj/GateServer/src/LogicSystem.o
 
@@ -335,6 +359,9 @@ help:
 	@echo "... home/xxxten/ChatProj/CharServerProj/GateServer/src/HttpConnection.o"
 	@echo "... home/xxxten/ChatProj/CharServerProj/GateServer/src/HttpConnection.i"
 	@echo "... home/xxxten/ChatProj/CharServerProj/GateServer/src/HttpConnection.s"
+	@echo "... home/xxxten/ChatProj/CharServerProj/GateServer/src/IOServerPool.o"
+	@echo "... home/xxxten/ChatProj/CharServerProj/GateServer/src/IOServerPool.i"
+	@echo "... home/xxxten/ChatProj/CharServerProj/GateServer/src/IOServerPool.s"
 	@echo "... home/xxxten/ChatProj/CharServerProj/GateServer/src/LogicSystem.o"
 	@echo "... home/xxxten/ChatProj/CharServerProj/GateServer/src/LogicSystem.i"
 	@echo "... home/xxxten/ChatProj/CharServerProj/GateServer/src/LogicSystem.s"
