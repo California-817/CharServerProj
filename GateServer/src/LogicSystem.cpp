@@ -38,6 +38,7 @@ LogicSystem::LogicSystem()
         }
         //客户端json中email字段
         std::cout<<"email is "<<src_root["email"].get<std::string>()<<std::endl;
+        //这条语句创建单例VarifyGrpcClient并初始化grpc连接池 
         GateServer::Varify::GetVarifyRsp grpc_rsp=VarifyGrpcClient::GetInstance()->GetVarify(src_root["email"].get<std::string>());
         root["error"]=grpc_rsp.error();  //1.成功则nodejs设置 2.失败则函数内部设置
         root["email"]=src_root["email"].get<std::string>();
