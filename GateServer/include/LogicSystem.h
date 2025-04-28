@@ -2,6 +2,7 @@
 #include"Const.h"
 #include"Singleton.h"
 #include"VarifyGrpcClient.h"
+#include"RedisMgr.h"
 //单例逻辑处理类
 class HttpConnection;
 using HttpHandler=std::function<void(std::shared_ptr<HttpConnection>)>;

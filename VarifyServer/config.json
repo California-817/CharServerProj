@@ -5,13 +5,13 @@
     },
     "mysql":{
         "host":"127.0.0.1",
-        "port":8082,
-        "pass":"3669688bqq."
+        "port":3306,
+        "password":"123456"
     },
     "redis":{
         "host":"127.0.0.1",
-        "port":8083,
-        "pass":"3669688bqq."
+        "port":6379,
+        "password":"123456"
     }
 }
 

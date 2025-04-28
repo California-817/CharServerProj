@@ -23,7 +23,7 @@ target_link_libraries(gate_server_proto
   ${_PROTOBUF_LIBPROTOBUF})
 
 add_executable(GateServer ${SRC})
-target_link_libraries(GateServer  boost_system   pthread 
+target_link_libraries(GateServer  boost_system   pthread  hiredis redis++
     gate_server_proto
     absl::check
     absl::flags
