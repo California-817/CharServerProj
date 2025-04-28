@@ -13,6 +13,7 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/home/xxxten/ChatProj/CharServerProj/GateServer/src/HttpConnection.cpp" "CMakeFiles/GateServer.dir/home/xxxten/ChatProj/CharServerProj/GateServer/src/HttpConnection.cpp.o" "gcc" "CMakeFiles/GateServer.dir/home/xxxten/ChatProj/CharServerProj/GateServer/src/HttpConnection.cpp.o.d"
   "/home/xxxten/ChatProj/CharServerProj/GateServer/src/IOServerPool.cpp" "CMakeFiles/GateServer.dir/home/xxxten/ChatProj/CharServerProj/GateServer/src/IOServerPool.cpp.o" "gcc" "CMakeFiles/GateServer.dir/home/xxxten/ChatProj/CharServerProj/GateServer/src/IOServerPool.cpp.o.d"
   "/home/xxxten/ChatProj/CharServerProj/GateServer/src/LogicSystem.cpp" "CMakeFiles/GateServer.dir/home/xxxten/ChatProj/CharServerProj/GateServer/src/LogicSystem.cpp.o" "gcc" "CMakeFiles/GateServer.dir/home/xxxten/ChatProj/CharServerProj/GateServer/src/LogicSystem.cpp.o.d"
+  "/home/xxxten/ChatProj/CharServerProj/GateServer/src/RedisMgr.cpp" "CMakeFiles/GateServer.dir/home/xxxten/ChatProj/CharServerProj/GateServer/src/RedisMgr.cpp.o" "gcc" "CMakeFiles/GateServer.dir/home/xxxten/ChatProj/CharServerProj/GateServer/src/RedisMgr.cpp.o.d"
   "/home/xxxten/ChatProj/CharServerProj/GateServer/src/VarifyGrpcClient.cpp" "CMakeFiles/GateServer.dir/home/xxxten/ChatProj/CharServerProj/GateServer/src/VarifyGrpcClient.cpp.o" "gcc" "CMakeFiles/GateServer.dir/home/xxxten/ChatProj/CharServerProj/GateServer/src/VarifyGrpcClient.cpp.o.d"
   )
 

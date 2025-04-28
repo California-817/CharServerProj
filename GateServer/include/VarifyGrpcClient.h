@@ -37,6 +37,8 @@ public:
     ~VarifyGrpcClient()=default;
 private:
     VarifyGrpcClient();
+    VarifyGrpcClient(const VarifyGrpcClient&)=delete;
+    VarifyGrpcClient& operator=(const VarifyGrpcClient&)=delete;
 private:
     // std::unique_ptr<VarifyServer::Stub> _stub; //该服务的客户端存根
     std::unique_ptr<GrpcConPool> _grpc_con_pool;

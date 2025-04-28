@@ -7,13 +7,13 @@ let email_pass=config.email.pass;
 
 let mysql_host=config.mysql.host;
 let mysql_port=config.mysql.port;
-let mysql_pass=config.mysql.pass;
+let mysql_password=config.mysql.password;
 
 let redis_host=config.redis.host;
 let redis_port=config.redis.port;
-let redis_pass=config.redis.pass;
+let redis_password=config.redis.password;
 
 let code_prefix="code_";
 
-module.exports={email_pass,email_user,mysql_host,mysql_pass,mysql_port,redis_host,redis_pass,redis_port,code_prefix}
+module.exports={email_pass,email_user,mysql_host,mysql_password,mysql_port,redis_host,redis_password,redis_port,code_prefix}
 

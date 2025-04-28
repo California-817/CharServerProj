@@ -56,7 +56,8 @@ VarifyGrpcClient::VarifyGrpcClient()
     file.read(ini);
     std::string host=ini["VarifyServer"]["host"];
     std::string port=ini["VarifyServer"]["port"];
-    _grpc_con_pool.reset(new GrpcConPool(host,port));
+    std::string size=ini["GrpcPool"]["size"];
+    _grpc_con_pool.reset(new GrpcConPool(host,port,atoi(size.c_str())));
 }
 GetVarifyRsp VarifyGrpcClient::GetVarify(const std::string& email)
 {

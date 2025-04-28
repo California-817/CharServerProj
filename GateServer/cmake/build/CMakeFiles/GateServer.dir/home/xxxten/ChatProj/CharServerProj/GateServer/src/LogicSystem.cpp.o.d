@@ -1945,6 +1945,11 @@ CMakeFiles/GateServer.dir/home/xxxten/ChatProj/CharServerProj/GateServer/src/Log
  /usr/include/c++/12/iomanip /usr/include/c++/12/bits/quoted_string.h \
  /usr/include/c++/12/codecvt /usr/include/c++/12/bits/fs_dir.h \
  /usr/include/c++/12/bits/fs_ops.h \
+ /home/xxxten/ChatProj/CharServerProj/GateServer/src/../include/mini/ini.h \
+ /usr/include/c++/12/fstream \
+ /usr/include/c++/12/x86_64-OpenCloudOS-linux/bits/basic_file.h \
+ /usr/include/c++/12/x86_64-OpenCloudOS-linux/bits/c++io.h \
+ /usr/include/c++/12/bits/fstream.tcc \
  /home/xxxten/ChatProj/CharServerProj/GateServer/src/../include/Singleton.h \
  /home/xxxten/ChatProj/CharServerProj/GateServer/src/../include/VarifyGrpcClient.h \
  /root/.local/include/grpcpp/grpcpp.h /root/.local/include/grpc/grpc.h \
@@ -2281,4 +2286,32 @@ CMakeFiles/GateServer.dir/home/xxxten/ChatProj/CharServerProj/GateServer/src/Log
  /root/.local/include/grpcpp/support/stub_options.h \
  /root/.local/include/grpcpp/ports_def.inc \
  /root/.local/include/grpcpp/ports_undef.inc \
+ /home/xxxten/ChatProj/CharServerProj/GateServer/src/../include/RedisMgr.h \
+ /usr/local/include/sw/redis++/redis++.h \
+ /usr/local/include/sw/redis++/redis.h \
+ /usr/local/include/sw/redis++/connection_pool.h \
+ /usr/local/include/sw/redis++/connection.h \
+ /usr/local/include/hiredis/hiredis.h /usr/local/include/hiredis/read.h \
+ /usr/local/include/hiredis/sds.h /usr/local/include/hiredis/alloc.h \
+ /usr/local/include/sw/redis++/errors.h \
+ /usr/local/include/sw/redis++/reply.h \
+ /usr/local/include/sw/redis++/utils.h \
+ /usr/local/include/sw/redis++/cxx_utils.h \
+ /usr/local/include/sw/redis++/tls.h \
+ /usr/local/include/sw/redis++/hiredis_features.h \
+ /usr/local/include/sw/redis++/sentinel.h \
+ /usr/local/include/sw/redis++/shards.h \
+ /usr/local/include/sw/redis++/command_options.h \
+ /usr/local/include/sw/redis++/subscriber.h \
+ /usr/local/include/sw/redis++/command.h \
+ /usr/local/include/sw/redis++/command_args.h \
+ /usr/local/include/sw/redis++/pipeline.h \
+ /usr/local/include/sw/redis++/transaction.h \
+ /usr/local/include/sw/redis++/redis_uri.h \
+ /usr/local/include/sw/redis++/redis.hpp \
+ /usr/local/include/sw/redis++/redis_cluster.h \
+ /usr/local/include/sw/redis++/shards_pool.h \
+ /usr/local/include/sw/redis++/redis_cluster.hpp \
+ /usr/local/include/sw/redis++/queued_redis.h \
+ /usr/local/include/sw/redis++/queued_redis.hpp \
  /home/xxxten/ChatProj/CharServerProj/GateServer/src/../include/HttpConnection.h

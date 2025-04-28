@@ -310,6 +310,30 @@ home/xxxten/ChatProj/CharServerProj/GateServer/src/LogicSystem.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/GateServer.dir/build.make CMakeFiles/GateServer.dir/home/xxxten/ChatProj/CharServerProj/GateServer/src/LogicSystem.cpp.s
 .PHONY : home/xxxten/ChatProj/CharServerProj/GateServer/src/LogicSystem.cpp.s
 
+home/xxxten/ChatProj/CharServerProj/GateServer/src/RedisMgr.o: home/xxxten/ChatProj/CharServerProj/GateServer/src/RedisMgr.cpp.o
+.PHONY : home/xxxten/ChatProj/CharServerProj/GateServer/src/RedisMgr.o
+
+# target to build an object file
+home/xxxten/ChatProj/CharServerProj/GateServer/src/RedisMgr.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/GateServer.dir/build.make CMakeFiles/GateServer.dir/home/xxxten/ChatProj/CharServerProj/GateServer/src/RedisMgr.cpp.o
+.PHONY : home/xxxten/ChatProj/CharServerProj/GateServer/src/RedisMgr.cpp.o
+
+home/xxxten/ChatProj/CharServerProj/GateServer/src/RedisMgr.i: home/xxxten/ChatProj/CharServerProj/GateServer/src/RedisMgr.cpp.i
+.PHONY : home/xxxten/ChatProj/CharServerProj/GateServer/src/RedisMgr.i
+
+# target to preprocess a source file
+home/xxxten/ChatProj/CharServerProj/GateServer/src/RedisMgr.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/GateServer.dir/build.make CMakeFiles/GateServer.dir/home/xxxten/ChatProj/CharServerProj/GateServer/src/RedisMgr.cpp.i
+.PHONY : home/xxxten/ChatProj/CharServerProj/GateServer/src/RedisMgr.cpp.i
+
+home/xxxten/ChatProj/CharServerProj/GateServer/src/RedisMgr.s: home/xxxten/ChatProj/CharServerProj/GateServer/src/RedisMgr.cpp.s
+.PHONY : home/xxxten/ChatProj/CharServerProj/GateServer/src/RedisMgr.s
+
+# target to generate assembly for a file
+home/xxxten/ChatProj/CharServerProj/GateServer/src/RedisMgr.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/GateServer.dir/build.make CMakeFiles/GateServer.dir/home/xxxten/ChatProj/CharServerProj/GateServer/src/RedisMgr.cpp.s
+.PHONY : home/xxxten/ChatProj/CharServerProj/GateServer/src/RedisMgr.cpp.s
+
 home/xxxten/ChatProj/CharServerProj/GateServer/src/VarifyGrpcClient.o: home/xxxten/ChatProj/CharServerProj/GateServer/src/VarifyGrpcClient.cpp.o
 .PHONY : home/xxxten/ChatProj/CharServerProj/GateServer/src/VarifyGrpcClient.o
 
@@ -365,6 +389,9 @@ help:
 	@echo "... home/xxxten/ChatProj/CharServerProj/GateServer/src/LogicSystem.o"
 	@echo "... home/xxxten/ChatProj/CharServerProj/GateServer/src/LogicSystem.i"
 	@echo "... home/xxxten/ChatProj/CharServerProj/GateServer/src/LogicSystem.s"
+	@echo "... home/xxxten/ChatProj/CharServerProj/GateServer/src/RedisMgr.o"
+	@echo "... home/xxxten/ChatProj/CharServerProj/GateServer/src/RedisMgr.i"
+	@echo "... home/xxxten/ChatProj/CharServerProj/GateServer/src/RedisMgr.s"
 	@echo "... home/xxxten/ChatProj/CharServerProj/GateServer/src/VarifyGrpcClient.o"
 	@echo "... home/xxxten/ChatProj/CharServerProj/GateServer/src/VarifyGrpcClient.i"
 	@echo "... home/xxxten/ChatProj/CharServerProj/GateServer/src/VarifyGrpcClient.s"

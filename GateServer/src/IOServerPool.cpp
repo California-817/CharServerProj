@@ -31,5 +31,6 @@ IOServerPool::~IOServerPool()
     for(auto & e : _works){
         e.reset();}
     for(auto& e : _threads){
-        e.join();}
+        if(e.joinable()){
+        e.join();}}
 }
