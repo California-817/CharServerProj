@@ -3,6 +3,7 @@
 #include"Singleton.h"
 #include"VarifyGrpcClient.h"
 #include"RedisMgr.h"
+#include"MysqlMgr.h"
 //单例逻辑处理类
 class HttpConnection;
 using HttpHandler=std::function<void(std::shared_ptr<HttpConnection>)>;

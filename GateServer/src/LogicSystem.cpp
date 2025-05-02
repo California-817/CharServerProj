@@ -94,11 +94,28 @@ LogicSystem::LogicSystem()
             boost::beast::ostream(httpcon->_response.body()) << jsonstr;
             return;
         }
-        //去mysql数据库查看是否已经有了用户
-
+        //去mysql数据库注册用户信息
+        int uid=MysqlMgr::GetInstance()->RegUser(user,email,password);
+        if(uid==-1)
+        {
+            std::cout << " user or email exist" << std::endl;
+            root["error"] = ErrorCodes::UserExist;
+            std::string jsonstr = root.dump(4);
+            boost::beast::ostream(httpcon->_response.body()) << jsonstr;
+            return;
+        }
+        if(uid==0)
+        {
+            std::cout << " user or email exist" << std::endl;
+            root["error"] = ErrorCodes::EmailExist;
+            std::string jsonstr = root.dump(4);
+            boost::beast::ostream(httpcon->_response.body()) << jsonstr;
+            return;
+        }
 
         //返回响应
         root["error"] = ErrorCodes::Success;
+        root["uid"] =uid;
         root["email"] = email;
         root ["user"]= user;
         root["password"] = password;

@@ -310,6 +310,30 @@ home/xxxten/ChatProj/CharServerProj/GateServer/src/LogicSystem.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/GateServer.dir/build.make CMakeFiles/GateServer.dir/home/xxxten/ChatProj/CharServerProj/GateServer/src/LogicSystem.cpp.s
 .PHONY : home/xxxten/ChatProj/CharServerProj/GateServer/src/LogicSystem.cpp.s
 
+home/xxxten/ChatProj/CharServerProj/GateServer/src/MysqlMgr.o: home/xxxten/ChatProj/CharServerProj/GateServer/src/MysqlMgr.cpp.o
+.PHONY : home/xxxten/ChatProj/CharServerProj/GateServer/src/MysqlMgr.o
+
+# target to build an object file
+home/xxxten/ChatProj/CharServerProj/GateServer/src/MysqlMgr.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/GateServer.dir/build.make CMakeFiles/GateServer.dir/home/xxxten/ChatProj/CharServerProj/GateServer/src/MysqlMgr.cpp.o
+.PHONY : home/xxxten/ChatProj/CharServerProj/GateServer/src/MysqlMgr.cpp.o
+
+home/xxxten/ChatProj/CharServerProj/GateServer/src/MysqlMgr.i: home/xxxten/ChatProj/CharServerProj/GateServer/src/MysqlMgr.cpp.i
+.PHONY : home/xxxten/ChatProj/CharServerProj/GateServer/src/MysqlMgr.i
+
+# target to preprocess a source file
+home/xxxten/ChatProj/CharServerProj/GateServer/src/MysqlMgr.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/GateServer.dir/build.make CMakeFiles/GateServer.dir/home/xxxten/ChatProj/CharServerProj/GateServer/src/MysqlMgr.cpp.i
+.PHONY : home/xxxten/ChatProj/CharServerProj/GateServer/src/MysqlMgr.cpp.i
+
+home/xxxten/ChatProj/CharServerProj/GateServer/src/MysqlMgr.s: home/xxxten/ChatProj/CharServerProj/GateServer/src/MysqlMgr.cpp.s
+.PHONY : home/xxxten/ChatProj/CharServerProj/GateServer/src/MysqlMgr.s
+
+# target to generate assembly for a file
+home/xxxten/ChatProj/CharServerProj/GateServer/src/MysqlMgr.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/GateServer.dir/build.make CMakeFiles/GateServer.dir/home/xxxten/ChatProj/CharServerProj/GateServer/src/MysqlMgr.cpp.s
+.PHONY : home/xxxten/ChatProj/CharServerProj/GateServer/src/MysqlMgr.cpp.s
+
 home/xxxten/ChatProj/CharServerProj/GateServer/src/RedisMgr.o: home/xxxten/ChatProj/CharServerProj/GateServer/src/RedisMgr.cpp.o
 .PHONY : home/xxxten/ChatProj/CharServerProj/GateServer/src/RedisMgr.o
 
@@ -389,6 +413,9 @@ help:
 	@echo "... home/xxxten/ChatProj/CharServerProj/GateServer/src/LogicSystem.o"
 	@echo "... home/xxxten/ChatProj/CharServerProj/GateServer/src/LogicSystem.i"
 	@echo "... home/xxxten/ChatProj/CharServerProj/GateServer/src/LogicSystem.s"
+	@echo "... home/xxxten/ChatProj/CharServerProj/GateServer/src/MysqlMgr.o"
+	@echo "... home/xxxten/ChatProj/CharServerProj/GateServer/src/MysqlMgr.i"
+	@echo "... home/xxxten/ChatProj/CharServerProj/GateServer/src/MysqlMgr.s"
 	@echo "... home/xxxten/ChatProj/CharServerProj/GateServer/src/RedisMgr.o"
 	@echo "... home/xxxten/ChatProj/CharServerProj/GateServer/src/RedisMgr.i"
 	@echo "... home/xxxten/ChatProj/CharServerProj/GateServer/src/RedisMgr.s"
