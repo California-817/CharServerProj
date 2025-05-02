@@ -35,7 +35,9 @@ void HttpConnection::start() // 不断读取数据
         }
         catch(boost::system::system_error & err)
         {
+            //读取失败也要将连接移除管理
             std::cout<<"Recv http req err "<<err.what()<<std::endl;
+            self->get_server()->clearSession(self->get_uuid());
         } });
 }
 void HttpConnection::PreParseGetParam() {

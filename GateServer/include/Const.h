@@ -29,6 +29,7 @@ enum ErrorCodes
     VarifyExpired=1003, //验证码过期
     VarifyCodeErr=1004, //验证码错误
     UserExist=1005,  //用户已经存在
+    EmailExist=1010, //邮箱已经存在
     PassWordErr=1006, //密码错误
     EmailNotMatch=1007, //邮箱不匹配
     PassWordUpErr=1008,//密码更新失败

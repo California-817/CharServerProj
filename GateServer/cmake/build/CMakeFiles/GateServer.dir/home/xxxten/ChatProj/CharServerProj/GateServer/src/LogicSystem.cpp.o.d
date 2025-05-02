@@ -2314,4 +2314,14 @@ CMakeFiles/GateServer.dir/home/xxxten/ChatProj/CharServerProj/GateServer/src/Log
  /usr/local/include/sw/redis++/redis_cluster.hpp \
  /usr/local/include/sw/redis++/queued_redis.h \
  /usr/local/include/sw/redis++/queued_redis.hpp \
+ /home/xxxten/ChatProj/CharServerProj/GateServer/src/../include/MysqlMgr.h \
+ /home/xxxten/ChatProj/CharServerProj/GateServer/src/../include/MysqlPool.hpp \
+ /usr/local/include/mysql.h /usr/local/include/mysql_version.h \
+ /usr/local/include/mysql_com.h /usr/local/include/binary_log_types.h \
+ /usr/local/include/my_command.h /usr/local/include/mysql_time.h \
+ /usr/local/include/my_list.h /usr/local/include/mysql/client_plugin.h \
+ /usr/local/include/mysql/plugin_auth_common.h \
+ /usr/local/include/typelib.h /usr/local/include/my_alloc.h \
+ /usr/local/include/mysql/psi/psi_memory.h \
+ /usr/local/include/mysql/psi/psi_base.h \
  /home/xxxten/ChatProj/CharServerProj/GateServer/src/../include/HttpConnection.h
