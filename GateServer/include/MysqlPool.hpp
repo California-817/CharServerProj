@@ -26,7 +26,7 @@ public:
         // scanner.detach();
     }// 当执行到这里时，produce 和 scanner 会被析构如果线程对象析构时，线程仍在运行（即线程函数尚未完成），
     //C++标准库会调用   std::terminate 导致程序异常终止。这是因为线程对象的析构函数会检查线程是否仍在运行，如果仍在运行，则认为这是一个错误。
-    std::shared_ptr<MYSQL> GetConnecion()
+    std::shared_ptr<MYSQL> GetConnection()
     {
         std::unique_lock<std::mutex> _ulock(_mtx);
         while(_conns.empty()&&!_b_stop)

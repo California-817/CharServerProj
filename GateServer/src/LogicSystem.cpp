@@ -98,7 +98,7 @@ LogicSystem::LogicSystem()
         int uid=MysqlMgr::GetInstance()->RegUser(user,email,password);
         if(uid==-1)
         {
-            std::cout << " user or email exist" << std::endl;
+            std::cout << "user exist" << std::endl;
             root["error"] = ErrorCodes::UserExist;
             std::string jsonstr = root.dump(4);
             boost::beast::ostream(httpcon->_response.body()) << jsonstr;
@@ -106,7 +106,7 @@ LogicSystem::LogicSystem()
         }
         if(uid==0)
         {
-            std::cout << " user or email exist" << std::endl;
+            std::cout << "email exist" << std::endl;
             root["error"] = ErrorCodes::EmailExist;
             std::string jsonstr = root.dump(4);
             boost::beast::ostream(httpcon->_response.body()) << jsonstr;
@@ -124,6 +124,80 @@ LogicSystem::LogicSystem()
         std::string jsonstr = root.dump(4);
         boost::beast::ostream(httpcon->_response.body()) << jsonstr;
         return ;
+     });
+
+     RegisterPost("/reset_pwd",[](std::shared_ptr<HttpConnection> httpcon){
+        auto body_str=boost::beast::buffers_to_string(httpcon->_request.body().data());
+        std::cout << "receive body is " << body_str << std::endl;
+        httpcon->_response.set(boost::beast::http::field::content_type, "text/json");
+        //反序列化body字符串
+        nlohmann::json root;
+        nlohmann::json src_root;
+        try{
+            src_root=nlohmann::json::parse(body_str);
+        }catch(const nlohmann::json::parse_error& err)
+        { //反序列化失败
+          std::cout<<"Fail to parse json "<<err.what()<<std::endl;
+          root["error"]=ErrorCodes::Error_Json;
+          auto jsonstr=root.dump(4); //序列化
+          boost::beast::ostream(httpcon->_response.body()) << jsonstr;
+          return;
+        }
+        std::string user=src_root["user"].get<std::string>();
+        std::string email=src_root["email"].get<std::string>();
+        std::string password=src_root["passwd"].get<std::string>();
+        std::string varifycode=src_root["varifycode"].get<std::string>();
+        //先去redis查验证码是否过期 是否正确
+        std::string prefix="code_";
+        prefix+=email;
+        auto redis_con=RedisMgr::GetInstance()->GetRedisCon();
+        auto ret=redis_con->get(prefix.c_str());
+        if(!ret.has_value())
+        { //验证码过期
+            std::cout << " get varify code expired" << std::endl;
+            root["error"] = ErrorCodes::VarifyExpired;
+            std::string jsonstr = root.dump(4); //序列化
+            boost::beast::ostream(httpcon->_response.body()) << jsonstr;
+            return;
+        }
+        if(ret.value()!=varifycode)
+        { //验证码有错误
+            std::cout << " varify code error" << std::endl;
+            root["error"] = ErrorCodes::VarifyCodeErr;
+            std::string jsonstr = root.dump(4);
+            boost::beast::ostream(httpcon->_response.body()) << jsonstr;
+            return;
+        }
+
+        //去mysql查看用户和密码是否匹配
+        bool check_email=MysqlMgr::GetInstance()->CheckEmail(user,email);
+        if(!check_email)
+        {  //不匹配
+            std::cout<<"user not match email"<<std::endl;
+            root["error"] = ErrorCodes::EmailNotMatch;
+            std::string jsonstr = root.dump(4);
+            boost::beast::ostream(httpcon->_response.body()) << jsonstr;
+            return;
+        }
+        //再更新数据库中的密码
+        bool update_pwd=MysqlMgr::GetInstance()->UpdatePwd(user,password);
+        if(!update_pwd)
+        {
+            std::cout<<"update password failed"<<std::endl;
+            root["error"] = ErrorCodes::PassWordUpErr;
+            std::string jsonstr = root.dump(4);
+            boost::beast::ostream(httpcon->_response.body()) << jsonstr;
+            return;
+        }
+         //返回响应
+         root["error"] = ErrorCodes::Success;
+         root["email"] = email;
+         root ["user"]= user;
+         root["password"] = password;
+         root["varifycode"] = varifycode;
+         std::string jsonstr = root.dump(4);
+         boost::beast::ostream(httpcon->_response.body()) << jsonstr;
+         return ; 
      });
 
 }
