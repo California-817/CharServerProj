@@ -125,7 +125,7 @@ LogicSystem::LogicSystem()
         boost::beast::ostream(httpcon->_response.body()) << jsonstr;
         return ;
      });
-
+     //4.重置密码的处理逻辑
      RegisterPost("/reset_pwd",[](std::shared_ptr<HttpConnection> httpcon){
         auto body_str=boost::beast::buffers_to_string(httpcon->_request.body().data());
         std::cout << "receive body is " << body_str << std::endl;
@@ -169,7 +169,7 @@ LogicSystem::LogicSystem()
             return;
         }
 
-        //去mysql查看用户和密码是否匹配
+        //去mysql查看用户和邮箱是否匹配
         bool check_email=MysqlMgr::GetInstance()->CheckEmail(user,email);
         if(!check_email)
         {  //不匹配
@@ -199,7 +199,48 @@ LogicSystem::LogicSystem()
          boost::beast::ostream(httpcon->_response.body()) << jsonstr;
          return ; 
      });
+     //5.客户端登录请求的处理逻辑
+     //json_obj["user"] = user;
+     //json_obj["passwd"] = xorString(pwd);
+     //HttpMgr::GetInstance()->PostHttpReq(QUrl(gate_url_prefix+"/user_login"),
+     //                                          json_obj, ReqId::ID_LOGIN_USER,Modules::LOGINMOD);
+     LogicSystem::RegisterPost("/user_login",[](std::shared_ptr<HttpConnection> httpcon){
+        auto body_str=boost::beast::buffers_to_string(httpcon->_request.body().data());
+        std::cout << "receive body is " << body_str << std::endl;
+        httpcon->_response.set(boost::beast::http::field::content_type, "text/json");
+        //反序列化body字符串
+        nlohmann::json root;
+        nlohmann::json src_root;
+        try{
+            src_root=nlohmann::json::parse(body_str);
+        }catch(const nlohmann::json::parse_error& err)
+        { //反序列化失败
+          std::cout<<"Fail to parse json "<<err.what()<<std::endl;
+          root["error"]=ErrorCodes::Error_Json;
+          auto jsonstr=root.dump(4); //序列化
+          boost::beast::ostream(httpcon->_response.body()) << jsonstr;
+          return;
+        }
+        std::string email=src_root["user"].get<std::string>();
+        std::string password=src_root["passwd"].get<std::string>();
+        //先去mysql查看email和密码是否匹配
+        UserInfo userinfo;
+        bool check_res=MysqlMgr::GetInstance()->CheckPwd(email,password,userinfo);
+        if(!check_res)
+        { //不匹配
+            std::cout<<"login password is error "<<std::endl;
+            root["error"]=ErrorCodes::PassWordErr; //密码错误的错误码
+            std::string jsonstr = root.dump(4);
+            boost::beast::ostream(httpcon->_response.body()) << jsonstr;
+            return;
+        }
+        //密码与邮箱匹配userinfo填充数据
+        //查询StatusServer找到合适的连接
+        
 
+        std::cout << "succeed to load userinfo uid is " << userinfo.uid << std::endl;
+        return;
+     });
 }
 void LogicSystem::RegisterGet(std::string path,HttpHandler handler) 
 {

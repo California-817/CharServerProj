@@ -35,3 +35,9 @@ enum ErrorCodes
     PassWordUpErr=1008,//密码更新失败
     PassWordInvalid=1009,//密码无效
 };
+struct UserInfo{
+    int uid;
+    std::string name;
+    std::string email;
+    std::string password;
+};
