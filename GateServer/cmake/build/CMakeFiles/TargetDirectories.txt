@@ -1,4 +1,5 @@
-/home/xxxten/ChatProj/CharServerProj/GateServer/cmake/build/CMakeFiles/gate_server_proto.dir
+/home/xxxten/ChatProj/CharServerProj/GateServer/cmake/build/CMakeFiles/gate_server_proto_varify.dir
+/home/xxxten/ChatProj/CharServerProj/GateServer/cmake/build/CMakeFiles/gate_server_proto_status.dir
 /home/xxxten/ChatProj/CharServerProj/GateServer/cmake/build/CMakeFiles/GateServer.dir
 /home/xxxten/ChatProj/CharServerProj/GateServer/cmake/build/CMakeFiles/edit_cache.dir
 /home/xxxten/ChatProj/CharServerProj/GateServer/cmake/build/CMakeFiles/rebuild_cache.dir

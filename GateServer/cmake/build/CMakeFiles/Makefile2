@@ -63,7 +63,8 @@ CMAKE_BINARY_DIR = /home/xxxten/ChatProj/CharServerProj/GateServer/cmake/build
 # Directory level rules for the build root directory
 
 # The main recursive "all" target.
-all: CMakeFiles/gate_server_proto.dir/all
+all: CMakeFiles/gate_server_proto_varify.dir/all
+all: CMakeFiles/gate_server_proto_status.dir/all
 all: CMakeFiles/GateServer.dir/all
 .PHONY : all
 
@@ -72,49 +73,77 @@ preinstall:
 .PHONY : preinstall
 
 # The main recursive "clean" target.
-clean: CMakeFiles/gate_server_proto.dir/clean
+clean: CMakeFiles/gate_server_proto_varify.dir/clean
+clean: CMakeFiles/gate_server_proto_status.dir/clean
 clean: CMakeFiles/GateServer.dir/clean
 .PHONY : clean
 
 #=============================================================================
-# Target rules for target CMakeFiles/gate_server_proto.dir
+# Target rules for target CMakeFiles/gate_server_proto_varify.dir
 
 # All Build rule for target.
-CMakeFiles/gate_server_proto.dir/all:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/gate_server_proto.dir/build.make CMakeFiles/gate_server_proto.dir/depend
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/gate_server_proto.dir/build.make CMakeFiles/gate_server_proto.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/xxxten/ChatProj/CharServerProj/GateServer/cmake/build/CMakeFiles --progress-num=10,11,12 "Built target gate_server_proto"
-.PHONY : CMakeFiles/gate_server_proto.dir/all
+CMakeFiles/gate_server_proto_varify.dir/all:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gate_server_proto_varify.dir/build.make CMakeFiles/gate_server_proto_varify.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gate_server_proto_varify.dir/build.make CMakeFiles/gate_server_proto_varify.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/xxxten/ChatProj/CharServerProj/GateServer/cmake/build/CMakeFiles --progress-num=14,15,16 "Built target gate_server_proto_varify"
+.PHONY : CMakeFiles/gate_server_proto_varify.dir/all
 
 # Build rule for subdir invocation for target.
-CMakeFiles/gate_server_proto.dir/rule: cmake_check_build_system
+CMakeFiles/gate_server_proto_varify.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/xxxten/ChatProj/CharServerProj/GateServer/cmake/build/CMakeFiles 3
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/gate_server_proto.dir/all
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/gate_server_proto_varify.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/xxxten/ChatProj/CharServerProj/GateServer/cmake/build/CMakeFiles 0
-.PHONY : CMakeFiles/gate_server_proto.dir/rule
+.PHONY : CMakeFiles/gate_server_proto_varify.dir/rule
 
 # Convenience name for target.
-gate_server_proto: CMakeFiles/gate_server_proto.dir/rule
-.PHONY : gate_server_proto
+gate_server_proto_varify: CMakeFiles/gate_server_proto_varify.dir/rule
+.PHONY : gate_server_proto_varify
 
 # clean rule for target.
-CMakeFiles/gate_server_proto.dir/clean:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/gate_server_proto.dir/build.make CMakeFiles/gate_server_proto.dir/clean
-.PHONY : CMakeFiles/gate_server_proto.dir/clean
+CMakeFiles/gate_server_proto_varify.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gate_server_proto_varify.dir/build.make CMakeFiles/gate_server_proto_varify.dir/clean
+.PHONY : CMakeFiles/gate_server_proto_varify.dir/clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/gate_server_proto_status.dir
+
+# All Build rule for target.
+CMakeFiles/gate_server_proto_status.dir/all:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gate_server_proto_status.dir/build.make CMakeFiles/gate_server_proto_status.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gate_server_proto_status.dir/build.make CMakeFiles/gate_server_proto_status.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/xxxten/ChatProj/CharServerProj/GateServer/cmake/build/CMakeFiles --progress-num=11,12,13 "Built target gate_server_proto_status"
+.PHONY : CMakeFiles/gate_server_proto_status.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/gate_server_proto_status.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/xxxten/ChatProj/CharServerProj/GateServer/cmake/build/CMakeFiles 3
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/gate_server_proto_status.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/xxxten/ChatProj/CharServerProj/GateServer/cmake/build/CMakeFiles 0
+.PHONY : CMakeFiles/gate_server_proto_status.dir/rule
+
+# Convenience name for target.
+gate_server_proto_status: CMakeFiles/gate_server_proto_status.dir/rule
+.PHONY : gate_server_proto_status
+
+# clean rule for target.
+CMakeFiles/gate_server_proto_status.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gate_server_proto_status.dir/build.make CMakeFiles/gate_server_proto_status.dir/clean
+.PHONY : CMakeFiles/gate_server_proto_status.dir/clean
 
 #=============================================================================
 # Target rules for target CMakeFiles/GateServer.dir
 
 # All Build rule for target.
-CMakeFiles/GateServer.dir/all: CMakeFiles/gate_server_proto.dir/all
+CMakeFiles/GateServer.dir/all: CMakeFiles/gate_server_proto_varify.dir/all
+CMakeFiles/GateServer.dir/all: CMakeFiles/gate_server_proto_status.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/GateServer.dir/build.make CMakeFiles/GateServer.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/GateServer.dir/build.make CMakeFiles/GateServer.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/xxxten/ChatProj/CharServerProj/GateServer/cmake/build/CMakeFiles --progress-num=1,2,3,4,5,6,7,8,9 "Built target GateServer"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/xxxten/ChatProj/CharServerProj/GateServer/cmake/build/CMakeFiles --progress-num=1,2,3,4,5,6,7,8,9,10 "Built target GateServer"
 .PHONY : CMakeFiles/GateServer.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/GateServer.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/xxxten/ChatProj/CharServerProj/GateServer/cmake/build/CMakeFiles 12
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/xxxten/ChatProj/CharServerProj/GateServer/cmake/build/CMakeFiles 16
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/GateServer.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/xxxten/ChatProj/CharServerProj/GateServer/cmake/build/CMakeFiles 0
 .PHONY : CMakeFiles/GateServer.dir/rule

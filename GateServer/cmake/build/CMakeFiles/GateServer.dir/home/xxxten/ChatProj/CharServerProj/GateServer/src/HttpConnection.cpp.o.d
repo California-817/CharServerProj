@@ -2181,7 +2181,7 @@ CMakeFiles/GateServer.dir/home/xxxten/ChatProj/CharServerProj/GateServer/src/Htt
  /root/.local/include/grpcpp/security/authorization_policy_provider.h \
  /root/.local/include/grpcpp/server_posix.h \
  /root/.local/include/grpcpp/version_info.h \
- /home/xxxten/ChatProj/CharServerProj/GateServer/src/../include/GateServer.Varify.pb.h \
+ /home/xxxten/ChatProj/CharServerProj/GateServer/src/../include/grpc_cpp_out/GateServer.Varify.pb.h \
  /root/.local/include/google/protobuf/runtime_version.h \
  /root/.local/include/google/protobuf/io/coded_stream.h \
  /root/.local/include/google/protobuf/endian.h \
@@ -2261,7 +2261,8 @@ CMakeFiles/GateServer.dir/home/xxxten/ChatProj/CharServerProj/GateServer/src/Htt
  /root/.local/include/google/protobuf/map.h \
  /root/.local/include/google/protobuf/map_type_handler.h \
  /root/.local/include/google/protobuf/reflection.h \
- /home/xxxten/ChatProj/CharServerProj/GateServer/src/../include/GateServer.Varify.grpc.pb.h \
+ /home/xxxten/ChatProj/CharServerProj/GateServer/src/../include/grpc_cpp_out/GateServer.Varify.grpc.pb.h \
+ /home/xxxten/ChatProj/CharServerProj/GateServer/src/../include/grpc_cpp_out/GateServer.Varify.pb.h \
  /root/.local/include/grpcpp/generic/async_generic_service.h \
  /root/.local/include/grpcpp/generic/callback_generic_service.h \
  /root/.local/include/grpcpp/impl/server_callback_handlers.h \
@@ -2289,6 +2290,11 @@ CMakeFiles/GateServer.dir/home/xxxten/ChatProj/CharServerProj/GateServer/src/Htt
  /root/.local/include/grpcpp/support/stub_options.h \
  /root/.local/include/grpcpp/ports_def.inc \
  /root/.local/include/grpcpp/ports_undef.inc \
+ /home/xxxten/ChatProj/CharServerProj/GateServer/src/../include/GrpcConPool.hpp \
+ /home/xxxten/ChatProj/CharServerProj/GateServer/src/../include/StatusGrpcClient.h \
+ /home/xxxten/ChatProj/CharServerProj/GateServer/src/../include/grpc_cpp_out/GateServer.Status.pb.h \
+ /home/xxxten/ChatProj/CharServerProj/GateServer/src/../include/grpc_cpp_out/GateServer.Status.grpc.pb.h \
+ /home/xxxten/ChatProj/CharServerProj/GateServer/src/../include/grpc_cpp_out/GateServer.Status.pb.h \
  /home/xxxten/ChatProj/CharServerProj/GateServer/src/../include/RedisMgr.h \
  /usr/local/include/sw/redis++/redis++.h \
  /usr/local/include/sw/redis++/redis.h \

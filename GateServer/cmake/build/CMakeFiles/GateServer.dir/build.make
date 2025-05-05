@@ -167,10 +167,24 @@ CMakeFiles/GateServer.dir/home/xxxten/ChatProj/CharServerProj/GateServer/src/Red
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/GateServer.dir/home/xxxten/ChatProj/CharServerProj/GateServer/src/RedisMgr.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/xxxten/ChatProj/CharServerProj/GateServer/src/RedisMgr.cpp -o CMakeFiles/GateServer.dir/home/xxxten/ChatProj/CharServerProj/GateServer/src/RedisMgr.cpp.s
 
+CMakeFiles/GateServer.dir/home/xxxten/ChatProj/CharServerProj/GateServer/src/StatusGrpcClient.cpp.o: CMakeFiles/GateServer.dir/flags.make
+CMakeFiles/GateServer.dir/home/xxxten/ChatProj/CharServerProj/GateServer/src/StatusGrpcClient.cpp.o: /home/xxxten/ChatProj/CharServerProj/GateServer/src/StatusGrpcClient.cpp
+CMakeFiles/GateServer.dir/home/xxxten/ChatProj/CharServerProj/GateServer/src/StatusGrpcClient.cpp.o: CMakeFiles/GateServer.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/xxxten/ChatProj/CharServerProj/GateServer/cmake/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/GateServer.dir/home/xxxten/ChatProj/CharServerProj/GateServer/src/StatusGrpcClient.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/GateServer.dir/home/xxxten/ChatProj/CharServerProj/GateServer/src/StatusGrpcClient.cpp.o -MF CMakeFiles/GateServer.dir/home/xxxten/ChatProj/CharServerProj/GateServer/src/StatusGrpcClient.cpp.o.d -o CMakeFiles/GateServer.dir/home/xxxten/ChatProj/CharServerProj/GateServer/src/StatusGrpcClient.cpp.o -c /home/xxxten/ChatProj/CharServerProj/GateServer/src/StatusGrpcClient.cpp
+
+CMakeFiles/GateServer.dir/home/xxxten/ChatProj/CharServerProj/GateServer/src/StatusGrpcClient.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/GateServer.dir/home/xxxten/ChatProj/CharServerProj/GateServer/src/StatusGrpcClient.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/xxxten/ChatProj/CharServerProj/GateServer/src/StatusGrpcClient.cpp > CMakeFiles/GateServer.dir/home/xxxten/ChatProj/CharServerProj/GateServer/src/StatusGrpcClient.cpp.i
+
+CMakeFiles/GateServer.dir/home/xxxten/ChatProj/CharServerProj/GateServer/src/StatusGrpcClient.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/GateServer.dir/home/xxxten/ChatProj/CharServerProj/GateServer/src/StatusGrpcClient.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/xxxten/ChatProj/CharServerProj/GateServer/src/StatusGrpcClient.cpp -o CMakeFiles/GateServer.dir/home/xxxten/ChatProj/CharServerProj/GateServer/src/StatusGrpcClient.cpp.s
+
 CMakeFiles/GateServer.dir/home/xxxten/ChatProj/CharServerProj/GateServer/src/VarifyGrpcClient.cpp.o: CMakeFiles/GateServer.dir/flags.make
 CMakeFiles/GateServer.dir/home/xxxten/ChatProj/CharServerProj/GateServer/src/VarifyGrpcClient.cpp.o: /home/xxxten/ChatProj/CharServerProj/GateServer/src/VarifyGrpcClient.cpp
 CMakeFiles/GateServer.dir/home/xxxten/ChatProj/CharServerProj/GateServer/src/VarifyGrpcClient.cpp.o: CMakeFiles/GateServer.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/xxxten/ChatProj/CharServerProj/GateServer/cmake/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/GateServer.dir/home/xxxten/ChatProj/CharServerProj/GateServer/src/VarifyGrpcClient.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/xxxten/ChatProj/CharServerProj/GateServer/cmake/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/GateServer.dir/home/xxxten/ChatProj/CharServerProj/GateServer/src/VarifyGrpcClient.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/GateServer.dir/home/xxxten/ChatProj/CharServerProj/GateServer/src/VarifyGrpcClient.cpp.o -MF CMakeFiles/GateServer.dir/home/xxxten/ChatProj/CharServerProj/GateServer/src/VarifyGrpcClient.cpp.o.d -o CMakeFiles/GateServer.dir/home/xxxten/ChatProj/CharServerProj/GateServer/src/VarifyGrpcClient.cpp.o -c /home/xxxten/ChatProj/CharServerProj/GateServer/src/VarifyGrpcClient.cpp
 
 CMakeFiles/GateServer.dir/home/xxxten/ChatProj/CharServerProj/GateServer/src/VarifyGrpcClient.cpp.i: cmake_force
@@ -190,6 +204,7 @@ GateServer_OBJECTS = \
 "CMakeFiles/GateServer.dir/home/xxxten/ChatProj/CharServerProj/GateServer/src/LogicSystem.cpp.o" \
 "CMakeFiles/GateServer.dir/home/xxxten/ChatProj/CharServerProj/GateServer/src/MysqlMgr.cpp.o" \
 "CMakeFiles/GateServer.dir/home/xxxten/ChatProj/CharServerProj/GateServer/src/RedisMgr.cpp.o" \
+"CMakeFiles/GateServer.dir/home/xxxten/ChatProj/CharServerProj/GateServer/src/StatusGrpcClient.cpp.o" \
 "CMakeFiles/GateServer.dir/home/xxxten/ChatProj/CharServerProj/GateServer/src/VarifyGrpcClient.cpp.o"
 
 # External object files for target GateServer
@@ -202,9 +217,11 @@ GateServer_EXTERNAL_OBJECTS =
 /home/xxxten/ChatProj/CharServerProj/GateServer/bin/GateServer: CMakeFiles/GateServer.dir/home/xxxten/ChatProj/CharServerProj/GateServer/src/LogicSystem.cpp.o
 /home/xxxten/ChatProj/CharServerProj/GateServer/bin/GateServer: CMakeFiles/GateServer.dir/home/xxxten/ChatProj/CharServerProj/GateServer/src/MysqlMgr.cpp.o
 /home/xxxten/ChatProj/CharServerProj/GateServer/bin/GateServer: CMakeFiles/GateServer.dir/home/xxxten/ChatProj/CharServerProj/GateServer/src/RedisMgr.cpp.o
+/home/xxxten/ChatProj/CharServerProj/GateServer/bin/GateServer: CMakeFiles/GateServer.dir/home/xxxten/ChatProj/CharServerProj/GateServer/src/StatusGrpcClient.cpp.o
 /home/xxxten/ChatProj/CharServerProj/GateServer/bin/GateServer: CMakeFiles/GateServer.dir/home/xxxten/ChatProj/CharServerProj/GateServer/src/VarifyGrpcClient.cpp.o
 /home/xxxten/ChatProj/CharServerProj/GateServer/bin/GateServer: CMakeFiles/GateServer.dir/build.make
-/home/xxxten/ChatProj/CharServerProj/GateServer/bin/GateServer: libgate_server_proto.a
+/home/xxxten/ChatProj/CharServerProj/GateServer/bin/GateServer: libgate_server_proto_varify.a
+/home/xxxten/ChatProj/CharServerProj/GateServer/bin/GateServer: libgate_server_proto_status.a
 /home/xxxten/ChatProj/CharServerProj/GateServer/bin/GateServer: /root/.local/lib64/libabsl_flags_parse.a
 /home/xxxten/ChatProj/CharServerProj/GateServer/bin/GateServer: /root/.local/lib64/libabsl_log_initialize.a
 /home/xxxten/ChatProj/CharServerProj/GateServer/bin/GateServer: /root/.local/lib/libgrpc++_reflection.a
@@ -310,7 +327,7 @@ GateServer_EXTERNAL_OBJECTS =
 /home/xxxten/ChatProj/CharServerProj/GateServer/bin/GateServer: /root/.local/lib64/libabsl_decode_rust_punycode.a
 /home/xxxten/ChatProj/CharServerProj/GateServer/bin/GateServer: /root/.local/lib64/libabsl_utf8_for_code_point.a
 /home/xxxten/ChatProj/CharServerProj/GateServer/bin/GateServer: CMakeFiles/GateServer.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/xxxten/ChatProj/CharServerProj/GateServer/cmake/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Linking CXX executable /home/xxxten/ChatProj/CharServerProj/GateServer/bin/GateServer"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/xxxten/ChatProj/CharServerProj/GateServer/cmake/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Linking CXX executable /home/xxxten/ChatProj/CharServerProj/GateServer/bin/GateServer"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/GateServer.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

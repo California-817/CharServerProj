@@ -117,17 +117,30 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named gate_server_proto
+# Target rules for targets named gate_server_proto_varify
 
 # Build rule for target.
-gate_server_proto: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 gate_server_proto
-.PHONY : gate_server_proto
+gate_server_proto_varify: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 gate_server_proto_varify
+.PHONY : gate_server_proto_varify
 
 # fast build rule for target.
-gate_server_proto/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/gate_server_proto.dir/build.make CMakeFiles/gate_server_proto.dir/build
-.PHONY : gate_server_proto/fast
+gate_server_proto_varify/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gate_server_proto_varify.dir/build.make CMakeFiles/gate_server_proto_varify.dir/build
+.PHONY : gate_server_proto_varify/fast
+
+#=============================================================================
+# Target rules for targets named gate_server_proto_status
+
+# Build rule for target.
+gate_server_proto_status: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 gate_server_proto_status
+.PHONY : gate_server_proto_status
+
+# fast build rule for target.
+gate_server_proto_status/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gate_server_proto_status.dir/build.make CMakeFiles/gate_server_proto_status.dir/build
+.PHONY : gate_server_proto_status/fast
 
 #=============================================================================
 # Target rules for targets named GateServer
@@ -142,53 +155,101 @@ GateServer/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/GateServer.dir/build.make CMakeFiles/GateServer.dir/build
 .PHONY : GateServer/fast
 
-home/xxxten/ChatProj/CharServerProj/GateServer/include/GateServer.Varify.grpc.pb.o: home/xxxten/ChatProj/CharServerProj/GateServer/include/GateServer.Varify.grpc.pb.cc.o
-.PHONY : home/xxxten/ChatProj/CharServerProj/GateServer/include/GateServer.Varify.grpc.pb.o
+home/xxxten/ChatProj/CharServerProj/GateServer/include/grpc_cpp_out/GateServer.Status.grpc.pb.o: home/xxxten/ChatProj/CharServerProj/GateServer/include/grpc_cpp_out/GateServer.Status.grpc.pb.cc.o
+.PHONY : home/xxxten/ChatProj/CharServerProj/GateServer/include/grpc_cpp_out/GateServer.Status.grpc.pb.o
 
 # target to build an object file
-home/xxxten/ChatProj/CharServerProj/GateServer/include/GateServer.Varify.grpc.pb.cc.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/gate_server_proto.dir/build.make CMakeFiles/gate_server_proto.dir/home/xxxten/ChatProj/CharServerProj/GateServer/include/GateServer.Varify.grpc.pb.cc.o
-.PHONY : home/xxxten/ChatProj/CharServerProj/GateServer/include/GateServer.Varify.grpc.pb.cc.o
+home/xxxten/ChatProj/CharServerProj/GateServer/include/grpc_cpp_out/GateServer.Status.grpc.pb.cc.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gate_server_proto_status.dir/build.make CMakeFiles/gate_server_proto_status.dir/home/xxxten/ChatProj/CharServerProj/GateServer/include/grpc_cpp_out/GateServer.Status.grpc.pb.cc.o
+.PHONY : home/xxxten/ChatProj/CharServerProj/GateServer/include/grpc_cpp_out/GateServer.Status.grpc.pb.cc.o
 
-home/xxxten/ChatProj/CharServerProj/GateServer/include/GateServer.Varify.grpc.pb.i: home/xxxten/ChatProj/CharServerProj/GateServer/include/GateServer.Varify.grpc.pb.cc.i
-.PHONY : home/xxxten/ChatProj/CharServerProj/GateServer/include/GateServer.Varify.grpc.pb.i
+home/xxxten/ChatProj/CharServerProj/GateServer/include/grpc_cpp_out/GateServer.Status.grpc.pb.i: home/xxxten/ChatProj/CharServerProj/GateServer/include/grpc_cpp_out/GateServer.Status.grpc.pb.cc.i
+.PHONY : home/xxxten/ChatProj/CharServerProj/GateServer/include/grpc_cpp_out/GateServer.Status.grpc.pb.i
 
 # target to preprocess a source file
-home/xxxten/ChatProj/CharServerProj/GateServer/include/GateServer.Varify.grpc.pb.cc.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/gate_server_proto.dir/build.make CMakeFiles/gate_server_proto.dir/home/xxxten/ChatProj/CharServerProj/GateServer/include/GateServer.Varify.grpc.pb.cc.i
-.PHONY : home/xxxten/ChatProj/CharServerProj/GateServer/include/GateServer.Varify.grpc.pb.cc.i
+home/xxxten/ChatProj/CharServerProj/GateServer/include/grpc_cpp_out/GateServer.Status.grpc.pb.cc.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gate_server_proto_status.dir/build.make CMakeFiles/gate_server_proto_status.dir/home/xxxten/ChatProj/CharServerProj/GateServer/include/grpc_cpp_out/GateServer.Status.grpc.pb.cc.i
+.PHONY : home/xxxten/ChatProj/CharServerProj/GateServer/include/grpc_cpp_out/GateServer.Status.grpc.pb.cc.i
 
-home/xxxten/ChatProj/CharServerProj/GateServer/include/GateServer.Varify.grpc.pb.s: home/xxxten/ChatProj/CharServerProj/GateServer/include/GateServer.Varify.grpc.pb.cc.s
-.PHONY : home/xxxten/ChatProj/CharServerProj/GateServer/include/GateServer.Varify.grpc.pb.s
+home/xxxten/ChatProj/CharServerProj/GateServer/include/grpc_cpp_out/GateServer.Status.grpc.pb.s: home/xxxten/ChatProj/CharServerProj/GateServer/include/grpc_cpp_out/GateServer.Status.grpc.pb.cc.s
+.PHONY : home/xxxten/ChatProj/CharServerProj/GateServer/include/grpc_cpp_out/GateServer.Status.grpc.pb.s
 
 # target to generate assembly for a file
-home/xxxten/ChatProj/CharServerProj/GateServer/include/GateServer.Varify.grpc.pb.cc.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/gate_server_proto.dir/build.make CMakeFiles/gate_server_proto.dir/home/xxxten/ChatProj/CharServerProj/GateServer/include/GateServer.Varify.grpc.pb.cc.s
-.PHONY : home/xxxten/ChatProj/CharServerProj/GateServer/include/GateServer.Varify.grpc.pb.cc.s
+home/xxxten/ChatProj/CharServerProj/GateServer/include/grpc_cpp_out/GateServer.Status.grpc.pb.cc.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gate_server_proto_status.dir/build.make CMakeFiles/gate_server_proto_status.dir/home/xxxten/ChatProj/CharServerProj/GateServer/include/grpc_cpp_out/GateServer.Status.grpc.pb.cc.s
+.PHONY : home/xxxten/ChatProj/CharServerProj/GateServer/include/grpc_cpp_out/GateServer.Status.grpc.pb.cc.s
 
-home/xxxten/ChatProj/CharServerProj/GateServer/include/GateServer.Varify.pb.o: home/xxxten/ChatProj/CharServerProj/GateServer/include/GateServer.Varify.pb.cc.o
-.PHONY : home/xxxten/ChatProj/CharServerProj/GateServer/include/GateServer.Varify.pb.o
+home/xxxten/ChatProj/CharServerProj/GateServer/include/grpc_cpp_out/GateServer.Status.pb.o: home/xxxten/ChatProj/CharServerProj/GateServer/include/grpc_cpp_out/GateServer.Status.pb.cc.o
+.PHONY : home/xxxten/ChatProj/CharServerProj/GateServer/include/grpc_cpp_out/GateServer.Status.pb.o
 
 # target to build an object file
-home/xxxten/ChatProj/CharServerProj/GateServer/include/GateServer.Varify.pb.cc.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/gate_server_proto.dir/build.make CMakeFiles/gate_server_proto.dir/home/xxxten/ChatProj/CharServerProj/GateServer/include/GateServer.Varify.pb.cc.o
-.PHONY : home/xxxten/ChatProj/CharServerProj/GateServer/include/GateServer.Varify.pb.cc.o
+home/xxxten/ChatProj/CharServerProj/GateServer/include/grpc_cpp_out/GateServer.Status.pb.cc.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gate_server_proto_status.dir/build.make CMakeFiles/gate_server_proto_status.dir/home/xxxten/ChatProj/CharServerProj/GateServer/include/grpc_cpp_out/GateServer.Status.pb.cc.o
+.PHONY : home/xxxten/ChatProj/CharServerProj/GateServer/include/grpc_cpp_out/GateServer.Status.pb.cc.o
 
-home/xxxten/ChatProj/CharServerProj/GateServer/include/GateServer.Varify.pb.i: home/xxxten/ChatProj/CharServerProj/GateServer/include/GateServer.Varify.pb.cc.i
-.PHONY : home/xxxten/ChatProj/CharServerProj/GateServer/include/GateServer.Varify.pb.i
+home/xxxten/ChatProj/CharServerProj/GateServer/include/grpc_cpp_out/GateServer.Status.pb.i: home/xxxten/ChatProj/CharServerProj/GateServer/include/grpc_cpp_out/GateServer.Status.pb.cc.i
+.PHONY : home/xxxten/ChatProj/CharServerProj/GateServer/include/grpc_cpp_out/GateServer.Status.pb.i
 
 # target to preprocess a source file
-home/xxxten/ChatProj/CharServerProj/GateServer/include/GateServer.Varify.pb.cc.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/gate_server_proto.dir/build.make CMakeFiles/gate_server_proto.dir/home/xxxten/ChatProj/CharServerProj/GateServer/include/GateServer.Varify.pb.cc.i
-.PHONY : home/xxxten/ChatProj/CharServerProj/GateServer/include/GateServer.Varify.pb.cc.i
+home/xxxten/ChatProj/CharServerProj/GateServer/include/grpc_cpp_out/GateServer.Status.pb.cc.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gate_server_proto_status.dir/build.make CMakeFiles/gate_server_proto_status.dir/home/xxxten/ChatProj/CharServerProj/GateServer/include/grpc_cpp_out/GateServer.Status.pb.cc.i
+.PHONY : home/xxxten/ChatProj/CharServerProj/GateServer/include/grpc_cpp_out/GateServer.Status.pb.cc.i
 
-home/xxxten/ChatProj/CharServerProj/GateServer/include/GateServer.Varify.pb.s: home/xxxten/ChatProj/CharServerProj/GateServer/include/GateServer.Varify.pb.cc.s
-.PHONY : home/xxxten/ChatProj/CharServerProj/GateServer/include/GateServer.Varify.pb.s
+home/xxxten/ChatProj/CharServerProj/GateServer/include/grpc_cpp_out/GateServer.Status.pb.s: home/xxxten/ChatProj/CharServerProj/GateServer/include/grpc_cpp_out/GateServer.Status.pb.cc.s
+.PHONY : home/xxxten/ChatProj/CharServerProj/GateServer/include/grpc_cpp_out/GateServer.Status.pb.s
 
 # target to generate assembly for a file
-home/xxxten/ChatProj/CharServerProj/GateServer/include/GateServer.Varify.pb.cc.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/gate_server_proto.dir/build.make CMakeFiles/gate_server_proto.dir/home/xxxten/ChatProj/CharServerProj/GateServer/include/GateServer.Varify.pb.cc.s
-.PHONY : home/xxxten/ChatProj/CharServerProj/GateServer/include/GateServer.Varify.pb.cc.s
+home/xxxten/ChatProj/CharServerProj/GateServer/include/grpc_cpp_out/GateServer.Status.pb.cc.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gate_server_proto_status.dir/build.make CMakeFiles/gate_server_proto_status.dir/home/xxxten/ChatProj/CharServerProj/GateServer/include/grpc_cpp_out/GateServer.Status.pb.cc.s
+.PHONY : home/xxxten/ChatProj/CharServerProj/GateServer/include/grpc_cpp_out/GateServer.Status.pb.cc.s
+
+home/xxxten/ChatProj/CharServerProj/GateServer/include/grpc_cpp_out/GateServer.Varify.grpc.pb.o: home/xxxten/ChatProj/CharServerProj/GateServer/include/grpc_cpp_out/GateServer.Varify.grpc.pb.cc.o
+.PHONY : home/xxxten/ChatProj/CharServerProj/GateServer/include/grpc_cpp_out/GateServer.Varify.grpc.pb.o
+
+# target to build an object file
+home/xxxten/ChatProj/CharServerProj/GateServer/include/grpc_cpp_out/GateServer.Varify.grpc.pb.cc.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gate_server_proto_varify.dir/build.make CMakeFiles/gate_server_proto_varify.dir/home/xxxten/ChatProj/CharServerProj/GateServer/include/grpc_cpp_out/GateServer.Varify.grpc.pb.cc.o
+.PHONY : home/xxxten/ChatProj/CharServerProj/GateServer/include/grpc_cpp_out/GateServer.Varify.grpc.pb.cc.o
+
+home/xxxten/ChatProj/CharServerProj/GateServer/include/grpc_cpp_out/GateServer.Varify.grpc.pb.i: home/xxxten/ChatProj/CharServerProj/GateServer/include/grpc_cpp_out/GateServer.Varify.grpc.pb.cc.i
+.PHONY : home/xxxten/ChatProj/CharServerProj/GateServer/include/grpc_cpp_out/GateServer.Varify.grpc.pb.i
+
+# target to preprocess a source file
+home/xxxten/ChatProj/CharServerProj/GateServer/include/grpc_cpp_out/GateServer.Varify.grpc.pb.cc.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gate_server_proto_varify.dir/build.make CMakeFiles/gate_server_proto_varify.dir/home/xxxten/ChatProj/CharServerProj/GateServer/include/grpc_cpp_out/GateServer.Varify.grpc.pb.cc.i
+.PHONY : home/xxxten/ChatProj/CharServerProj/GateServer/include/grpc_cpp_out/GateServer.Varify.grpc.pb.cc.i
+
+home/xxxten/ChatProj/CharServerProj/GateServer/include/grpc_cpp_out/GateServer.Varify.grpc.pb.s: home/xxxten/ChatProj/CharServerProj/GateServer/include/grpc_cpp_out/GateServer.Varify.grpc.pb.cc.s
+.PHONY : home/xxxten/ChatProj/CharServerProj/GateServer/include/grpc_cpp_out/GateServer.Varify.grpc.pb.s
+
+# target to generate assembly for a file
+home/xxxten/ChatProj/CharServerProj/GateServer/include/grpc_cpp_out/GateServer.Varify.grpc.pb.cc.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gate_server_proto_varify.dir/build.make CMakeFiles/gate_server_proto_varify.dir/home/xxxten/ChatProj/CharServerProj/GateServer/include/grpc_cpp_out/GateServer.Varify.grpc.pb.cc.s
+.PHONY : home/xxxten/ChatProj/CharServerProj/GateServer/include/grpc_cpp_out/GateServer.Varify.grpc.pb.cc.s
+
+home/xxxten/ChatProj/CharServerProj/GateServer/include/grpc_cpp_out/GateServer.Varify.pb.o: home/xxxten/ChatProj/CharServerProj/GateServer/include/grpc_cpp_out/GateServer.Varify.pb.cc.o
+.PHONY : home/xxxten/ChatProj/CharServerProj/GateServer/include/grpc_cpp_out/GateServer.Varify.pb.o
+
+# target to build an object file
+home/xxxten/ChatProj/CharServerProj/GateServer/include/grpc_cpp_out/GateServer.Varify.pb.cc.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gate_server_proto_varify.dir/build.make CMakeFiles/gate_server_proto_varify.dir/home/xxxten/ChatProj/CharServerProj/GateServer/include/grpc_cpp_out/GateServer.Varify.pb.cc.o
+.PHONY : home/xxxten/ChatProj/CharServerProj/GateServer/include/grpc_cpp_out/GateServer.Varify.pb.cc.o
+
+home/xxxten/ChatProj/CharServerProj/GateServer/include/grpc_cpp_out/GateServer.Varify.pb.i: home/xxxten/ChatProj/CharServerProj/GateServer/include/grpc_cpp_out/GateServer.Varify.pb.cc.i
+.PHONY : home/xxxten/ChatProj/CharServerProj/GateServer/include/grpc_cpp_out/GateServer.Varify.pb.i
+
+# target to preprocess a source file
+home/xxxten/ChatProj/CharServerProj/GateServer/include/grpc_cpp_out/GateServer.Varify.pb.cc.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gate_server_proto_varify.dir/build.make CMakeFiles/gate_server_proto_varify.dir/home/xxxten/ChatProj/CharServerProj/GateServer/include/grpc_cpp_out/GateServer.Varify.pb.cc.i
+.PHONY : home/xxxten/ChatProj/CharServerProj/GateServer/include/grpc_cpp_out/GateServer.Varify.pb.cc.i
+
+home/xxxten/ChatProj/CharServerProj/GateServer/include/grpc_cpp_out/GateServer.Varify.pb.s: home/xxxten/ChatProj/CharServerProj/GateServer/include/grpc_cpp_out/GateServer.Varify.pb.cc.s
+.PHONY : home/xxxten/ChatProj/CharServerProj/GateServer/include/grpc_cpp_out/GateServer.Varify.pb.s
+
+# target to generate assembly for a file
+home/xxxten/ChatProj/CharServerProj/GateServer/include/grpc_cpp_out/GateServer.Varify.pb.cc.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gate_server_proto_varify.dir/build.make CMakeFiles/gate_server_proto_varify.dir/home/xxxten/ChatProj/CharServerProj/GateServer/include/grpc_cpp_out/GateServer.Varify.pb.cc.s
+.PHONY : home/xxxten/ChatProj/CharServerProj/GateServer/include/grpc_cpp_out/GateServer.Varify.pb.cc.s
 
 home/xxxten/ChatProj/CharServerProj/GateServer/src/CServer.o: home/xxxten/ChatProj/CharServerProj/GateServer/src/CServer.cpp.o
 .PHONY : home/xxxten/ChatProj/CharServerProj/GateServer/src/CServer.o
@@ -358,6 +419,30 @@ home/xxxten/ChatProj/CharServerProj/GateServer/src/RedisMgr.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/GateServer.dir/build.make CMakeFiles/GateServer.dir/home/xxxten/ChatProj/CharServerProj/GateServer/src/RedisMgr.cpp.s
 .PHONY : home/xxxten/ChatProj/CharServerProj/GateServer/src/RedisMgr.cpp.s
 
+home/xxxten/ChatProj/CharServerProj/GateServer/src/StatusGrpcClient.o: home/xxxten/ChatProj/CharServerProj/GateServer/src/StatusGrpcClient.cpp.o
+.PHONY : home/xxxten/ChatProj/CharServerProj/GateServer/src/StatusGrpcClient.o
+
+# target to build an object file
+home/xxxten/ChatProj/CharServerProj/GateServer/src/StatusGrpcClient.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/GateServer.dir/build.make CMakeFiles/GateServer.dir/home/xxxten/ChatProj/CharServerProj/GateServer/src/StatusGrpcClient.cpp.o
+.PHONY : home/xxxten/ChatProj/CharServerProj/GateServer/src/StatusGrpcClient.cpp.o
+
+home/xxxten/ChatProj/CharServerProj/GateServer/src/StatusGrpcClient.i: home/xxxten/ChatProj/CharServerProj/GateServer/src/StatusGrpcClient.cpp.i
+.PHONY : home/xxxten/ChatProj/CharServerProj/GateServer/src/StatusGrpcClient.i
+
+# target to preprocess a source file
+home/xxxten/ChatProj/CharServerProj/GateServer/src/StatusGrpcClient.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/GateServer.dir/build.make CMakeFiles/GateServer.dir/home/xxxten/ChatProj/CharServerProj/GateServer/src/StatusGrpcClient.cpp.i
+.PHONY : home/xxxten/ChatProj/CharServerProj/GateServer/src/StatusGrpcClient.cpp.i
+
+home/xxxten/ChatProj/CharServerProj/GateServer/src/StatusGrpcClient.s: home/xxxten/ChatProj/CharServerProj/GateServer/src/StatusGrpcClient.cpp.s
+.PHONY : home/xxxten/ChatProj/CharServerProj/GateServer/src/StatusGrpcClient.s
+
+# target to generate assembly for a file
+home/xxxten/ChatProj/CharServerProj/GateServer/src/StatusGrpcClient.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/GateServer.dir/build.make CMakeFiles/GateServer.dir/home/xxxten/ChatProj/CharServerProj/GateServer/src/StatusGrpcClient.cpp.s
+.PHONY : home/xxxten/ChatProj/CharServerProj/GateServer/src/StatusGrpcClient.cpp.s
+
 home/xxxten/ChatProj/CharServerProj/GateServer/src/VarifyGrpcClient.o: home/xxxten/ChatProj/CharServerProj/GateServer/src/VarifyGrpcClient.cpp.o
 .PHONY : home/xxxten/ChatProj/CharServerProj/GateServer/src/VarifyGrpcClient.o
 
@@ -391,13 +476,20 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... GateServer"
-	@echo "... gate_server_proto"
-	@echo "... home/xxxten/ChatProj/CharServerProj/GateServer/include/GateServer.Varify.grpc.pb.o"
-	@echo "... home/xxxten/ChatProj/CharServerProj/GateServer/include/GateServer.Varify.grpc.pb.i"
-	@echo "... home/xxxten/ChatProj/CharServerProj/GateServer/include/GateServer.Varify.grpc.pb.s"
-	@echo "... home/xxxten/ChatProj/CharServerProj/GateServer/include/GateServer.Varify.pb.o"
-	@echo "... home/xxxten/ChatProj/CharServerProj/GateServer/include/GateServer.Varify.pb.i"
-	@echo "... home/xxxten/ChatProj/CharServerProj/GateServer/include/GateServer.Varify.pb.s"
+	@echo "... gate_server_proto_status"
+	@echo "... gate_server_proto_varify"
+	@echo "... home/xxxten/ChatProj/CharServerProj/GateServer/include/grpc_cpp_out/GateServer.Status.grpc.pb.o"
+	@echo "... home/xxxten/ChatProj/CharServerProj/GateServer/include/grpc_cpp_out/GateServer.Status.grpc.pb.i"
+	@echo "... home/xxxten/ChatProj/CharServerProj/GateServer/include/grpc_cpp_out/GateServer.Status.grpc.pb.s"
+	@echo "... home/xxxten/ChatProj/CharServerProj/GateServer/include/grpc_cpp_out/GateServer.Status.pb.o"
+	@echo "... home/xxxten/ChatProj/CharServerProj/GateServer/include/grpc_cpp_out/GateServer.Status.pb.i"
+	@echo "... home/xxxten/ChatProj/CharServerProj/GateServer/include/grpc_cpp_out/GateServer.Status.pb.s"
+	@echo "... home/xxxten/ChatProj/CharServerProj/GateServer/include/grpc_cpp_out/GateServer.Varify.grpc.pb.o"
+	@echo "... home/xxxten/ChatProj/CharServerProj/GateServer/include/grpc_cpp_out/GateServer.Varify.grpc.pb.i"
+	@echo "... home/xxxten/ChatProj/CharServerProj/GateServer/include/grpc_cpp_out/GateServer.Varify.grpc.pb.s"
+	@echo "... home/xxxten/ChatProj/CharServerProj/GateServer/include/grpc_cpp_out/GateServer.Varify.pb.o"
+	@echo "... home/xxxten/ChatProj/CharServerProj/GateServer/include/grpc_cpp_out/GateServer.Varify.pb.i"
+	@echo "... home/xxxten/ChatProj/CharServerProj/GateServer/include/grpc_cpp_out/GateServer.Varify.pb.s"
 	@echo "... home/xxxten/ChatProj/CharServerProj/GateServer/src/CServer.o"
 	@echo "... home/xxxten/ChatProj/CharServerProj/GateServer/src/CServer.i"
 	@echo "... home/xxxten/ChatProj/CharServerProj/GateServer/src/CServer.s"
@@ -419,6 +511,9 @@ help:
 	@echo "... home/xxxten/ChatProj/CharServerProj/GateServer/src/RedisMgr.o"
 	@echo "... home/xxxten/ChatProj/CharServerProj/GateServer/src/RedisMgr.i"
 	@echo "... home/xxxten/ChatProj/CharServerProj/GateServer/src/RedisMgr.s"
+	@echo "... home/xxxten/ChatProj/CharServerProj/GateServer/src/StatusGrpcClient.o"
+	@echo "... home/xxxten/ChatProj/CharServerProj/GateServer/src/StatusGrpcClient.i"
+	@echo "... home/xxxten/ChatProj/CharServerProj/GateServer/src/StatusGrpcClient.s"
 	@echo "... home/xxxten/ChatProj/CharServerProj/GateServer/src/VarifyGrpcClient.o"
 	@echo "... home/xxxten/ChatProj/CharServerProj/GateServer/src/VarifyGrpcClient.i"
 	@echo "... home/xxxten/ChatProj/CharServerProj/GateServer/src/VarifyGrpcClient.s"

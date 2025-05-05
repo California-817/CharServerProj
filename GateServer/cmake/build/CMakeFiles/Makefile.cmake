@@ -151,6 +151,7 @@ set(CMAKE_MAKEFILE_PRODUCTS
 
 # Dependency information for all targets:
 set(CMAKE_DEPEND_INFO_FILES
-  "CMakeFiles/gate_server_proto.dir/DependInfo.cmake"
+  "CMakeFiles/gate_server_proto_varify.dir/DependInfo.cmake"
+  "CMakeFiles/gate_server_proto_status.dir/DependInfo.cmake"
   "CMakeFiles/GateServer.dir/DependInfo.cmake"
   )

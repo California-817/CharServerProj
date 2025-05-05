@@ -1,0 +1,2 @@
+/usr/bin/ar qc libgate_server_proto_status.a CMakeFiles/gate_server_proto_status.dir/include/grpc_cpp_out/GateServer.Status.grpc.pb.cc.o CMakeFiles/gate_server_proto_status.dir/include/grpc_cpp_out/GateServer.Status.pb.cc.o
+/usr/bin/ranlib libgate_server_proto_status.a

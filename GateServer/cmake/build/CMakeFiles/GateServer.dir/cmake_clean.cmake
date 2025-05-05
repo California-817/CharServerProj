@@ -15,6 +15,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/GateServer.dir/home/xxxten/ChatProj/CharServerProj/GateServer/src/MysqlMgr.cpp.o.d"
   "CMakeFiles/GateServer.dir/home/xxxten/ChatProj/CharServerProj/GateServer/src/RedisMgr.cpp.o"
   "CMakeFiles/GateServer.dir/home/xxxten/ChatProj/CharServerProj/GateServer/src/RedisMgr.cpp.o.d"
+  "CMakeFiles/GateServer.dir/home/xxxten/ChatProj/CharServerProj/GateServer/src/StatusGrpcClient.cpp.o"
+  "CMakeFiles/GateServer.dir/home/xxxten/ChatProj/CharServerProj/GateServer/src/StatusGrpcClient.cpp.o.d"
   "CMakeFiles/GateServer.dir/home/xxxten/ChatProj/CharServerProj/GateServer/src/VarifyGrpcClient.cpp.o"
   "CMakeFiles/GateServer.dir/home/xxxten/ChatProj/CharServerProj/GateServer/src/VarifyGrpcClient.cpp.o.d"
 )

@@ -200,7 +200,7 @@ LogicSystem::LogicSystem()
          return ; 
      });
      //5.客户端登录请求的处理逻辑
-     //json_obj["user"] = user;
+     //json_obj["email"] = email;
      //json_obj["passwd"] = xorString(pwd);
      //HttpMgr::GetInstance()->PostHttpReq(QUrl(gate_url_prefix+"/user_login"),
      //                                          json_obj, ReqId::ID_LOGIN_USER,Modules::LOGINMOD);
@@ -221,7 +221,7 @@ LogicSystem::LogicSystem()
           boost::beast::ostream(httpcon->_response.body()) << jsonstr;
           return;
         }
-        std::string email=src_root["user"].get<std::string>();
+        std::string email=src_root["email"].get<std::string>();
         std::string password=src_root["passwd"].get<std::string>();
         //先去mysql查看email和密码是否匹配
         UserInfo userinfo;
@@ -235,10 +235,27 @@ LogicSystem::LogicSystem()
             return;
         }
         //密码与邮箱匹配userinfo填充数据
-        //查询StatusServer找到合适的连接
-        
-
+        //查询StatusServer找到合适的ChatServer
+        GetChatServerRsp rsp=StatusGrpcClient::GetInstance()->GetChatServer(userinfo.uid);
+        if(rsp.error()) //出错了
+        {
+            std::cout << " grpc get chat server failed, error is " << rsp.error()<< std::endl;
+            root["error"]=rsp.error();
+            std::string jsonstr = root.dump(4);
+            boost::beast::ostream(httpcon->_response.body()) << jsonstr;
+            return;
+        }
+        //grpc调用也成功
         std::cout << "succeed to load userinfo uid is " << userinfo.uid << std::endl;
+        root["error"] = ErrorCodes::Success;
+        root["email"] = userinfo.email;
+        root["uid"] = userinfo.uid;
+        root["token"] = rsp.token();
+        root["host"] = rsp.host();
+        root["port"]=rsp.port();
+        std::cout<<rsp.token()<<" : "<<rsp.host()<<" : "<<rsp.port()<<std::endl; 
+        std::string jsonstr = root.dump(4);
+        boost::beast::ostream(httpcon->_response.body()) << jsonstr;
         return;
      });
 }

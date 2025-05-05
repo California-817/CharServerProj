@@ -41,3 +41,16 @@ struct UserInfo{
     std::string email;
     std::string password;
 };
+
+class Defer
+{  //实现类似go的defer 当出了函数作用域 对象销毁自动调用析构函数 在析构函数内部调用外部需要执行的操作_func
+public:
+    Defer(std::function<void()> func)
+    :_func(func){}
+    ~Defer()
+    {
+        _func();
+    }
+private:
+    std::function<void()> _func;
+};

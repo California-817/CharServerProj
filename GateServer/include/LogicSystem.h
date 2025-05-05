@@ -2,6 +2,7 @@
 #include"Const.h"
 #include"Singleton.h"
 #include"VarifyGrpcClient.h"
+#include"StatusGrpcClient.h"
 #include"RedisMgr.h"
 #include"MysqlMgr.h"
 //单例逻辑处理类

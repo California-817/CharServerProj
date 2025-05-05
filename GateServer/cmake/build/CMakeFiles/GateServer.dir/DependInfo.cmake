@@ -15,6 +15,7 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/home/xxxten/ChatProj/CharServerProj/GateServer/src/LogicSystem.cpp" "CMakeFiles/GateServer.dir/home/xxxten/ChatProj/CharServerProj/GateServer/src/LogicSystem.cpp.o" "gcc" "CMakeFiles/GateServer.dir/home/xxxten/ChatProj/CharServerProj/GateServer/src/LogicSystem.cpp.o.d"
   "/home/xxxten/ChatProj/CharServerProj/GateServer/src/MysqlMgr.cpp" "CMakeFiles/GateServer.dir/home/xxxten/ChatProj/CharServerProj/GateServer/src/MysqlMgr.cpp.o" "gcc" "CMakeFiles/GateServer.dir/home/xxxten/ChatProj/CharServerProj/GateServer/src/MysqlMgr.cpp.o.d"
   "/home/xxxten/ChatProj/CharServerProj/GateServer/src/RedisMgr.cpp" "CMakeFiles/GateServer.dir/home/xxxten/ChatProj/CharServerProj/GateServer/src/RedisMgr.cpp.o" "gcc" "CMakeFiles/GateServer.dir/home/xxxten/ChatProj/CharServerProj/GateServer/src/RedisMgr.cpp.o.d"
+  "/home/xxxten/ChatProj/CharServerProj/GateServer/src/StatusGrpcClient.cpp" "CMakeFiles/GateServer.dir/home/xxxten/ChatProj/CharServerProj/GateServer/src/StatusGrpcClient.cpp.o" "gcc" "CMakeFiles/GateServer.dir/home/xxxten/ChatProj/CharServerProj/GateServer/src/StatusGrpcClient.cpp.o.d"
   "/home/xxxten/ChatProj/CharServerProj/GateServer/src/VarifyGrpcClient.cpp" "CMakeFiles/GateServer.dir/home/xxxten/ChatProj/CharServerProj/GateServer/src/VarifyGrpcClient.cpp.o" "gcc" "CMakeFiles/GateServer.dir/home/xxxten/ChatProj/CharServerProj/GateServer/src/VarifyGrpcClient.cpp.o.d"
   )
 
