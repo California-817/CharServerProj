@@ -1,24 +1,24 @@
 #include"../include/StatusServerImpl.h"
-using grpc::Server;
-using grpc::ServerAsyncResponseWriter;
-using grpc::ServerBuilder;
-using grpc::ServerCompletionQueue;
-using grpc::ServerContext;
-using grpc::Status;
-using GateServer::Status::GetChatServerReq;
-using GateServer::Status::GetChatServerRsp;
-using GateServer::Status::StatusServer;
 StatusServerImpl::StatusServerImpl()
-    :_server_index(0){
-        std::string host="127.0.0.1";
-        std::string port1="8083";
-        std::string port2="8084";
-        _chat_servers.emplace_back(host,port1);
-        _chat_servers.emplace_back(host,port2);
+    {
+        mINI::INIFile file("../conf/config.ini");
+        mINI::INIStructure ini;
+        file.read(ini);
+        std::string name1=ini["ChatServer1"]["name"];
+        std::string host1=ini["ChatServer1"]["host"];
+        std::string port1=ini["ChatServer1"]["port"];
+        std::string name2=ini["ChatServer2"]["name"];
+        std::string host2=ini["ChatServer2"]["host"];
+        std::string port2=ini["ChatServer2"]["port"];
+        ChatServer_struct chat1(host1,port1,name1,0);
+        ChatServer_struct chat2(host2,port2,name2,0);
+        _chat_servers.insert(std::make_pair(name1,chat1));
+        _chat_servers.insert(std::make_pair(name2,chat2));
     }
 void StatusServerImpl::Run(uint16_t port)
     {
-        std::string server_address="0.0.0.0:8082";
+        std::string server_address="0.0.0.0:";
+        server_address+=std::to_string(port);
         ServerBuilder builder;
         builder.AddListeningPort(server_address,grpc::InsecureServerCredentials());
         builder.RegisterService(&_service);
@@ -48,6 +48,7 @@ void StatusServerImpl::HandleRpcs()
     {
         //如果有多种请求 需要每种创建一个calldata进行注册到grpc框架接受请求返回事件到cq
         new GetChatServerCalldata(&_service,_cq.get(),this);
+        new LoginCalldata(&_service,_cq.get(),this);
         void* tag;  // uniquely identifies a request.
         bool ok;
         while(true)
@@ -61,7 +62,7 @@ void StatusServerImpl::HandleRpcs()
              }
              if(!ok)
              {continue;}
-             static_cast<GetChatServerCalldata*>(tag)->Proceed();
+             static_cast<Calldata*>(tag)->Proceed();//多态
         }
     }
 StatusServerImpl::~StatusServerImpl()

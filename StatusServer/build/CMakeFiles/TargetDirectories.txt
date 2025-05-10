@@ -1,4 +1,4 @@
-/home/xxxten/ChatProj/CharServerProj/StatusServer/build/CMakeFiles/gate_server_proto_status.dir
+/home/xxxten/ChatProj/CharServerProj/StatusServer/build/CMakeFiles/status_server_proto.dir
 /home/xxxten/ChatProj/CharServerProj/StatusServer/build/CMakeFiles/StatusServer.dir
 /home/xxxten/ChatProj/CharServerProj/StatusServer/build/CMakeFiles/edit_cache.dir
 /home/xxxten/ChatProj/CharServerProj/StatusServer/build/CMakeFiles/rebuild_cache.dir

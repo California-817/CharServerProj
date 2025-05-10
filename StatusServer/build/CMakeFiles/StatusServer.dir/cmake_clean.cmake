@@ -3,6 +3,8 @@ file(REMOVE_RECURSE
   "/home/xxxten/ChatProj/CharServerProj/StatusServer/bin/StatusServer.pdb"
   "CMakeFiles/StatusServer.dir/src/Calldata.cpp.o"
   "CMakeFiles/StatusServer.dir/src/Calldata.cpp.o.d"
+  "CMakeFiles/StatusServer.dir/src/RedisMgr.cpp.o"
+  "CMakeFiles/StatusServer.dir/src/RedisMgr.cpp.o.d"
   "CMakeFiles/StatusServer.dir/src/StatusServer.cpp.o"
   "CMakeFiles/StatusServer.dir/src/StatusServer.cpp.o.d"
   "CMakeFiles/StatusServer.dir/src/StatusServerImpl.cpp.o"

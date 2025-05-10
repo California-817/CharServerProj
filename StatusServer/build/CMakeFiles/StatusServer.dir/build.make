@@ -83,10 +83,24 @@ CMakeFiles/StatusServer.dir/src/Calldata.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/StatusServer.dir/src/Calldata.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/xxxten/ChatProj/CharServerProj/StatusServer/src/Calldata.cpp -o CMakeFiles/StatusServer.dir/src/Calldata.cpp.s
 
+CMakeFiles/StatusServer.dir/src/RedisMgr.cpp.o: CMakeFiles/StatusServer.dir/flags.make
+CMakeFiles/StatusServer.dir/src/RedisMgr.cpp.o: /home/xxxten/ChatProj/CharServerProj/StatusServer/src/RedisMgr.cpp
+CMakeFiles/StatusServer.dir/src/RedisMgr.cpp.o: CMakeFiles/StatusServer.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/xxxten/ChatProj/CharServerProj/StatusServer/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/StatusServer.dir/src/RedisMgr.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/StatusServer.dir/src/RedisMgr.cpp.o -MF CMakeFiles/StatusServer.dir/src/RedisMgr.cpp.o.d -o CMakeFiles/StatusServer.dir/src/RedisMgr.cpp.o -c /home/xxxten/ChatProj/CharServerProj/StatusServer/src/RedisMgr.cpp
+
+CMakeFiles/StatusServer.dir/src/RedisMgr.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/StatusServer.dir/src/RedisMgr.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/xxxten/ChatProj/CharServerProj/StatusServer/src/RedisMgr.cpp > CMakeFiles/StatusServer.dir/src/RedisMgr.cpp.i
+
+CMakeFiles/StatusServer.dir/src/RedisMgr.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/StatusServer.dir/src/RedisMgr.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/xxxten/ChatProj/CharServerProj/StatusServer/src/RedisMgr.cpp -o CMakeFiles/StatusServer.dir/src/RedisMgr.cpp.s
+
 CMakeFiles/StatusServer.dir/src/StatusServer.cpp.o: CMakeFiles/StatusServer.dir/flags.make
 CMakeFiles/StatusServer.dir/src/StatusServer.cpp.o: /home/xxxten/ChatProj/CharServerProj/StatusServer/src/StatusServer.cpp
 CMakeFiles/StatusServer.dir/src/StatusServer.cpp.o: CMakeFiles/StatusServer.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/xxxten/ChatProj/CharServerProj/StatusServer/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/StatusServer.dir/src/StatusServer.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/xxxten/ChatProj/CharServerProj/StatusServer/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/StatusServer.dir/src/StatusServer.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/StatusServer.dir/src/StatusServer.cpp.o -MF CMakeFiles/StatusServer.dir/src/StatusServer.cpp.o.d -o CMakeFiles/StatusServer.dir/src/StatusServer.cpp.o -c /home/xxxten/ChatProj/CharServerProj/StatusServer/src/StatusServer.cpp
 
 CMakeFiles/StatusServer.dir/src/StatusServer.cpp.i: cmake_force
@@ -100,7 +114,7 @@ CMakeFiles/StatusServer.dir/src/StatusServer.cpp.s: cmake_force
 CMakeFiles/StatusServer.dir/src/StatusServerImpl.cpp.o: CMakeFiles/StatusServer.dir/flags.make
 CMakeFiles/StatusServer.dir/src/StatusServerImpl.cpp.o: /home/xxxten/ChatProj/CharServerProj/StatusServer/src/StatusServerImpl.cpp
 CMakeFiles/StatusServer.dir/src/StatusServerImpl.cpp.o: CMakeFiles/StatusServer.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/xxxten/ChatProj/CharServerProj/StatusServer/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/StatusServer.dir/src/StatusServerImpl.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/xxxten/ChatProj/CharServerProj/StatusServer/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/StatusServer.dir/src/StatusServerImpl.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/StatusServer.dir/src/StatusServerImpl.cpp.o -MF CMakeFiles/StatusServer.dir/src/StatusServerImpl.cpp.o.d -o CMakeFiles/StatusServer.dir/src/StatusServerImpl.cpp.o -c /home/xxxten/ChatProj/CharServerProj/StatusServer/src/StatusServerImpl.cpp
 
 CMakeFiles/StatusServer.dir/src/StatusServerImpl.cpp.i: cmake_force
@@ -114,6 +128,7 @@ CMakeFiles/StatusServer.dir/src/StatusServerImpl.cpp.s: cmake_force
 # Object files for target StatusServer
 StatusServer_OBJECTS = \
 "CMakeFiles/StatusServer.dir/src/Calldata.cpp.o" \
+"CMakeFiles/StatusServer.dir/src/RedisMgr.cpp.o" \
 "CMakeFiles/StatusServer.dir/src/StatusServer.cpp.o" \
 "CMakeFiles/StatusServer.dir/src/StatusServerImpl.cpp.o"
 
@@ -121,116 +136,117 @@ StatusServer_OBJECTS = \
 StatusServer_EXTERNAL_OBJECTS =
 
 /home/xxxten/ChatProj/CharServerProj/StatusServer/bin/StatusServer: CMakeFiles/StatusServer.dir/src/Calldata.cpp.o
+/home/xxxten/ChatProj/CharServerProj/StatusServer/bin/StatusServer: CMakeFiles/StatusServer.dir/src/RedisMgr.cpp.o
 /home/xxxten/ChatProj/CharServerProj/StatusServer/bin/StatusServer: CMakeFiles/StatusServer.dir/src/StatusServer.cpp.o
 /home/xxxten/ChatProj/CharServerProj/StatusServer/bin/StatusServer: CMakeFiles/StatusServer.dir/src/StatusServerImpl.cpp.o
 /home/xxxten/ChatProj/CharServerProj/StatusServer/bin/StatusServer: CMakeFiles/StatusServer.dir/build.make
-/home/xxxten/ChatProj/CharServerProj/StatusServer/bin/StatusServer: libgate_server_proto_status.a
-/home/xxxten/ChatProj/CharServerProj/StatusServer/bin/StatusServer: /usr/local/lib64/libabsl_flags_parse.a
-/home/xxxten/ChatProj/CharServerProj/StatusServer/bin/StatusServer: /usr/local/lib64/libabsl_log_initialize.a
-/home/xxxten/ChatProj/CharServerProj/StatusServer/bin/StatusServer: /usr/local/lib/libgrpc++_reflection.a
-/home/xxxten/ChatProj/CharServerProj/StatusServer/bin/StatusServer: /usr/local/lib/libgrpc++.a
-/home/xxxten/ChatProj/CharServerProj/StatusServer/bin/StatusServer: /usr/local/lib64/libprotobuf.a
-/home/xxxten/ChatProj/CharServerProj/StatusServer/bin/StatusServer: /usr/local/lib/libgrpc.a
-/home/xxxten/ChatProj/CharServerProj/StatusServer/bin/StatusServer: /usr/local/lib/libupb_json_lib.a
-/home/xxxten/ChatProj/CharServerProj/StatusServer/bin/StatusServer: /usr/local/lib/libupb_textformat_lib.a
-/home/xxxten/ChatProj/CharServerProj/StatusServer/bin/StatusServer: /usr/local/lib/libupb_mini_descriptor_lib.a
-/home/xxxten/ChatProj/CharServerProj/StatusServer/bin/StatusServer: /usr/local/lib/libupb_wire_lib.a
-/home/xxxten/ChatProj/CharServerProj/StatusServer/bin/StatusServer: /usr/local/lib/libutf8_range_lib.a
-/home/xxxten/ChatProj/CharServerProj/StatusServer/bin/StatusServer: /usr/local/lib/libupb_message_lib.a
-/home/xxxten/ChatProj/CharServerProj/StatusServer/bin/StatusServer: /usr/local/lib/libupb_base_lib.a
-/home/xxxten/ChatProj/CharServerProj/StatusServer/bin/StatusServer: /usr/local/lib/libupb_mem_lib.a
-/home/xxxten/ChatProj/CharServerProj/StatusServer/bin/StatusServer: /usr/local/lib/libre2.a
-/home/xxxten/ChatProj/CharServerProj/StatusServer/bin/StatusServer: /usr/local/lib/libz.a
-/home/xxxten/ChatProj/CharServerProj/StatusServer/bin/StatusServer: /usr/local/lib/libcares.a
-/home/xxxten/ChatProj/CharServerProj/StatusServer/bin/StatusServer: /usr/local/lib/libgpr.a
-/home/xxxten/ChatProj/CharServerProj/StatusServer/bin/StatusServer: /usr/local/lib/libssl.a
-/home/xxxten/ChatProj/CharServerProj/StatusServer/bin/StatusServer: /usr/local/lib/libcrypto.a
-/home/xxxten/ChatProj/CharServerProj/StatusServer/bin/StatusServer: /usr/local/lib/libaddress_sorting.a
+/home/xxxten/ChatProj/CharServerProj/StatusServer/bin/StatusServer: libstatus_server_proto.a
+/home/xxxten/ChatProj/CharServerProj/StatusServer/bin/StatusServer: /root/.local/lib64/libabsl_flags_parse.a
+/home/xxxten/ChatProj/CharServerProj/StatusServer/bin/StatusServer: /root/.local/lib64/libabsl_log_initialize.a
+/home/xxxten/ChatProj/CharServerProj/StatusServer/bin/StatusServer: /root/.local/lib/libgrpc++_reflection.a
+/home/xxxten/ChatProj/CharServerProj/StatusServer/bin/StatusServer: /root/.local/lib/libgrpc++.a
+/home/xxxten/ChatProj/CharServerProj/StatusServer/bin/StatusServer: /root/.local/lib64/libprotobuf.a
+/home/xxxten/ChatProj/CharServerProj/StatusServer/bin/StatusServer: /root/.local/lib/libgrpc.a
+/home/xxxten/ChatProj/CharServerProj/StatusServer/bin/StatusServer: /root/.local/lib/libupb_json_lib.a
+/home/xxxten/ChatProj/CharServerProj/StatusServer/bin/StatusServer: /root/.local/lib/libupb_textformat_lib.a
+/home/xxxten/ChatProj/CharServerProj/StatusServer/bin/StatusServer: /root/.local/lib/libupb_mini_descriptor_lib.a
+/home/xxxten/ChatProj/CharServerProj/StatusServer/bin/StatusServer: /root/.local/lib/libupb_wire_lib.a
+/home/xxxten/ChatProj/CharServerProj/StatusServer/bin/StatusServer: /root/.local/lib/libutf8_range_lib.a
+/home/xxxten/ChatProj/CharServerProj/StatusServer/bin/StatusServer: /root/.local/lib/libupb_message_lib.a
+/home/xxxten/ChatProj/CharServerProj/StatusServer/bin/StatusServer: /root/.local/lib/libupb_base_lib.a
+/home/xxxten/ChatProj/CharServerProj/StatusServer/bin/StatusServer: /root/.local/lib/libupb_mem_lib.a
+/home/xxxten/ChatProj/CharServerProj/StatusServer/bin/StatusServer: /root/.local/lib/libre2.a
+/home/xxxten/ChatProj/CharServerProj/StatusServer/bin/StatusServer: /root/.local/lib/libz.a
+/home/xxxten/ChatProj/CharServerProj/StatusServer/bin/StatusServer: /root/.local/lib/libcares.a
+/home/xxxten/ChatProj/CharServerProj/StatusServer/bin/StatusServer: /root/.local/lib/libgpr.a
+/home/xxxten/ChatProj/CharServerProj/StatusServer/bin/StatusServer: /root/.local/lib/libssl.a
+/home/xxxten/ChatProj/CharServerProj/StatusServer/bin/StatusServer: /root/.local/lib/libcrypto.a
+/home/xxxten/ChatProj/CharServerProj/StatusServer/bin/StatusServer: /root/.local/lib/libaddress_sorting.a
 /home/xxxten/ChatProj/CharServerProj/StatusServer/bin/StatusServer: /usr/lib64/libsystemd.so
-/home/xxxten/ChatProj/CharServerProj/StatusServer/bin/StatusServer: /usr/local/lib64/libabsl_log_initialize.a
-/home/xxxten/ChatProj/CharServerProj/StatusServer/bin/StatusServer: /usr/local/lib64/libabsl_log_internal_check_op.a
-/home/xxxten/ChatProj/CharServerProj/StatusServer/bin/StatusServer: /usr/local/lib64/libabsl_leak_check.a
-/home/xxxten/ChatProj/CharServerProj/StatusServer/bin/StatusServer: /usr/local/lib64/libabsl_die_if_null.a
-/home/xxxten/ChatProj/CharServerProj/StatusServer/bin/StatusServer: /usr/local/lib64/libabsl_log_internal_conditions.a
-/home/xxxten/ChatProj/CharServerProj/StatusServer/bin/StatusServer: /usr/local/lib64/libabsl_log_internal_message.a
-/home/xxxten/ChatProj/CharServerProj/StatusServer/bin/StatusServer: /usr/local/lib64/libabsl_log_internal_nullguard.a
-/home/xxxten/ChatProj/CharServerProj/StatusServer/bin/StatusServer: /usr/local/lib64/libabsl_examine_stack.a
-/home/xxxten/ChatProj/CharServerProj/StatusServer/bin/StatusServer: /usr/local/lib64/libabsl_log_internal_format.a
-/home/xxxten/ChatProj/CharServerProj/StatusServer/bin/StatusServer: /usr/local/lib64/libabsl_log_internal_proto.a
-/home/xxxten/ChatProj/CharServerProj/StatusServer/bin/StatusServer: /usr/local/lib64/libabsl_log_internal_log_sink_set.a
-/home/xxxten/ChatProj/CharServerProj/StatusServer/bin/StatusServer: /usr/local/lib64/libabsl_log_globals.a
-/home/xxxten/ChatProj/CharServerProj/StatusServer/bin/StatusServer: /usr/local/lib64/libabsl_log_internal_globals.a
-/home/xxxten/ChatProj/CharServerProj/StatusServer/bin/StatusServer: /usr/local/lib64/libabsl_log_sink.a
-/home/xxxten/ChatProj/CharServerProj/StatusServer/bin/StatusServer: /usr/local/lib64/libabsl_log_entry.a
-/home/xxxten/ChatProj/CharServerProj/StatusServer/bin/StatusServer: /usr/local/lib64/libabsl_vlog_config_internal.a
-/home/xxxten/ChatProj/CharServerProj/StatusServer/bin/StatusServer: /usr/local/lib64/libabsl_log_internal_fnmatch.a
-/home/xxxten/ChatProj/CharServerProj/StatusServer/bin/StatusServer: /usr/local/lib64/libabsl_random_distributions.a
-/home/xxxten/ChatProj/CharServerProj/StatusServer/bin/StatusServer: /usr/local/lib64/libabsl_random_seed_sequences.a
-/home/xxxten/ChatProj/CharServerProj/StatusServer/bin/StatusServer: /usr/local/lib64/libabsl_random_internal_pool_urbg.a
-/home/xxxten/ChatProj/CharServerProj/StatusServer/bin/StatusServer: /usr/local/lib64/libabsl_random_internal_randen.a
-/home/xxxten/ChatProj/CharServerProj/StatusServer/bin/StatusServer: /usr/local/lib64/libabsl_random_internal_randen_hwaes.a
-/home/xxxten/ChatProj/CharServerProj/StatusServer/bin/StatusServer: /usr/local/lib64/libabsl_random_internal_randen_hwaes_impl.a
-/home/xxxten/ChatProj/CharServerProj/StatusServer/bin/StatusServer: /usr/local/lib64/libabsl_random_internal_randen_slow.a
-/home/xxxten/ChatProj/CharServerProj/StatusServer/bin/StatusServer: /usr/local/lib64/libabsl_random_internal_platform.a
-/home/xxxten/ChatProj/CharServerProj/StatusServer/bin/StatusServer: /usr/local/lib64/libabsl_random_internal_seed_material.a
-/home/xxxten/ChatProj/CharServerProj/StatusServer/bin/StatusServer: /usr/local/lib64/libabsl_random_seed_gen_exception.a
-/home/xxxten/ChatProj/CharServerProj/StatusServer/bin/StatusServer: /usr/local/lib64/libabsl_statusor.a
-/home/xxxten/ChatProj/CharServerProj/StatusServer/bin/StatusServer: /usr/local/lib64/libabsl_status.a
-/home/xxxten/ChatProj/CharServerProj/StatusServer/bin/StatusServer: /usr/local/lib64/libabsl_strerror.a
-/home/xxxten/ChatProj/CharServerProj/StatusServer/bin/StatusServer: /usr/local/lib64/libutf8_validity.a
-/home/xxxten/ChatProj/CharServerProj/StatusServer/bin/StatusServer: /usr/local/lib64/libabsl_flags_usage.a
-/home/xxxten/ChatProj/CharServerProj/StatusServer/bin/StatusServer: /usr/local/lib64/libabsl_flags_usage_internal.a
-/home/xxxten/ChatProj/CharServerProj/StatusServer/bin/StatusServer: /usr/local/lib64/libabsl_flags_internal.a
-/home/xxxten/ChatProj/CharServerProj/StatusServer/bin/StatusServer: /usr/local/lib64/libabsl_flags_marshalling.a
-/home/xxxten/ChatProj/CharServerProj/StatusServer/bin/StatusServer: /usr/local/lib64/libabsl_flags_reflection.a
-/home/xxxten/ChatProj/CharServerProj/StatusServer/bin/StatusServer: /usr/local/lib64/libabsl_flags_config.a
-/home/xxxten/ChatProj/CharServerProj/StatusServer/bin/StatusServer: /usr/local/lib64/libabsl_cord.a
-/home/xxxten/ChatProj/CharServerProj/StatusServer/bin/StatusServer: /usr/local/lib64/libabsl_cordz_info.a
-/home/xxxten/ChatProj/CharServerProj/StatusServer/bin/StatusServer: /usr/local/lib64/libabsl_cord_internal.a
-/home/xxxten/ChatProj/CharServerProj/StatusServer/bin/StatusServer: /usr/local/lib64/libabsl_cordz_functions.a
-/home/xxxten/ChatProj/CharServerProj/StatusServer/bin/StatusServer: /usr/local/lib64/libabsl_cordz_handle.a
-/home/xxxten/ChatProj/CharServerProj/StatusServer/bin/StatusServer: /usr/local/lib64/libabsl_crc_cord_state.a
-/home/xxxten/ChatProj/CharServerProj/StatusServer/bin/StatusServer: /usr/local/lib64/libabsl_crc32c.a
-/home/xxxten/ChatProj/CharServerProj/StatusServer/bin/StatusServer: /usr/local/lib64/libabsl_str_format_internal.a
-/home/xxxten/ChatProj/CharServerProj/StatusServer/bin/StatusServer: /usr/local/lib64/libabsl_crc_internal.a
-/home/xxxten/ChatProj/CharServerProj/StatusServer/bin/StatusServer: /usr/local/lib64/libabsl_crc_cpu_detect.a
-/home/xxxten/ChatProj/CharServerProj/StatusServer/bin/StatusServer: /usr/local/lib64/libabsl_raw_hash_set.a
-/home/xxxten/ChatProj/CharServerProj/StatusServer/bin/StatusServer: /usr/local/lib64/libabsl_hash.a
-/home/xxxten/ChatProj/CharServerProj/StatusServer/bin/StatusServer: /usr/local/lib64/libabsl_bad_variant_access.a
-/home/xxxten/ChatProj/CharServerProj/StatusServer/bin/StatusServer: /usr/local/lib64/libabsl_city.a
-/home/xxxten/ChatProj/CharServerProj/StatusServer/bin/StatusServer: /usr/local/lib64/libabsl_low_level_hash.a
-/home/xxxten/ChatProj/CharServerProj/StatusServer/bin/StatusServer: /usr/local/lib64/libabsl_hashtablez_sampler.a
-/home/xxxten/ChatProj/CharServerProj/StatusServer/bin/StatusServer: /usr/local/lib64/libabsl_exponential_biased.a
-/home/xxxten/ChatProj/CharServerProj/StatusServer/bin/StatusServer: /usr/local/lib64/libabsl_flags_private_handle_accessor.a
-/home/xxxten/ChatProj/CharServerProj/StatusServer/bin/StatusServer: /usr/local/lib64/libabsl_flags_commandlineflag.a
-/home/xxxten/ChatProj/CharServerProj/StatusServer/bin/StatusServer: /usr/local/lib64/libabsl_bad_optional_access.a
-/home/xxxten/ChatProj/CharServerProj/StatusServer/bin/StatusServer: /usr/local/lib64/libabsl_flags_commandlineflag_internal.a
-/home/xxxten/ChatProj/CharServerProj/StatusServer/bin/StatusServer: /usr/local/lib64/libabsl_flags_program_name.a
-/home/xxxten/ChatProj/CharServerProj/StatusServer/bin/StatusServer: /usr/local/lib64/libabsl_synchronization.a
-/home/xxxten/ChatProj/CharServerProj/StatusServer/bin/StatusServer: /usr/local/lib64/libabsl_graphcycles_internal.a
-/home/xxxten/ChatProj/CharServerProj/StatusServer/bin/StatusServer: /usr/local/lib64/libabsl_kernel_timeout_internal.a
-/home/xxxten/ChatProj/CharServerProj/StatusServer/bin/StatusServer: /usr/local/lib64/libabsl_time.a
-/home/xxxten/ChatProj/CharServerProj/StatusServer/bin/StatusServer: /usr/local/lib64/libabsl_civil_time.a
-/home/xxxten/ChatProj/CharServerProj/StatusServer/bin/StatusServer: /usr/local/lib64/libabsl_time_zone.a
-/home/xxxten/ChatProj/CharServerProj/StatusServer/bin/StatusServer: /usr/local/lib64/libabsl_stacktrace.a
-/home/xxxten/ChatProj/CharServerProj/StatusServer/bin/StatusServer: /usr/local/lib64/libabsl_symbolize.a
-/home/xxxten/ChatProj/CharServerProj/StatusServer/bin/StatusServer: /usr/local/lib64/libabsl_strings.a
-/home/xxxten/ChatProj/CharServerProj/StatusServer/bin/StatusServer: /usr/local/lib64/libabsl_strings_internal.a
-/home/xxxten/ChatProj/CharServerProj/StatusServer/bin/StatusServer: /usr/local/lib64/libabsl_string_view.a
-/home/xxxten/ChatProj/CharServerProj/StatusServer/bin/StatusServer: /usr/local/lib64/libabsl_int128.a
-/home/xxxten/ChatProj/CharServerProj/StatusServer/bin/StatusServer: /usr/local/lib64/libabsl_throw_delegate.a
-/home/xxxten/ChatProj/CharServerProj/StatusServer/bin/StatusServer: /usr/local/lib64/libabsl_malloc_internal.a
-/home/xxxten/ChatProj/CharServerProj/StatusServer/bin/StatusServer: /usr/local/lib64/libabsl_base.a
-/home/xxxten/ChatProj/CharServerProj/StatusServer/bin/StatusServer: /usr/local/lib64/libabsl_spinlock_wait.a
-/home/xxxten/ChatProj/CharServerProj/StatusServer/bin/StatusServer: /usr/local/lib64/libabsl_debugging_internal.a
-/home/xxxten/ChatProj/CharServerProj/StatusServer/bin/StatusServer: /usr/local/lib64/libabsl_raw_logging_internal.a
-/home/xxxten/ChatProj/CharServerProj/StatusServer/bin/StatusServer: /usr/local/lib64/libabsl_log_severity.a
-/home/xxxten/ChatProj/CharServerProj/StatusServer/bin/StatusServer: /usr/local/lib64/libabsl_demangle_internal.a
-/home/xxxten/ChatProj/CharServerProj/StatusServer/bin/StatusServer: /usr/local/lib64/libabsl_demangle_rust.a
-/home/xxxten/ChatProj/CharServerProj/StatusServer/bin/StatusServer: /usr/local/lib64/libabsl_decode_rust_punycode.a
-/home/xxxten/ChatProj/CharServerProj/StatusServer/bin/StatusServer: /usr/local/lib64/libabsl_utf8_for_code_point.a
+/home/xxxten/ChatProj/CharServerProj/StatusServer/bin/StatusServer: /root/.local/lib64/libabsl_log_initialize.a
+/home/xxxten/ChatProj/CharServerProj/StatusServer/bin/StatusServer: /root/.local/lib64/libabsl_log_internal_check_op.a
+/home/xxxten/ChatProj/CharServerProj/StatusServer/bin/StatusServer: /root/.local/lib64/libabsl_leak_check.a
+/home/xxxten/ChatProj/CharServerProj/StatusServer/bin/StatusServer: /root/.local/lib64/libabsl_die_if_null.a
+/home/xxxten/ChatProj/CharServerProj/StatusServer/bin/StatusServer: /root/.local/lib64/libabsl_log_internal_conditions.a
+/home/xxxten/ChatProj/CharServerProj/StatusServer/bin/StatusServer: /root/.local/lib64/libabsl_log_internal_message.a
+/home/xxxten/ChatProj/CharServerProj/StatusServer/bin/StatusServer: /root/.local/lib64/libabsl_log_internal_nullguard.a
+/home/xxxten/ChatProj/CharServerProj/StatusServer/bin/StatusServer: /root/.local/lib64/libabsl_examine_stack.a
+/home/xxxten/ChatProj/CharServerProj/StatusServer/bin/StatusServer: /root/.local/lib64/libabsl_log_internal_format.a
+/home/xxxten/ChatProj/CharServerProj/StatusServer/bin/StatusServer: /root/.local/lib64/libabsl_log_internal_proto.a
+/home/xxxten/ChatProj/CharServerProj/StatusServer/bin/StatusServer: /root/.local/lib64/libabsl_log_internal_log_sink_set.a
+/home/xxxten/ChatProj/CharServerProj/StatusServer/bin/StatusServer: /root/.local/lib64/libabsl_log_globals.a
+/home/xxxten/ChatProj/CharServerProj/StatusServer/bin/StatusServer: /root/.local/lib64/libabsl_log_internal_globals.a
+/home/xxxten/ChatProj/CharServerProj/StatusServer/bin/StatusServer: /root/.local/lib64/libabsl_log_sink.a
+/home/xxxten/ChatProj/CharServerProj/StatusServer/bin/StatusServer: /root/.local/lib64/libabsl_log_entry.a
+/home/xxxten/ChatProj/CharServerProj/StatusServer/bin/StatusServer: /root/.local/lib64/libabsl_vlog_config_internal.a
+/home/xxxten/ChatProj/CharServerProj/StatusServer/bin/StatusServer: /root/.local/lib64/libabsl_log_internal_fnmatch.a
+/home/xxxten/ChatProj/CharServerProj/StatusServer/bin/StatusServer: /root/.local/lib64/libabsl_random_distributions.a
+/home/xxxten/ChatProj/CharServerProj/StatusServer/bin/StatusServer: /root/.local/lib64/libabsl_random_seed_sequences.a
+/home/xxxten/ChatProj/CharServerProj/StatusServer/bin/StatusServer: /root/.local/lib64/libabsl_random_internal_pool_urbg.a
+/home/xxxten/ChatProj/CharServerProj/StatusServer/bin/StatusServer: /root/.local/lib64/libabsl_random_internal_randen.a
+/home/xxxten/ChatProj/CharServerProj/StatusServer/bin/StatusServer: /root/.local/lib64/libabsl_random_internal_randen_hwaes.a
+/home/xxxten/ChatProj/CharServerProj/StatusServer/bin/StatusServer: /root/.local/lib64/libabsl_random_internal_randen_hwaes_impl.a
+/home/xxxten/ChatProj/CharServerProj/StatusServer/bin/StatusServer: /root/.local/lib64/libabsl_random_internal_randen_slow.a
+/home/xxxten/ChatProj/CharServerProj/StatusServer/bin/StatusServer: /root/.local/lib64/libabsl_random_internal_platform.a
+/home/xxxten/ChatProj/CharServerProj/StatusServer/bin/StatusServer: /root/.local/lib64/libabsl_random_internal_seed_material.a
+/home/xxxten/ChatProj/CharServerProj/StatusServer/bin/StatusServer: /root/.local/lib64/libabsl_random_seed_gen_exception.a
+/home/xxxten/ChatProj/CharServerProj/StatusServer/bin/StatusServer: /root/.local/lib64/libabsl_statusor.a
+/home/xxxten/ChatProj/CharServerProj/StatusServer/bin/StatusServer: /root/.local/lib64/libabsl_status.a
+/home/xxxten/ChatProj/CharServerProj/StatusServer/bin/StatusServer: /root/.local/lib64/libabsl_strerror.a
+/home/xxxten/ChatProj/CharServerProj/StatusServer/bin/StatusServer: /root/.local/lib64/libutf8_validity.a
+/home/xxxten/ChatProj/CharServerProj/StatusServer/bin/StatusServer: /root/.local/lib64/libabsl_flags_usage.a
+/home/xxxten/ChatProj/CharServerProj/StatusServer/bin/StatusServer: /root/.local/lib64/libabsl_flags_usage_internal.a
+/home/xxxten/ChatProj/CharServerProj/StatusServer/bin/StatusServer: /root/.local/lib64/libabsl_flags_internal.a
+/home/xxxten/ChatProj/CharServerProj/StatusServer/bin/StatusServer: /root/.local/lib64/libabsl_flags_marshalling.a
+/home/xxxten/ChatProj/CharServerProj/StatusServer/bin/StatusServer: /root/.local/lib64/libabsl_flags_reflection.a
+/home/xxxten/ChatProj/CharServerProj/StatusServer/bin/StatusServer: /root/.local/lib64/libabsl_flags_config.a
+/home/xxxten/ChatProj/CharServerProj/StatusServer/bin/StatusServer: /root/.local/lib64/libabsl_cord.a
+/home/xxxten/ChatProj/CharServerProj/StatusServer/bin/StatusServer: /root/.local/lib64/libabsl_cordz_info.a
+/home/xxxten/ChatProj/CharServerProj/StatusServer/bin/StatusServer: /root/.local/lib64/libabsl_cord_internal.a
+/home/xxxten/ChatProj/CharServerProj/StatusServer/bin/StatusServer: /root/.local/lib64/libabsl_cordz_functions.a
+/home/xxxten/ChatProj/CharServerProj/StatusServer/bin/StatusServer: /root/.local/lib64/libabsl_cordz_handle.a
+/home/xxxten/ChatProj/CharServerProj/StatusServer/bin/StatusServer: /root/.local/lib64/libabsl_crc_cord_state.a
+/home/xxxten/ChatProj/CharServerProj/StatusServer/bin/StatusServer: /root/.local/lib64/libabsl_crc32c.a
+/home/xxxten/ChatProj/CharServerProj/StatusServer/bin/StatusServer: /root/.local/lib64/libabsl_str_format_internal.a
+/home/xxxten/ChatProj/CharServerProj/StatusServer/bin/StatusServer: /root/.local/lib64/libabsl_crc_internal.a
+/home/xxxten/ChatProj/CharServerProj/StatusServer/bin/StatusServer: /root/.local/lib64/libabsl_crc_cpu_detect.a
+/home/xxxten/ChatProj/CharServerProj/StatusServer/bin/StatusServer: /root/.local/lib64/libabsl_raw_hash_set.a
+/home/xxxten/ChatProj/CharServerProj/StatusServer/bin/StatusServer: /root/.local/lib64/libabsl_hash.a
+/home/xxxten/ChatProj/CharServerProj/StatusServer/bin/StatusServer: /root/.local/lib64/libabsl_bad_variant_access.a
+/home/xxxten/ChatProj/CharServerProj/StatusServer/bin/StatusServer: /root/.local/lib64/libabsl_city.a
+/home/xxxten/ChatProj/CharServerProj/StatusServer/bin/StatusServer: /root/.local/lib64/libabsl_low_level_hash.a
+/home/xxxten/ChatProj/CharServerProj/StatusServer/bin/StatusServer: /root/.local/lib64/libabsl_hashtablez_sampler.a
+/home/xxxten/ChatProj/CharServerProj/StatusServer/bin/StatusServer: /root/.local/lib64/libabsl_exponential_biased.a
+/home/xxxten/ChatProj/CharServerProj/StatusServer/bin/StatusServer: /root/.local/lib64/libabsl_flags_private_handle_accessor.a
+/home/xxxten/ChatProj/CharServerProj/StatusServer/bin/StatusServer: /root/.local/lib64/libabsl_flags_commandlineflag.a
+/home/xxxten/ChatProj/CharServerProj/StatusServer/bin/StatusServer: /root/.local/lib64/libabsl_bad_optional_access.a
+/home/xxxten/ChatProj/CharServerProj/StatusServer/bin/StatusServer: /root/.local/lib64/libabsl_flags_commandlineflag_internal.a
+/home/xxxten/ChatProj/CharServerProj/StatusServer/bin/StatusServer: /root/.local/lib64/libabsl_flags_program_name.a
+/home/xxxten/ChatProj/CharServerProj/StatusServer/bin/StatusServer: /root/.local/lib64/libabsl_synchronization.a
+/home/xxxten/ChatProj/CharServerProj/StatusServer/bin/StatusServer: /root/.local/lib64/libabsl_graphcycles_internal.a
+/home/xxxten/ChatProj/CharServerProj/StatusServer/bin/StatusServer: /root/.local/lib64/libabsl_kernel_timeout_internal.a
+/home/xxxten/ChatProj/CharServerProj/StatusServer/bin/StatusServer: /root/.local/lib64/libabsl_time.a
+/home/xxxten/ChatProj/CharServerProj/StatusServer/bin/StatusServer: /root/.local/lib64/libabsl_civil_time.a
+/home/xxxten/ChatProj/CharServerProj/StatusServer/bin/StatusServer: /root/.local/lib64/libabsl_time_zone.a
+/home/xxxten/ChatProj/CharServerProj/StatusServer/bin/StatusServer: /root/.local/lib64/libabsl_stacktrace.a
+/home/xxxten/ChatProj/CharServerProj/StatusServer/bin/StatusServer: /root/.local/lib64/libabsl_symbolize.a
+/home/xxxten/ChatProj/CharServerProj/StatusServer/bin/StatusServer: /root/.local/lib64/libabsl_strings.a
+/home/xxxten/ChatProj/CharServerProj/StatusServer/bin/StatusServer: /root/.local/lib64/libabsl_strings_internal.a
+/home/xxxten/ChatProj/CharServerProj/StatusServer/bin/StatusServer: /root/.local/lib64/libabsl_string_view.a
+/home/xxxten/ChatProj/CharServerProj/StatusServer/bin/StatusServer: /root/.local/lib64/libabsl_int128.a
+/home/xxxten/ChatProj/CharServerProj/StatusServer/bin/StatusServer: /root/.local/lib64/libabsl_throw_delegate.a
+/home/xxxten/ChatProj/CharServerProj/StatusServer/bin/StatusServer: /root/.local/lib64/libabsl_malloc_internal.a
+/home/xxxten/ChatProj/CharServerProj/StatusServer/bin/StatusServer: /root/.local/lib64/libabsl_base.a
+/home/xxxten/ChatProj/CharServerProj/StatusServer/bin/StatusServer: /root/.local/lib64/libabsl_spinlock_wait.a
+/home/xxxten/ChatProj/CharServerProj/StatusServer/bin/StatusServer: /root/.local/lib64/libabsl_debugging_internal.a
+/home/xxxten/ChatProj/CharServerProj/StatusServer/bin/StatusServer: /root/.local/lib64/libabsl_raw_logging_internal.a
+/home/xxxten/ChatProj/CharServerProj/StatusServer/bin/StatusServer: /root/.local/lib64/libabsl_log_severity.a
+/home/xxxten/ChatProj/CharServerProj/StatusServer/bin/StatusServer: /root/.local/lib64/libabsl_demangle_internal.a
+/home/xxxten/ChatProj/CharServerProj/StatusServer/bin/StatusServer: /root/.local/lib64/libabsl_demangle_rust.a
+/home/xxxten/ChatProj/CharServerProj/StatusServer/bin/StatusServer: /root/.local/lib64/libabsl_decode_rust_punycode.a
+/home/xxxten/ChatProj/CharServerProj/StatusServer/bin/StatusServer: /root/.local/lib64/libabsl_utf8_for_code_point.a
 /home/xxxten/ChatProj/CharServerProj/StatusServer/bin/StatusServer: CMakeFiles/StatusServer.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/xxxten/ChatProj/CharServerProj/StatusServer/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX executable /home/xxxten/ChatProj/CharServerProj/StatusServer/bin/StatusServer"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/xxxten/ChatProj/CharServerProj/StatusServer/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking CXX executable /home/xxxten/ChatProj/CharServerProj/StatusServer/bin/StatusServer"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/StatusServer.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

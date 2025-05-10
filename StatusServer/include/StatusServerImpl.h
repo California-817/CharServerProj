@@ -25,6 +25,6 @@ private:
     std::unique_ptr<Server> _server; //服务器
     std::vector<std::thread> _threads; //用户层面多线程处理请求
 public:
-    std::vector<ChatServer> _chat_servers; //所有的chat服务器
-    int _server_index; //轮询算法选择chat服务器
+    std::unordered_map<std::string,ChatServer_struct> _chat_servers; //所有的chat服务器
+    std::mutex _servers_mtx;   //操作这个_chat_servers集合的锁
 };

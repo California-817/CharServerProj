@@ -117,17 +117,17 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named gate_server_proto_status
+# Target rules for targets named status_server_proto
 
 # Build rule for target.
-gate_server_proto_status: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 gate_server_proto_status
-.PHONY : gate_server_proto_status
+status_server_proto: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 status_server_proto
+.PHONY : status_server_proto
 
 # fast build rule for target.
-gate_server_proto_status/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/gate_server_proto_status.dir/build.make CMakeFiles/gate_server_proto_status.dir/build
-.PHONY : gate_server_proto_status/fast
+status_server_proto/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/status_server_proto.dir/build.make CMakeFiles/status_server_proto.dir/build
+.PHONY : status_server_proto/fast
 
 #=============================================================================
 # Target rules for targets named StatusServer
@@ -147,7 +147,7 @@ include/grpc_cpp_out/GateServer.Status.grpc.pb.o: include/grpc_cpp_out/GateServe
 
 # target to build an object file
 include/grpc_cpp_out/GateServer.Status.grpc.pb.cc.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/gate_server_proto_status.dir/build.make CMakeFiles/gate_server_proto_status.dir/include/grpc_cpp_out/GateServer.Status.grpc.pb.cc.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/status_server_proto.dir/build.make CMakeFiles/status_server_proto.dir/include/grpc_cpp_out/GateServer.Status.grpc.pb.cc.o
 .PHONY : include/grpc_cpp_out/GateServer.Status.grpc.pb.cc.o
 
 include/grpc_cpp_out/GateServer.Status.grpc.pb.i: include/grpc_cpp_out/GateServer.Status.grpc.pb.cc.i
@@ -155,7 +155,7 @@ include/grpc_cpp_out/GateServer.Status.grpc.pb.i: include/grpc_cpp_out/GateServe
 
 # target to preprocess a source file
 include/grpc_cpp_out/GateServer.Status.grpc.pb.cc.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/gate_server_proto_status.dir/build.make CMakeFiles/gate_server_proto_status.dir/include/grpc_cpp_out/GateServer.Status.grpc.pb.cc.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/status_server_proto.dir/build.make CMakeFiles/status_server_proto.dir/include/grpc_cpp_out/GateServer.Status.grpc.pb.cc.i
 .PHONY : include/grpc_cpp_out/GateServer.Status.grpc.pb.cc.i
 
 include/grpc_cpp_out/GateServer.Status.grpc.pb.s: include/grpc_cpp_out/GateServer.Status.grpc.pb.cc.s
@@ -163,7 +163,7 @@ include/grpc_cpp_out/GateServer.Status.grpc.pb.s: include/grpc_cpp_out/GateServe
 
 # target to generate assembly for a file
 include/grpc_cpp_out/GateServer.Status.grpc.pb.cc.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/gate_server_proto_status.dir/build.make CMakeFiles/gate_server_proto_status.dir/include/grpc_cpp_out/GateServer.Status.grpc.pb.cc.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/status_server_proto.dir/build.make CMakeFiles/status_server_proto.dir/include/grpc_cpp_out/GateServer.Status.grpc.pb.cc.s
 .PHONY : include/grpc_cpp_out/GateServer.Status.grpc.pb.cc.s
 
 include/grpc_cpp_out/GateServer.Status.pb.o: include/grpc_cpp_out/GateServer.Status.pb.cc.o
@@ -171,7 +171,7 @@ include/grpc_cpp_out/GateServer.Status.pb.o: include/grpc_cpp_out/GateServer.Sta
 
 # target to build an object file
 include/grpc_cpp_out/GateServer.Status.pb.cc.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/gate_server_proto_status.dir/build.make CMakeFiles/gate_server_proto_status.dir/include/grpc_cpp_out/GateServer.Status.pb.cc.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/status_server_proto.dir/build.make CMakeFiles/status_server_proto.dir/include/grpc_cpp_out/GateServer.Status.pb.cc.o
 .PHONY : include/grpc_cpp_out/GateServer.Status.pb.cc.o
 
 include/grpc_cpp_out/GateServer.Status.pb.i: include/grpc_cpp_out/GateServer.Status.pb.cc.i
@@ -179,7 +179,7 @@ include/grpc_cpp_out/GateServer.Status.pb.i: include/grpc_cpp_out/GateServer.Sta
 
 # target to preprocess a source file
 include/grpc_cpp_out/GateServer.Status.pb.cc.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/gate_server_proto_status.dir/build.make CMakeFiles/gate_server_proto_status.dir/include/grpc_cpp_out/GateServer.Status.pb.cc.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/status_server_proto.dir/build.make CMakeFiles/status_server_proto.dir/include/grpc_cpp_out/GateServer.Status.pb.cc.i
 .PHONY : include/grpc_cpp_out/GateServer.Status.pb.cc.i
 
 include/grpc_cpp_out/GateServer.Status.pb.s: include/grpc_cpp_out/GateServer.Status.pb.cc.s
@@ -187,7 +187,7 @@ include/grpc_cpp_out/GateServer.Status.pb.s: include/grpc_cpp_out/GateServer.Sta
 
 # target to generate assembly for a file
 include/grpc_cpp_out/GateServer.Status.pb.cc.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/gate_server_proto_status.dir/build.make CMakeFiles/gate_server_proto_status.dir/include/grpc_cpp_out/GateServer.Status.pb.cc.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/status_server_proto.dir/build.make CMakeFiles/status_server_proto.dir/include/grpc_cpp_out/GateServer.Status.pb.cc.s
 .PHONY : include/grpc_cpp_out/GateServer.Status.pb.cc.s
 
 src/Calldata.o: src/Calldata.cpp.o
@@ -213,6 +213,30 @@ src/Calldata.s: src/Calldata.cpp.s
 src/Calldata.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/StatusServer.dir/build.make CMakeFiles/StatusServer.dir/src/Calldata.cpp.s
 .PHONY : src/Calldata.cpp.s
+
+src/RedisMgr.o: src/RedisMgr.cpp.o
+.PHONY : src/RedisMgr.o
+
+# target to build an object file
+src/RedisMgr.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/StatusServer.dir/build.make CMakeFiles/StatusServer.dir/src/RedisMgr.cpp.o
+.PHONY : src/RedisMgr.cpp.o
+
+src/RedisMgr.i: src/RedisMgr.cpp.i
+.PHONY : src/RedisMgr.i
+
+# target to preprocess a source file
+src/RedisMgr.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/StatusServer.dir/build.make CMakeFiles/StatusServer.dir/src/RedisMgr.cpp.i
+.PHONY : src/RedisMgr.cpp.i
+
+src/RedisMgr.s: src/RedisMgr.cpp.s
+.PHONY : src/RedisMgr.s
+
+# target to generate assembly for a file
+src/RedisMgr.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/StatusServer.dir/build.make CMakeFiles/StatusServer.dir/src/RedisMgr.cpp.s
+.PHONY : src/RedisMgr.cpp.s
 
 src/StatusServer.o: src/StatusServer.cpp.o
 .PHONY : src/StatusServer.o
@@ -271,7 +295,7 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... StatusServer"
-	@echo "... gate_server_proto_status"
+	@echo "... status_server_proto"
 	@echo "... include/grpc_cpp_out/GateServer.Status.grpc.pb.o"
 	@echo "... include/grpc_cpp_out/GateServer.Status.grpc.pb.i"
 	@echo "... include/grpc_cpp_out/GateServer.Status.grpc.pb.s"
@@ -281,6 +305,9 @@ help:
 	@echo "... src/Calldata.o"
 	@echo "... src/Calldata.i"
 	@echo "... src/Calldata.s"
+	@echo "... src/RedisMgr.o"
+	@echo "... src/RedisMgr.i"
+	@echo "... src/RedisMgr.s"
 	@echo "... src/StatusServer.o"
 	@echo "... src/StatusServer.i"
 	@echo "... src/StatusServer.s"
