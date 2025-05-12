@@ -4,16 +4,19 @@ StatusServerImpl::StatusServerImpl()
         mINI::INIFile file("../conf/config.ini");
         mINI::INIStructure ini;
         file.read(ini);
-        std::string name1=ini["ChatServer1"]["name"];
-        std::string host1=ini["ChatServer1"]["host"];
-        std::string port1=ini["ChatServer1"]["port"];
-        std::string name2=ini["ChatServer2"]["name"];
-        std::string host2=ini["ChatServer2"]["host"];
-        std::string port2=ini["ChatServer2"]["port"];
-        ChatServer_struct chat1(host1,port1,name1,0);
-        ChatServer_struct chat2(host2,port2,name2,0);
-        _chat_servers.insert(std::make_pair(name1,chat1));
-        _chat_servers.insert(std::make_pair(name2,chat2));
+        std::string section="ChatServers";
+        std::string key="servers";
+        std::string value=ini[section][key];
+        // 分割字段值
+        std::vector<std::string> values;
+        std::stringstream ss(value);
+        std::string item;
+         while (std::getline(ss, item, ',')) {
+            values.push_back(item);}
+        for(auto& e:values)
+        {
+            _chat_servers.insert(std::make_pair(ini[e]["name"],ChatServer_struct(ini[e]["host"],ini[e]["port"],ini[e]["name"],0)));
+        }
     }
 void StatusServerImpl::Run(uint16_t port)
     {

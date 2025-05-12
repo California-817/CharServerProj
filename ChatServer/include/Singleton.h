@@ -11,7 +11,7 @@ public:
         static std::once_flag s_flag;
         //这个函数只会调用一次 多线程安全
         std::call_once(s_flag,[&](){
-            _instance=std::make_shared<T>();
+            _instance=std::shared_ptr<T>(new T()); //不能使用make_shared 因为无法访问T的私有构造函数
         });
         return _instance;
     }

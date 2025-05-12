@@ -38,7 +38,7 @@ target_link_libraries(chat_server_proto
   ${_PROTOBUF_LIBPROTOBUF})
 
 add_executable(ChatServer ${SRC})
-target_link_libraries(ChatServer  boost_system   pthread 
+target_link_libraries(ChatServer  boost_system   pthread  hiredis redis++ mysqlclient
     chat_server_proto
     absl::check
     absl::flags

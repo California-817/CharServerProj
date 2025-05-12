@@ -11,12 +11,13 @@ class Session : public std::enable_shared_from_this<Session>
 public:
     Session(std::shared_ptr<boost::asio::io_context> io_context, Server *server);
     boost::asio::ip::tcp::socket &GetSocket();
-    std::string &GetUuid();
+    std::string &GetSessionId();
+    void SetUid(int uid);
+    int GetUid();
     ~Session();
-
+        void Close();
 private:
     // 关闭socket套接字
-    void Close();
     void HandleReadHead(const boost::system::error_code &error, size_t bytes_transferred, std::shared_ptr<Session> self_ptr);
     void HandleReadData(const boost::system::error_code &error, size_t bytes_transferred, std::shared_ptr<Session> self_ptr);
     // 因为调用的是async_write会全部写完在调用回调 不需要传入 bytes_transferred参数表示实际写入数量
@@ -35,7 +36,8 @@ private:
     std::shared_ptr<boost::asio::io_context> _io_context; // 连接注册事件所属的上下文
     Server *_server;                                      // 连接所属的server
     boost::asio::ip::tcp::socket _socket;                 // 连接的socket结构
-    std::string _uuid;                                    // 唯一标识这个session
+    std::string _session_id;                             // 唯一标识这个session
+    int _uid; //这个session对应的uid
     bool _b_close;
     // 接收数据的两个结构 --简单方法进行粘包处理 三个数据结构是原始复杂处理
      // 1.直接从socket接收缓冲区获取

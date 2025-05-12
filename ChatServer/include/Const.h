@@ -11,9 +11,11 @@
 #include <atomic>
 #include <cstring>
 #include <boost/uuid/uuid_io.hpp>
+#include<cctype>
 #include <boost/uuid/uuid_generators.hpp>
 #include <arpa/inet.h>
 #include <iostream>
+#include<mysql.h>
 #include"nlohmann/json.hpp"
 #include"mini/ini.h"
 #include <functional>
@@ -42,6 +44,8 @@ enum ErrorCodes
     EmailNotMatch=1007, //邮箱不匹配
     PassWordUpErr=1008,//密码更新失败
     PassWordInvalid=1009,//密码无效
+    TokenInvalid = 1010,   //Token无效
+	UidInvalid = 1011, //uid无效
 };
 
 //每一种消息对应一个数字 从而对应一个函数完成路由 
@@ -50,7 +54,18 @@ enum MSGID
     MSGID_HELLOWORLD=1001,
     MSGID_CHAT_LOGIN=1005, //登录的请求id
     MSGID_CHAT_LOGIN_RSP=1006, //登录的回应
+    MSGID_SEARCH_USER=1007, //搜索好友请求
+    MSGID_SEARCH_USER_RSP=1008, //搜索好友响应
 };
+
+#define USERIPPREFIX  "uip_"
+#define USERTOKENPREFIX  "utoken_"
+#define IPCOUNTPREFIX  "ipcount_" 
+#define USER_BASE_INFO "ubaseinfo_" //一个hash名称 存放一个用户的基本信息 通过uid
+#define USER_NAME "user_name_"  //用于查找用户通过名字查找存放用户信息
+#define LOGIN_COUNT  "logincount" //一个hash名称 存放所有服务器的连接数
+#define UID_TOKENS "uid_tokens" //一个hash名称 存放所有uid以及tokens
+#define UID_IPS "uid_at_ip"   //一个hash名称 存放所有uid以及所在服务器的名称
 
 class Defer
 {  //实现类似go的defer 当出了函数作用域 对象销毁自动调用析构函数 在析构函数内部调用外部需要执行的操作_func
@@ -63,4 +78,20 @@ public:
     }
 private:
     std::function<void()> _func;
+};
+ 
+//用户信息的结构体
+struct UserInfo
+{
+    UserInfo(int uid,std::string name,std::string email,std::string pwd,std::string nick,std::string desc,std::string icon,int sex)
+    :_uid(uid),_name(name),_email(email),_pwd(pwd),_desc(desc),_icon(icon),_sex(sex),_nick(nick){}
+    UserInfo(){};
+    int _uid;
+    std::string _name;
+    std::string _nick;
+    std::string _email;
+    std::string _pwd;
+    std::string _desc;
+    std::string _icon; //头像
+    int _sex; //性别
 };

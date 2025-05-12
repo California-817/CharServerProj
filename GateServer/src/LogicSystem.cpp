@@ -68,11 +68,26 @@ LogicSystem::LogicSystem()
            return;
             }
         //反序列化成功 获取字段值
+            //day11 发送http请求注册用户
+        // QJsonObject json_obj;
+        // json_obj["user"] = ui->user_edit->text();
+        // json_obj["email"] = ui->email_edit->text();
+        // json_obj["password"] = xorString(ui->pass_edit->text());
+        // json_obj["sex"] = 0;
+        // int randomValue = QRandomGenerator::global()->bounded(100); // 生成0到99之间的随机整数
+        // int head_i = randomValue % heads.size()
+        // json_obj["icon"] = heads[head_i];
+        // json_obj["nick"] = ui->user_edit->text();
+        // json_obj["confirm"] = xorString(ui->confirm_edit->text());
+        // json_obj["varifycode"] = ui->varify_edit->text();
         std::string user=src_root["user"].get<std::string>();
         std::string email=src_root["email"].get<std::string>();
         std::string password=src_root["password"].get<std::string>();
         std::string confirm=src_root["confirm"].get<std::string>();
         std::string varifycode=src_root["varifycode"].get<std::string>();
+        std::string nick=src_root["nick"].get<std::string>();
+        std::string icon=src_root["icon"].get<std::string>();
+        int sex=src_root["sex"].get<int>();
         //先查看redis中验证码是否有效
         std::string prefix="code_";
         prefix+=email;
@@ -95,7 +110,7 @@ LogicSystem::LogicSystem()
             return;
         }
         //去mysql数据库注册用户信息
-        int uid=MysqlMgr::GetInstance()->RegUser(user,email,password);
+        int uid=MysqlMgr::GetInstance()->RegUser(user,email,password,nick,icon,sex);
         if(uid==-1)
         {
             std::cout << "user exist" << std::endl;

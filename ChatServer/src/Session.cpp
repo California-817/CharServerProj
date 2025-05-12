@@ -1,31 +1,41 @@
 #include "../include/Session.h"
 Session::Session(std::shared_ptr<boost::asio::io_context> io_context, Server *server)
-    : _server(server), _io_context(io_context), _socket(*_io_context) /*不打开 让os打开*/, _b_close(false)
+    : _server(server), _io_context(io_context), _socket(*_io_context) /*不打开 让os打开*/, _b_close(false),_uid(0)
 {
     // 创建一个uuid唯一标识session便于管理
     boost::uuids::uuid a_uuid = boost::uuids::random_generator()();
-    _uuid = boost::uuids::to_string(a_uuid);
+    _session_id = boost::uuids::to_string(a_uuid);
     _recv_head_node = std::make_shared<MsgNode>(HEAD_DATA_LEN);
 }
 boost::asio::ip::tcp::socket &Session::GetSocket()
 {
     return _socket;
 }
-std::string &Session::GetUuid()
+void Session::SetUid(int uid)
 {
-    return _uuid;
+    _uid=uid;
+}
+int Session::GetUid()
+{
+    return _uid;
+}
+std::string &Session::GetSessionId()
+{
+    return _session_id;
 }
 Session::~Session()
 {
     // 不用干什么 因为都用智能指针管理着资源
-    std::cout<<_uuid<<"client close"<<std::endl;
+    std::cout<<_session_id<<"client close"<<std::endl;
     // 不需要关闭socket因为要销毁之前已经由上层调用了Close函数进行关闭
 }
 
 // 关闭socket套接字
 void Session::Close()
 {
+    if(_socket.is_open()){
     _socket.close(); // 1.从io_context中移除 2.关闭文件描述符
+    }
     _b_close = true;
 }
 void Session::HandleReadData(const boost::system::error_code &error, size_t bytes_transferred, std::shared_ptr<Session> self_ptr)
@@ -47,9 +57,9 @@ void Session::HandleReadData(const boost::system::error_code &error, size_t byte
         else
         {
             // 读取错误 可能对方断开连接 需要销毁连接 减少智能指针引用计数
-            std::cout << "Read cilent error uuid: " << _uuid << std::endl;
+            std::cout << "Read cilent error uuid: " << _session_id << std::endl;
             Close();                      // 关闭socket
-            _server->ClearSession(_uuid); // 销毁socket结构
+            _server->ClearSession(_session_id); // 销毁socket结构
         }
     }
     catch (boost::system::system_error &exp)
@@ -79,7 +89,7 @@ void Session::HandleReadHead(const boost::system::error_code &error, size_t byte
             if (msg_len > MAX_LENGTH) // 包体长度大于最大长度 关闭连接
             {
                 Close();                      // 关闭socket
-                _server->ClearSession(_uuid); // 销毁socket结构
+                _server->ClearSession(_session_id); // 销毁socket结构
                 return;
             }
             // 长度符合条件
@@ -92,9 +102,9 @@ void Session::HandleReadHead(const boost::system::error_code &error, size_t byte
         else
         {
             // 读取错误 可能对方断开连接 需要销毁连接 减少智能指针引用计数
-            std::cout << "Read cilent error uuid: " << _uuid << std::endl;
+            std::cout << "Read cilent error uuid: " << _session_id << std::endl;
             Close();                      // 关闭socket
-            _server->ClearSession(_uuid); // 销毁socket结构
+            _server->ClearSession(_session_id); // 销毁socket结构
         }
     }
     catch (boost::system::system_error &exp)
@@ -126,9 +136,9 @@ void Session::HandleWrite(const boost::system::error_code &error, std::shared_pt
         else
         {
             // 写入失败
-            std::cout << "Send cilent error uuid: " << _uuid << std::endl;
+            std::cout << "Send cilent error uuid: " << _session_id << std::endl;
             Close();                      // 关闭socket
-            _server->ClearSession(_uuid); // 销毁socket结构
+            _server->ClearSession(_session_id); // 销毁socket结构
         }
     }
     catch (boost::system::system_error &exp)
@@ -159,7 +169,7 @@ void Session::Write(uint16_t msg_id, uint16_t len, const char *data)
         // 当发送队列满了的时候 不再发送这个包
         if (_send_que.size() == MAX_SENDLEN || _send_que.size() > MAX_SENDLEN)
         {
-            std::cout << "session: " << _uuid << " send queue fulled" << std::endl;
+            std::cout << "session: " << _session_id << " send queue fulled" << std::endl;
             return;
         }
         if (!_send_que.empty()) // 发送队列仍有数据

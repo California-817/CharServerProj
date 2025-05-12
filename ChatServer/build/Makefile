@@ -310,6 +310,54 @@ src/MsgNode.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ChatServer.dir/build.make CMakeFiles/ChatServer.dir/src/MsgNode.cpp.s
 .PHONY : src/MsgNode.cpp.s
 
+src/MysqlMgr.o: src/MysqlMgr.cpp.o
+.PHONY : src/MysqlMgr.o
+
+# target to build an object file
+src/MysqlMgr.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ChatServer.dir/build.make CMakeFiles/ChatServer.dir/src/MysqlMgr.cpp.o
+.PHONY : src/MysqlMgr.cpp.o
+
+src/MysqlMgr.i: src/MysqlMgr.cpp.i
+.PHONY : src/MysqlMgr.i
+
+# target to preprocess a source file
+src/MysqlMgr.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ChatServer.dir/build.make CMakeFiles/ChatServer.dir/src/MysqlMgr.cpp.i
+.PHONY : src/MysqlMgr.cpp.i
+
+src/MysqlMgr.s: src/MysqlMgr.cpp.s
+.PHONY : src/MysqlMgr.s
+
+# target to generate assembly for a file
+src/MysqlMgr.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ChatServer.dir/build.make CMakeFiles/ChatServer.dir/src/MysqlMgr.cpp.s
+.PHONY : src/MysqlMgr.cpp.s
+
+src/RedisMgr.o: src/RedisMgr.cpp.o
+.PHONY : src/RedisMgr.o
+
+# target to build an object file
+src/RedisMgr.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ChatServer.dir/build.make CMakeFiles/ChatServer.dir/src/RedisMgr.cpp.o
+.PHONY : src/RedisMgr.cpp.o
+
+src/RedisMgr.i: src/RedisMgr.cpp.i
+.PHONY : src/RedisMgr.i
+
+# target to preprocess a source file
+src/RedisMgr.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ChatServer.dir/build.make CMakeFiles/ChatServer.dir/src/RedisMgr.cpp.i
+.PHONY : src/RedisMgr.cpp.i
+
+src/RedisMgr.s: src/RedisMgr.cpp.s
+.PHONY : src/RedisMgr.s
+
+# target to generate assembly for a file
+src/RedisMgr.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ChatServer.dir/build.make CMakeFiles/ChatServer.dir/src/RedisMgr.cpp.s
+.PHONY : src/RedisMgr.cpp.s
+
 src/Server.o: src/Server.cpp.o
 .PHONY : src/Server.o
 
@@ -358,6 +406,30 @@ src/Session.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ChatServer.dir/build.make CMakeFiles/ChatServer.dir/src/Session.cpp.s
 .PHONY : src/Session.cpp.s
 
+src/UserMgr.o: src/UserMgr.cpp.o
+.PHONY : src/UserMgr.o
+
+# target to build an object file
+src/UserMgr.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ChatServer.dir/build.make CMakeFiles/ChatServer.dir/src/UserMgr.cpp.o
+.PHONY : src/UserMgr.cpp.o
+
+src/UserMgr.i: src/UserMgr.cpp.i
+.PHONY : src/UserMgr.i
+
+# target to preprocess a source file
+src/UserMgr.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ChatServer.dir/build.make CMakeFiles/ChatServer.dir/src/UserMgr.cpp.i
+.PHONY : src/UserMgr.cpp.i
+
+src/UserMgr.s: src/UserMgr.cpp.s
+.PHONY : src/UserMgr.s
+
+# target to generate assembly for a file
+src/UserMgr.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ChatServer.dir/build.make CMakeFiles/ChatServer.dir/src/UserMgr.cpp.s
+.PHONY : src/UserMgr.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -389,12 +461,21 @@ help:
 	@echo "... src/MsgNode.o"
 	@echo "... src/MsgNode.i"
 	@echo "... src/MsgNode.s"
+	@echo "... src/MysqlMgr.o"
+	@echo "... src/MysqlMgr.i"
+	@echo "... src/MysqlMgr.s"
+	@echo "... src/RedisMgr.o"
+	@echo "... src/RedisMgr.i"
+	@echo "... src/RedisMgr.s"
 	@echo "... src/Server.o"
 	@echo "... src/Server.i"
 	@echo "... src/Server.s"
 	@echo "... src/Session.o"
 	@echo "... src/Session.i"
 	@echo "... src/Session.s"
+	@echo "... src/UserMgr.o"
+	@echo "... src/UserMgr.i"
+	@echo "... src/UserMgr.s"
 .PHONY : help
 
 

@@ -1436,6 +1436,14 @@ CMakeFiles/ChatServer.dir/src/MsgNode.cpp.o: \
  /usr/include/boost/uuid/detail/random_provider_include_platform.hpp \
  /usr/include/boost/uuid/detail/random_provider_getrandom.ipp \
  /usr/include/sys/random.h /usr/include/c++/12/iostream \
+ /usr/local/include/mysql.h /usr/local/include/mysql_version.h \
+ /usr/local/include/mysql_com.h /usr/local/include/binary_log_types.h \
+ /usr/local/include/my_command.h /usr/local/include/mysql_time.h \
+ /usr/local/include/my_list.h /usr/local/include/mysql/client_plugin.h \
+ /usr/local/include/mysql/plugin_auth_common.h \
+ /usr/local/include/typelib.h /usr/local/include/my_alloc.h \
+ /usr/local/include/mysql/psi/psi_memory.h \
+ /usr/local/include/mysql/psi/psi_base.h \
  /home/xxxten/ChatProj/CharServerProj/ChatServer/src/../include/nlohmann/json.hpp \
  /usr/include/c++/12/forward_list /usr/include/c++/12/bits/forward_list.h \
  /usr/include/c++/12/bits/forward_list.tcc /usr/include/c++/12/map \
@@ -1461,7 +1469,44 @@ CMakeFiles/ChatServer.dir/src/MsgNode.cpp.o: \
  /usr/include/c++/12/x86_64-OpenCloudOS-linux/bits/basic_file.h \
  /usr/include/c++/12/x86_64-OpenCloudOS-linux/bits/c++io.h \
  /usr/include/c++/12/bits/fstream.tcc \
+ /home/xxxten/ChatProj/CharServerProj/ChatServer/src/../include/UserMgr.h \
  /home/xxxten/ChatProj/CharServerProj/ChatServer/src/../include/LogicSystem.h \
+ /home/xxxten/ChatProj/CharServerProj/ChatServer/src/../include/RedisMgr.h \
+ /usr/local/include/sw/redis++/redis++.h \
+ /usr/local/include/sw/redis++/redis.h \
+ /usr/local/include/sw/redis++/connection_pool.h \
+ /usr/local/include/sw/redis++/connection.h \
+ /usr/local/include/hiredis/hiredis.h /usr/local/include/hiredis/read.h \
+ /usr/local/include/hiredis/sds.h /usr/local/include/hiredis/alloc.h \
+ /usr/local/include/sw/redis++/errors.h \
+ /usr/local/include/sw/redis++/reply.h \
+ /usr/local/include/sw/redis++/utils.h \
+ /usr/local/include/sw/redis++/cxx_utils.h /usr/include/c++/12/variant \
+ /usr/local/include/sw/redis++/tls.h \
+ /usr/local/include/sw/redis++/hiredis_features.h \
+ /usr/local/include/sw/redis++/sentinel.h /usr/include/c++/12/list \
+ /usr/include/c++/12/bits/stl_list.h /usr/include/c++/12/bits/list.tcc \
+ /usr/local/include/sw/redis++/shards.h \
+ /usr/local/include/sw/redis++/command_options.h \
+ /usr/local/include/sw/redis++/subscriber.h \
+ /usr/local/include/sw/redis++/command.h \
+ /usr/local/include/sw/redis++/command_args.h \
+ /usr/local/include/sw/redis++/pipeline.h \
+ /usr/local/include/sw/redis++/transaction.h \
+ /usr/local/include/sw/redis++/redis_uri.h \
+ /usr/local/include/sw/redis++/redis.hpp \
+ /usr/local/include/sw/redis++/redis_cluster.h \
+ /usr/local/include/sw/redis++/shards_pool.h /usr/include/c++/12/random \
+ /usr/include/c++/12/bits/random.h \
+ /usr/include/c++/12/x86_64-OpenCloudOS-linux/bits/opt_random.h \
+ /usr/include/c++/12/bits/random.tcc \
+ /usr/local/include/sw/redis++/redis_cluster.hpp \
+ /usr/local/include/sw/redis++/queued_redis.h \
+ /usr/include/c++/12/unordered_set \
+ /usr/include/c++/12/bits/unordered_set.h \
+ /usr/local/include/sw/redis++/queued_redis.hpp \
+ /home/xxxten/ChatProj/CharServerProj/ChatServer/src/../include/MysqlMgr.h \
+ /home/xxxten/ChatProj/CharServerProj/ChatServer/src/../include/MysqlPool.hpp \
  /home/xxxten/ChatProj/CharServerProj/ChatServer/src/../include/LoginGrpcClient.h \
  /home/xxxten/ChatProj/CharServerProj/ChatServer/src/../include/GrpcConPool.hpp \
  /root/.local/include/grpcpp/grpcpp.h /root/.local/include/grpc/grpc.h \
@@ -1560,8 +1605,6 @@ CMakeFiles/ChatServer.dir/src/MsgNode.cpp.o: \
  /root/.local/include/grpcpp/impl/completion_queue_tag.h \
  /root/.local/include/grpcpp/impl/grpc_library.h \
  /root/.local/include/grpcpp/impl/codegen/config.h \
- /usr/include/c++/12/list /usr/include/c++/12/bits/stl_list.h \
- /usr/include/c++/12/bits/list.tcc \
  /root/.local/include/grpcpp/support/client_interceptor.h \
  /root/.local/include/grpcpp/support/interceptor.h \
  /root/.local/include/grpcpp/impl/metadata_map.h \
@@ -1639,7 +1682,7 @@ CMakeFiles/ChatServer.dir/src/MsgNode.cpp.o: \
  /root/.local/include/absl/strings/internal/string_constant.h \
  /root/.local/include/absl/types/optional.h \
  /root/.local/include/absl/strings/has_ostream_operator.h \
- /root/.local/include/absl/types/variant.h /usr/include/c++/12/variant \
+ /root/.local/include/absl/types/variant.h \
  /root/.local/include/grpcpp/security/tls_certificate_verifier.h \
  /root/.local/include/grpcpp/security/tls_crl_provider.h \
  /root/.local/include/grpc/grpc_crl_provider.h \
@@ -1743,10 +1786,6 @@ CMakeFiles/ChatServer.dir/src/MsgNode.cpp.o: \
  /root/.local/include/absl/container/internal/btree_container.h \
  /root/.local/include/absl/container/flat_hash_map.h \
  /root/.local/include/absl/algorithm/container.h \
- /usr/include/c++/12/random /usr/include/c++/12/bits/random.h \
- /usr/include/c++/12/x86_64-OpenCloudOS-linux/bits/opt_random.h \
- /usr/include/c++/12/bits/random.tcc /usr/include/c++/12/unordered_set \
- /usr/include/c++/12/bits/unordered_set.h \
  /root/.local/include/absl/container/hash_container_defaults.h \
  /root/.local/include/absl/container/internal/hash_function_defaults.h \
  /root/.local/include/absl/hash/hash.h \

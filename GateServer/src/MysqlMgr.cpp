@@ -14,14 +14,15 @@ MysqlMgr::MysqlMgr()
     _pool=std::make_unique<ConnectionPool>(host,static_cast<uint16_t>(atoi(port.c_str())),user,
                     password,database,atoi(size.c_str()),atoi(max_wait_time.c_str()));
 }
-int MysqlMgr::RegUser(const std::string& name,const std::string& email,const std::string& password)  //注册用户的sql逻辑 --防止sql注入的逻辑
-{
+int MysqlMgr::RegUser(const std::string& name,const std::string& email,const std::string& password,
+                        const std::string& nick,const std::string& icon,int sex)  //注册用户的sql逻辑 --防止sql注入的逻辑
+{       // (new_id,new_name,new_email,new_password,new_nick,new_icon,new_sex);
     auto conn=_pool->GetConnection(); //获取了一个mysql连接
     MYSQL_STMT* stmt;
-    MYSQL_BIND bind[3];
+    MYSQL_BIND bind[6];
     MYSQL_RES* result;
     MYSQL_ROW row;  
-    std::string query="call reg_user(?,?,?,@result)";
+    std::string query="call reg_user(?,?,?,?,?,?,@result)";
     stmt=mysql_stmt_init(conn.get());  //初始化预处理语句
     if(mysql_stmt_prepare(stmt,query.c_str(),query.length()))
     { 
@@ -31,7 +32,7 @@ int MysqlMgr::RegUser(const std::string& name,const std::string& email,const std
     }
     //绑定参数
     memset(bind,0,sizeof bind);
-    for(int i=0;i<3;i++){
+    for(int i=0;i<5;i++){
     bind[i].buffer_type=MYSQL_TYPE_STRING;}
     bind[0].buffer=(char*)name.c_str();
     bind[0].buffer_length=name.length();
@@ -39,6 +40,12 @@ int MysqlMgr::RegUser(const std::string& name,const std::string& email,const std
     bind[1].buffer_length=email.length();  
     bind[2].buffer=(char*)password.c_str();
     bind[2].buffer_length=password.length();
+    bind[3].buffer=(char*)nick.c_str();
+    bind[3].buffer_length=nick.length();    
+    bind[4].buffer=(char*)icon.c_str();
+    bind[4].buffer_length=icon.length();    
+    bind[5].buffer=(char*)&sex;
+    bind[5].buffer_type=MYSQL_TYPE_LONG;
     if(mysql_stmt_bind_param(stmt,bind))
     {
         std::cout<<"mysql_stmt_bind_param err: "<<mysql_stmt_error(stmt)<<std::endl;
@@ -230,24 +237,33 @@ bool MysqlMgr::CheckPwd(const std::string& email,const std::string& password,Use
         std::cerr << "mysql_stmt_store_result() failed: " << mysql_stmt_error(stmt) << std::endl;
         mysql_stmt_close(stmt);
         return false;}
-    int id;
-    int uid;
+    int p_id;
+    int p_uid;
     char p_name[256];
     char p_email[256];
     char p_password[256];
-    MYSQL_BIND result_bind[5];
+    char p_nick[256];
+    char p_desc[256];
+    char p_icon[256];
+    int p_sex;
+    MYSQL_BIND result_bind[9];
     memset(result_bind,0,sizeof result_bind);
     result_bind[0].buffer_type=MYSQL_TYPE_LONG;
-    result_bind[0].buffer=(char*)&id;
+    result_bind[0].buffer=(char*)&p_id;
     result_bind[1].buffer_type=MYSQL_TYPE_LONG;
-    result_bind[1].buffer=(char*)&uid;
-    for(int i=2;i<5;i++)
+    result_bind[1].buffer=(char*)&p_uid;
+    for(int i=2;i<8;i++)
     {
         result_bind[i].buffer_type=MYSQL_TYPE_STRING;
         result_bind[i].buffer_length=256;}
     result_bind[2].buffer=p_name;
     result_bind[3].buffer=p_email;
     result_bind[4].buffer=p_password;
+    result_bind[5].buffer=p_nick;
+    result_bind[6].buffer=p_desc;
+    result_bind[7].buffer=p_icon;
+    result_bind[8].buffer_type=MYSQL_TYPE_LONG;
+    result_bind[8].buffer=(char*)&p_sex;
     //2.绑定结果集存放处
     if (mysql_stmt_bind_result(stmt, result_bind)) { 
         std::cerr << "mysql_stmt_bind_result() failed: " << mysql_stmt_error(stmt) << std::endl;
@@ -255,14 +271,14 @@ bool MysqlMgr::CheckPwd(const std::string& email,const std::string& password,Use
         return false;}
     //3.真正去获取一行行数据到绑定到的地址
     while (mysql_stmt_fetch(stmt) == 0) { //一行一行遍历结果集
-       std::cout<<id<<" | "<<uid<<" | "<<p_name<<" | "<<p_email<<" | "<<p_password<<std::endl;
+       std::cout<<p_id<<" | "<<p_uid<<" | "<<p_name<<" | "<<p_email<<" | "<<p_password<<std::endl;
     }
     if(password!=p_password)
     {
         mysql_stmt_close(stmt);
         return false;}
     //密码与邮箱匹配
-    userinfo.uid=uid;
+    userinfo.uid=p_uid;
     userinfo.name=p_name;
     userinfo.email=p_email;
     userinfo.password=p_password;

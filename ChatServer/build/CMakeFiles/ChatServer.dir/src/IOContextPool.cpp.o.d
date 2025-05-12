@@ -1433,6 +1433,14 @@ CMakeFiles/ChatServer.dir/src/IOContextPool.cpp.o: \
  /usr/include/boost/uuid/detail/random_provider_include_platform.hpp \
  /usr/include/boost/uuid/detail/random_provider_getrandom.ipp \
  /usr/include/sys/random.h /usr/include/c++/12/iostream \
+ /usr/local/include/mysql.h /usr/local/include/mysql_version.h \
+ /usr/local/include/mysql_com.h /usr/local/include/binary_log_types.h \
+ /usr/local/include/my_command.h /usr/local/include/mysql_time.h \
+ /usr/local/include/my_list.h /usr/local/include/mysql/client_plugin.h \
+ /usr/local/include/mysql/plugin_auth_common.h \
+ /usr/local/include/typelib.h /usr/local/include/my_alloc.h \
+ /usr/local/include/mysql/psi/psi_memory.h \
+ /usr/local/include/mysql/psi/psi_base.h \
  /home/xxxten/ChatProj/CharServerProj/ChatServer/src/../include/nlohmann/json.hpp \
  /usr/include/c++/12/forward_list /usr/include/c++/12/bits/forward_list.h \
  /usr/include/c++/12/bits/forward_list.tcc /usr/include/c++/12/map \

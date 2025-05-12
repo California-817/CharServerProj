@@ -13,7 +13,7 @@ void LogicSystem::PostMsgToQue(std::shared_ptr<LogicNode> msg)
             if (_logic_que.size() >= MAX_RECVLEN)
             {
                 // 队列没有空间 丢包并打印日志
-                std::cout << "client " << msg->GetSession()->GetUuid() << " data has been dropped because the Logicqueue is fulled"
+                std::cout << "client " << msg->GetSession()->GetSessionId() << " data has been dropped because the Logicqueue is fulled"
                           << std::endl;
                 return;
             }
@@ -90,6 +90,8 @@ void LogicSystem::RegisterCallBacks()
                                                  std::placeholders::_1, std::placeholders::_2, std::placeholders::_3);
     _fun_callbacks[MSGID_CHAT_LOGIN]=std::bind(&LogicSystem::LoginCallback,this,
                                                  std::placeholders::_1, std::placeholders::_2, std::placeholders::_3);
+    _fun_callbacks[MSGID_SEARCH_USER]=std::bind(&LogicSystem::SearchCallback,this,
+                                                 std::placeholders::_1, std::placeholders::_2, std::placeholders::_3);
 }
 
 LogicSystem::~LogicSystem()
@@ -104,7 +106,7 @@ LogicSystem::~LogicSystem()
 // 逻辑单元自带的基本func
 void LogicSystem::HelloWorldCallback(std::shared_ptr<Session> session, const uint16_t &msg_id, const std::string &msg_data)
 {
-    std::cout << "recv msg from " << session->GetUuid() << " " << msg_data << std::endl;
+    std::cout << "recv msg from " << session->GetSessionId() << " " << msg_data << std::endl;
     std::string resp = "logic handle msg and send respose";
     session->Write(msg_id, resp.size(), resp.c_str());
 }
@@ -129,7 +131,7 @@ void LogicSystem::LoginCallback(std::shared_ptr<Session> session, const uint16_t
     int uid=src_root["uid"].get<int>();
     std::string token=src_root["token"].get<std::string>();
     std::cout<<uid<<" : "<<token<<std::endl;
-    //进行校验等处理
+    //1.进行校验等处理
     LoginRsp ret=LoginGrpcClient::GetInstance()->Login(uid,token);
     if(ret.error()!=ErrorCodes::Success)
     { //校验错误
@@ -144,14 +146,220 @@ void LogicSystem::LoginCallback(std::shared_ptr<Session> session, const uint16_t
         // auto nick = jsonObj["nick"].toString();
         // auto icon = jsonObj["icon"].toString();
         // auto sex = jsonObj["sex"].toInt();
+    //2.从数据库获取用户信息
+    UserInfo userinfo;
+    if(!LogicSystem::GetUserInfo(uid,userinfo))
+    { //获取信息失败
+        root["error"]=ErrorCodes::UidInvalid;
+        auto ret_str=root.dump(4);
+        session->Write(MSGID_CHAT_LOGIN_RSP,ret_str.size(),ret_str.c_str());
+        return;
+    }
+    //获取信息成功写入响应
     root["error"]=ErrorCodes::Success;
     root["uid"]=uid;
-    root["name"]="xxxten";
-    root["nick"]="xxxten";
-    root["sex"]=1;
-    root["icon"]="";
-    root["token"]=token;
+    root["name"]=userinfo._name;
+    root["nick"]=userinfo._nick;
+    root["sex"]=userinfo._sex;
+    root["icon"]=userinfo._icon;
+    root["pwd"]=userinfo._pwd;
+    root["email"]=userinfo._email;
+    root["desc"]=userinfo._desc;
+    //3.加载申请列表 todo
+    //4.加载好友列表 todo
+    //5.设置连接数增加写入redis
+    auto redis_con=RedisMgr::GetInstance()->GetRedisCon();
+    mINI::INIFile file("../conf/config.ini");
+    mINI::INIStructure ini;
+    file.read(ini);
+    auto ret_redis=redis_con->hget(LOGIN_COUNT,ini["SelfServer"]["name"].c_str());
+    if(!ret_redis.has_value()){  //redis中没有这个chatServer的连接数缓存 服务器没有启动 基本不存在这个可能
+        root["error"]=ErrorCodes::UidInvalid;
+        auto ret_str=root.dump(4);
+        session->Write(MSGID_CHAT_LOGIN_RSP,ret_str.size(),ret_str.c_str());
+        return;}
+    else{ //更新连接数+1并写入redis
+       redis_con->hset(LOGIN_COUNT,ini["SelfServer"]["name"].c_str(),std::to_string((atoi(ret_redis.value().c_str())+1)));}
+    //6.将uid和所在的服务器名称写入redis
+    std::string ip_key=USERIPPREFIX; // uip_1
+    ip_key+=std::to_string(uid);
+    redis_con->hset(UID_IPS,ip_key.c_str(),ini["SelfServer"]["name"].c_str());
+    //7.本地绑定uid和session的映射关系
+    session->SetUid(uid);
+    UserMgr::GetInstance()->SetUidSession(uid,session);
+    
     auto ret_str=root.dump(4);
     session->Write(MSGID_CHAT_LOGIN_RSP,ret_str.size(),ret_str.c_str());
+}
+
+
+bool LogicSystem::GetUserInfo(int uid,UserInfo& userinfo)
+{
+    //1.先去redis中获取用户信息
+    auto redis_con=RedisMgr::GetInstance()->GetRedisCon();
+    if(redis_con.get()==nullptr)
+    {
+        return false;}
+    std::string info_key=USER_BASE_INFO;
+    info_key+=std::to_string(uid);   // ubaseinfo_1
+    // std::unordered_map<std::string,std::string> redis_ret;
+    // auto redis_ret=redis_con->hgetall<std::unordered_map<std::string, std::string>>(info_key);
+    // 用于存储结果的容器
+    std::unordered_map<std::string, std::string> redis_ret;
+    std::vector<std::string> fields{"uid","name","email","nick","pwd","desc","icon","sex"};
+    // 对每个字段调用 hget
+    for (const auto& field : fields) {
+        auto value = redis_con->hget(info_key, field);
+        if (value.has_value()) {
+            redis_ret[field] = value.value();
+        }
+    }
+    if(!redis_ret.empty())
+    { //redis中有该用户信息的缓存
+        userinfo._uid=atoi(redis_ret["uid"].c_str());
+        userinfo._name=redis_ret["name"];
+        userinfo._email=redis_ret["email"];
+        userinfo._nick=redis_ret["nick"];
+        userinfo._pwd=redis_ret["pwd"];
+        userinfo._desc=redis_ret["desc"];
+        userinfo._icon=redis_ret["icon"];
+        userinfo._sex=atoi(redis_ret["sex"].c_str());
+        return true;
+    }
+    //redis中没有数据缓存 到MySQL获取 并且写入redis
+    bool ret=MysqlMgr::GetInstance()->GetUserInfo(uid,userinfo);
+    if(ret)
+    { //成功获取并写入了userinfo  写入redis  
+        redis_con->hmset(info_key,{std::make_pair("uid", std::to_string(userinfo._uid).c_str()),
+            std::make_pair("name", userinfo._name.c_str()),
+            std::make_pair("nick", userinfo._nick.c_str()),
+            std::make_pair("pwd", userinfo._pwd.c_str()),
+            std::make_pair("desc", userinfo._desc.c_str()),
+            std::make_pair("icon", userinfo._icon.c_str()),
+            std::make_pair("sex", std::to_string(userinfo._sex).c_str()),
+            std::make_pair("email", userinfo._email.c_str())});
+        return true;
+    }
+    return false;
+}
+//搜索好友的请求
+void LogicSystem::SearchCallback(std::shared_ptr<Session> session, const uint16_t &msg_id, const std::string &msg_data)
+{
+    //请求
+	//jsonObj["uid"] = uid_str;  //uid或者名字
+    nlohmann::json root; //回包
+    nlohmann::json src_root;
+    try{
+        src_root=nlohmann::json::parse(msg_data);
+    }catch(const nlohmann::json::parse_error& err)
+    { //反序列化失败
+      std::cout<<"Fail to parse json "<<err.what()<<std::endl;
+      root["error"]=ErrorCodes::Error_Json;
+      auto jsonstr=root.dump(4); //序列化
+      session->Write(MSGID_SEARCH_USER_RSP,jsonstr.size(),jsonstr.c_str());
+      return;
+    }
+    root["error"]=ErrorCodes::Success;
+    Defer defer([&root,&session](){ 
+        auto jsonstr=root.dump(4); //序列化
+        session->Write(MSGID_SEARCH_USER_RSP,jsonstr.size(),jsonstr.c_str());
+    });
+    std::string uid=src_root["uid"].get<std::string>(); 
+    //判断是不是纯数字
+    bool is_digit=IsPureDigit(uid);
+    UserInfo userinfo;
+    if(is_digit)
+    { //纯数字 uid 用uid查找用户信息
+        bool ret=SearchInfoByUid(atoi(uid.c_str()),userinfo);
+        if(!ret)
+        {
+            root["error"]=ErrorCodes::UidInvalid;
+            return;
+        }
+    }
+    else{ //通过名字查找用户信息
+        bool ret=SearchInfoByName(uid,userinfo);
+        if(!ret)
+        {
+            root["error"]=ErrorCodes::UidInvalid;
+            return;
+        }
+    }
+    //成功获取到对方的信息 进行输出
+    //回包
+    //jsonObj["error"].toInt()
+    //jsonObj["uid"].toInt(), jsonObj["name"].toString(),
+    //jsonObj["nick"].toString(), jsonObj["desc"].toString(),
+    //jsonObj["sex"].toInt(), jsonObj["icon"].toString());
+    root["uid"]=userinfo._uid;
+    root["name"]=userinfo._name;
+    root["nick"]=userinfo._nick;
+    root["desc"]=userinfo._desc;
+    root["sex"]=userinfo._sex;
+    root["icon"]=userinfo._icon;
+}
+bool LogicSystem::IsPureDigit(std::string uid)
+{
+    for(auto e:uid)
+    {
+        if(!std::isdigit(e))
+        {
+            return false;
+        }
+    }
+    return true;
+}
+bool LogicSystem::SearchInfoByUid(int uid,UserInfo& userinfo)
+{   
+    return LogicSystem::GetUserInfo(uid,userinfo);
+}
+bool LogicSystem::SearchInfoByName(std::string name,UserInfo& userinfo)
+{
+    //1.先去redis中获取用户信息
+    auto redis_con=RedisMgr::GetInstance()->GetRedisCon();
+    if(redis_con.get()==nullptr)
+    {
+        return false;}
+    std::string info_key=USER_NAME;
+    info_key+=name;   // user_name_xxxten
+    // std::unordered_map<std::string,std::string> redis_ret;
+    // auto redis_ret=redis_con->hgetall<std::unordered_map<std::string, std::string>>(info_key);
+    // 用于存储结果的容器
+    std::unordered_map<std::string, std::string> redis_ret;
+    std::vector<std::string> fields{"uid","name","email","nick","pwd","desc","icon","sex"};
+    // 对每个字段调用 hget
+    for (const auto& field : fields) {
+        auto value = redis_con->hget(info_key, field);
+        if (value.has_value()) {
+            redis_ret[field] = value.value();
+        }
+    }
+    if(!redis_ret.empty())
+    { //redis中有该用户信息的缓存
+        userinfo._uid=atoi(redis_ret["uid"].c_str());
+        userinfo._name=redis_ret["name"];
+        userinfo._email=redis_ret["email"];
+        userinfo._nick=redis_ret["nick"];
+        userinfo._pwd=redis_ret["pwd"];
+        userinfo._desc=redis_ret["desc"];
+        userinfo._icon=redis_ret["icon"];
+        userinfo._sex=atoi(redis_ret["sex"].c_str());
+        return true;
+    }
+    //redis中没有数据缓存 到MySQL获取 并且写入redis
+    bool ret=MysqlMgr::GetInstance()->GetUserInfo(name,userinfo);
+    if(ret)
+    { //成功获取并写入了userinfo  写入redis  
+        redis_con->hmset(info_key,{std::make_pair("uid", std::to_string(userinfo._uid).c_str()),
+            std::make_pair("name", userinfo._name.c_str()),
+            std::make_pair("nick", userinfo._nick.c_str()),
+            std::make_pair("pwd", userinfo._pwd.c_str()),
+            std::make_pair("desc", userinfo._desc.c_str()),
+            std::make_pair("icon", userinfo._icon.c_str()),
+            std::make_pair("sex", std::to_string(userinfo._sex).c_str()),
+            std::make_pair("email", userinfo._email.c_str())});
+        return true;
+    }
+    return false;    
 }
 

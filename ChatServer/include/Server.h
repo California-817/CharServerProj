@@ -2,6 +2,7 @@
 #include "Session.h"
 #include"IOContextPool.h"
 #include"MsgNode.h"
+#include"UserMgr.h"
 #include"Const.h"
 class Session;
 class MsgNode;
@@ -24,4 +25,5 @@ private:
     std::shared_ptr<boost::asio::io_context> _io_context;                // 上下文 相当于libevent的时间分发器
     boost::asio::ip::tcp::acceptor _accecptor;                           // 用于接收客户端的socket连接 相当于listen套接字
     std::unordered_map<std::string, std::shared_ptr<Session>> _sessions; // 管理所有的session 封装连接
+    std::mutex _mtx ;  //可能是多线程去删除sessions中的连接
 };

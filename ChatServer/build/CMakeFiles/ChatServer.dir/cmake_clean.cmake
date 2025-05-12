@@ -11,10 +11,16 @@ file(REMOVE_RECURSE
   "CMakeFiles/ChatServer.dir/src/LoginGrpcClient.cpp.o.d"
   "CMakeFiles/ChatServer.dir/src/MsgNode.cpp.o"
   "CMakeFiles/ChatServer.dir/src/MsgNode.cpp.o.d"
+  "CMakeFiles/ChatServer.dir/src/MysqlMgr.cpp.o"
+  "CMakeFiles/ChatServer.dir/src/MysqlMgr.cpp.o.d"
+  "CMakeFiles/ChatServer.dir/src/RedisMgr.cpp.o"
+  "CMakeFiles/ChatServer.dir/src/RedisMgr.cpp.o.d"
   "CMakeFiles/ChatServer.dir/src/Server.cpp.o"
   "CMakeFiles/ChatServer.dir/src/Server.cpp.o.d"
   "CMakeFiles/ChatServer.dir/src/Session.cpp.o"
   "CMakeFiles/ChatServer.dir/src/Session.cpp.o.d"
+  "CMakeFiles/ChatServer.dir/src/UserMgr.cpp.o"
+  "CMakeFiles/ChatServer.dir/src/UserMgr.cpp.o.d"
 )
 
 # Per-language clean rules from dependency scanning.

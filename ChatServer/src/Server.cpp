@@ -14,9 +14,15 @@ Server::Server(std::shared_ptr<boost::asio::io_context> io_context, uint16_t por
     }
     StartAccecp();                                   //              开始接收连接
 }
-void Server::ClearSession(std::string &uuid)
-{
-    _sessions.erase(uuid);
+void Server::ClearSession(std::string &session_id)
+{ //要进行两个存储结构中session的删除
+    if(_sessions.find(session_id)!=_sessions.end())
+    { //删除uid与session映射管理中的session
+        UserMgr::GetInstance()->RmUidSession(_sessions[session_id]->GetUid()); //这个函数内部会加一把锁
+    }
+    //可能是多个线程调用来删除 这里的锁加在下面而不是上面 是为了防止嵌套加多把锁造成死锁情况产生
+    std::lock_guard<std::mutex> _lock(_mtx);
+    _sessions.erase(session_id);
 }
 // 接收完的回调函数
 void Server::HandleAccept(std::shared_ptr<Session> session, const boost::system::error_code &error)
@@ -25,7 +31,7 @@ void Server::HandleAccept(std::shared_ptr<Session> session, const boost::system:
     {
         session->Start();
         // 插入unordered_map中由server管理 当所有智能指针的引用计数0的时候释放session
-        _sessions.insert(std::make_pair(session->GetUuid(), session));
+        _sessions.insert(std::make_pair(session->GetSessionId(), session));
     }
     else
     {
