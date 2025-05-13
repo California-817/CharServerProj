@@ -1,4 +1,5 @@
 /home/xxxten/ChatProj/CharServerProj/ChatServer/build/CMakeFiles/chat_server_proto.dir
+/home/xxxten/ChatProj/CharServerProj/ChatServer/build/CMakeFiles/status_server_proto.dir
 /home/xxxten/ChatProj/CharServerProj/ChatServer/build/CMakeFiles/ChatServer.dir
 /home/xxxten/ChatProj/CharServerProj/ChatServer/build/CMakeFiles/edit_cache.dir
 /home/xxxten/ChatProj/CharServerProj/ChatServer/build/CMakeFiles/rebuild_cache.dir

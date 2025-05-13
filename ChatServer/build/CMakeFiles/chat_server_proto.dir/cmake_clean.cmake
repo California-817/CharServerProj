@@ -1,8 +1,8 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/chat_server_proto.dir/include/grpc_cpp_out/GateServer.Status.grpc.pb.cc.o"
-  "CMakeFiles/chat_server_proto.dir/include/grpc_cpp_out/GateServer.Status.grpc.pb.cc.o.d"
-  "CMakeFiles/chat_server_proto.dir/include/grpc_cpp_out/GateServer.Status.pb.cc.o"
-  "CMakeFiles/chat_server_proto.dir/include/grpc_cpp_out/GateServer.Status.pb.cc.o.d"
+  "CMakeFiles/chat_server_proto.dir/include/grpc_cpp_out/ChatServer.Chat.grpc.pb.cc.o"
+  "CMakeFiles/chat_server_proto.dir/include/grpc_cpp_out/ChatServer.Chat.grpc.pb.cc.o.d"
+  "CMakeFiles/chat_server_proto.dir/include/grpc_cpp_out/ChatServer.Chat.pb.cc.o"
+  "CMakeFiles/chat_server_proto.dir/include/grpc_cpp_out/ChatServer.Chat.pb.cc.o.d"
   "libchat_server_proto.a"
   "libchat_server_proto.pdb"
 )

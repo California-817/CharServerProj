@@ -25,20 +25,30 @@ include_directories(" /home/xxxten/ChatProj/CharServerProj/ChatServer/include")
 # hw_grpc_proto
 
 add_library(chat_server_proto
+    "/home/xxxten/ChatProj/CharServerProj/ChatServer/include/grpc_cpp_out/ChatServer.Chat.grpc.pb.cc" 
+    "/home/xxxten/ChatProj/CharServerProj/ChatServer/include/grpc_cpp_out/ChatServer.Chat.grpc.pb.h"
+    "/home/xxxten/ChatProj/CharServerProj/ChatServer/include/grpc_cpp_out/ChatServer.Chat.pb.cc" 
+    "/home/xxxten/ChatProj/CharServerProj/ChatServer/include/grpc_cpp_out/ChatServer.Chat.pb.h"
+    )
+add_library(status_server_proto
     "/home/xxxten/ChatProj/CharServerProj/ChatServer/include/grpc_cpp_out/GateServer.Status.grpc.pb.cc" 
     "/home/xxxten/ChatProj/CharServerProj/ChatServer/include/grpc_cpp_out/GateServer.Status.grpc.pb.h"
     "/home/xxxten/ChatProj/CharServerProj/ChatServer/include/grpc_cpp_out/GateServer.Status.pb.cc" 
     "/home/xxxten/ChatProj/CharServerProj/ChatServer/include/grpc_cpp_out/GateServer.Status.pb.h"
     )
-
 target_link_libraries(chat_server_proto
   absl::check
   ${_REFLECTION}
   ${_GRPC_GRPCPP}
   ${_PROTOBUF_LIBPROTOBUF})
-
+target_link_libraries(status_server_proto
+  absl::check
+  ${_REFLECTION}
+  ${_GRPC_GRPCPP}
+  ${_PROTOBUF_LIBPROTOBUF})
 add_executable(ChatServer ${SRC})
 target_link_libraries(ChatServer  boost_system   pthread  hiredis redis++ mysqlclient
+    status_server_proto
     chat_server_proto
     absl::check
     absl::flags

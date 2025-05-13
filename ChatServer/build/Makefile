@@ -130,6 +130,19 @@ chat_server_proto/fast:
 .PHONY : chat_server_proto/fast
 
 #=============================================================================
+# Target rules for targets named status_server_proto
+
+# Build rule for target.
+status_server_proto: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 status_server_proto
+.PHONY : status_server_proto
+
+# fast build rule for target.
+status_server_proto/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/status_server_proto.dir/build.make CMakeFiles/status_server_proto.dir/build
+.PHONY : status_server_proto/fast
+
+#=============================================================================
 # Target rules for targets named ChatServer
 
 # Build rule for target.
@@ -142,12 +155,60 @@ ChatServer/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ChatServer.dir/build.make CMakeFiles/ChatServer.dir/build
 .PHONY : ChatServer/fast
 
+include/grpc_cpp_out/ChatServer.Chat.grpc.pb.o: include/grpc_cpp_out/ChatServer.Chat.grpc.pb.cc.o
+.PHONY : include/grpc_cpp_out/ChatServer.Chat.grpc.pb.o
+
+# target to build an object file
+include/grpc_cpp_out/ChatServer.Chat.grpc.pb.cc.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/chat_server_proto.dir/build.make CMakeFiles/chat_server_proto.dir/include/grpc_cpp_out/ChatServer.Chat.grpc.pb.cc.o
+.PHONY : include/grpc_cpp_out/ChatServer.Chat.grpc.pb.cc.o
+
+include/grpc_cpp_out/ChatServer.Chat.grpc.pb.i: include/grpc_cpp_out/ChatServer.Chat.grpc.pb.cc.i
+.PHONY : include/grpc_cpp_out/ChatServer.Chat.grpc.pb.i
+
+# target to preprocess a source file
+include/grpc_cpp_out/ChatServer.Chat.grpc.pb.cc.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/chat_server_proto.dir/build.make CMakeFiles/chat_server_proto.dir/include/grpc_cpp_out/ChatServer.Chat.grpc.pb.cc.i
+.PHONY : include/grpc_cpp_out/ChatServer.Chat.grpc.pb.cc.i
+
+include/grpc_cpp_out/ChatServer.Chat.grpc.pb.s: include/grpc_cpp_out/ChatServer.Chat.grpc.pb.cc.s
+.PHONY : include/grpc_cpp_out/ChatServer.Chat.grpc.pb.s
+
+# target to generate assembly for a file
+include/grpc_cpp_out/ChatServer.Chat.grpc.pb.cc.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/chat_server_proto.dir/build.make CMakeFiles/chat_server_proto.dir/include/grpc_cpp_out/ChatServer.Chat.grpc.pb.cc.s
+.PHONY : include/grpc_cpp_out/ChatServer.Chat.grpc.pb.cc.s
+
+include/grpc_cpp_out/ChatServer.Chat.pb.o: include/grpc_cpp_out/ChatServer.Chat.pb.cc.o
+.PHONY : include/grpc_cpp_out/ChatServer.Chat.pb.o
+
+# target to build an object file
+include/grpc_cpp_out/ChatServer.Chat.pb.cc.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/chat_server_proto.dir/build.make CMakeFiles/chat_server_proto.dir/include/grpc_cpp_out/ChatServer.Chat.pb.cc.o
+.PHONY : include/grpc_cpp_out/ChatServer.Chat.pb.cc.o
+
+include/grpc_cpp_out/ChatServer.Chat.pb.i: include/grpc_cpp_out/ChatServer.Chat.pb.cc.i
+.PHONY : include/grpc_cpp_out/ChatServer.Chat.pb.i
+
+# target to preprocess a source file
+include/grpc_cpp_out/ChatServer.Chat.pb.cc.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/chat_server_proto.dir/build.make CMakeFiles/chat_server_proto.dir/include/grpc_cpp_out/ChatServer.Chat.pb.cc.i
+.PHONY : include/grpc_cpp_out/ChatServer.Chat.pb.cc.i
+
+include/grpc_cpp_out/ChatServer.Chat.pb.s: include/grpc_cpp_out/ChatServer.Chat.pb.cc.s
+.PHONY : include/grpc_cpp_out/ChatServer.Chat.pb.s
+
+# target to generate assembly for a file
+include/grpc_cpp_out/ChatServer.Chat.pb.cc.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/chat_server_proto.dir/build.make CMakeFiles/chat_server_proto.dir/include/grpc_cpp_out/ChatServer.Chat.pb.cc.s
+.PHONY : include/grpc_cpp_out/ChatServer.Chat.pb.cc.s
+
 include/grpc_cpp_out/GateServer.Status.grpc.pb.o: include/grpc_cpp_out/GateServer.Status.grpc.pb.cc.o
 .PHONY : include/grpc_cpp_out/GateServer.Status.grpc.pb.o
 
 # target to build an object file
 include/grpc_cpp_out/GateServer.Status.grpc.pb.cc.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/chat_server_proto.dir/build.make CMakeFiles/chat_server_proto.dir/include/grpc_cpp_out/GateServer.Status.grpc.pb.cc.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/status_server_proto.dir/build.make CMakeFiles/status_server_proto.dir/include/grpc_cpp_out/GateServer.Status.grpc.pb.cc.o
 .PHONY : include/grpc_cpp_out/GateServer.Status.grpc.pb.cc.o
 
 include/grpc_cpp_out/GateServer.Status.grpc.pb.i: include/grpc_cpp_out/GateServer.Status.grpc.pb.cc.i
@@ -155,7 +216,7 @@ include/grpc_cpp_out/GateServer.Status.grpc.pb.i: include/grpc_cpp_out/GateServe
 
 # target to preprocess a source file
 include/grpc_cpp_out/GateServer.Status.grpc.pb.cc.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/chat_server_proto.dir/build.make CMakeFiles/chat_server_proto.dir/include/grpc_cpp_out/GateServer.Status.grpc.pb.cc.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/status_server_proto.dir/build.make CMakeFiles/status_server_proto.dir/include/grpc_cpp_out/GateServer.Status.grpc.pb.cc.i
 .PHONY : include/grpc_cpp_out/GateServer.Status.grpc.pb.cc.i
 
 include/grpc_cpp_out/GateServer.Status.grpc.pb.s: include/grpc_cpp_out/GateServer.Status.grpc.pb.cc.s
@@ -163,7 +224,7 @@ include/grpc_cpp_out/GateServer.Status.grpc.pb.s: include/grpc_cpp_out/GateServe
 
 # target to generate assembly for a file
 include/grpc_cpp_out/GateServer.Status.grpc.pb.cc.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/chat_server_proto.dir/build.make CMakeFiles/chat_server_proto.dir/include/grpc_cpp_out/GateServer.Status.grpc.pb.cc.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/status_server_proto.dir/build.make CMakeFiles/status_server_proto.dir/include/grpc_cpp_out/GateServer.Status.grpc.pb.cc.s
 .PHONY : include/grpc_cpp_out/GateServer.Status.grpc.pb.cc.s
 
 include/grpc_cpp_out/GateServer.Status.pb.o: include/grpc_cpp_out/GateServer.Status.pb.cc.o
@@ -171,7 +232,7 @@ include/grpc_cpp_out/GateServer.Status.pb.o: include/grpc_cpp_out/GateServer.Sta
 
 # target to build an object file
 include/grpc_cpp_out/GateServer.Status.pb.cc.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/chat_server_proto.dir/build.make CMakeFiles/chat_server_proto.dir/include/grpc_cpp_out/GateServer.Status.pb.cc.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/status_server_proto.dir/build.make CMakeFiles/status_server_proto.dir/include/grpc_cpp_out/GateServer.Status.pb.cc.o
 .PHONY : include/grpc_cpp_out/GateServer.Status.pb.cc.o
 
 include/grpc_cpp_out/GateServer.Status.pb.i: include/grpc_cpp_out/GateServer.Status.pb.cc.i
@@ -179,7 +240,7 @@ include/grpc_cpp_out/GateServer.Status.pb.i: include/grpc_cpp_out/GateServer.Sta
 
 # target to preprocess a source file
 include/grpc_cpp_out/GateServer.Status.pb.cc.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/chat_server_proto.dir/build.make CMakeFiles/chat_server_proto.dir/include/grpc_cpp_out/GateServer.Status.pb.cc.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/status_server_proto.dir/build.make CMakeFiles/status_server_proto.dir/include/grpc_cpp_out/GateServer.Status.pb.cc.i
 .PHONY : include/grpc_cpp_out/GateServer.Status.pb.cc.i
 
 include/grpc_cpp_out/GateServer.Status.pb.s: include/grpc_cpp_out/GateServer.Status.pb.cc.s
@@ -187,8 +248,80 @@ include/grpc_cpp_out/GateServer.Status.pb.s: include/grpc_cpp_out/GateServer.Sta
 
 # target to generate assembly for a file
 include/grpc_cpp_out/GateServer.Status.pb.cc.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/chat_server_proto.dir/build.make CMakeFiles/chat_server_proto.dir/include/grpc_cpp_out/GateServer.Status.pb.cc.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/status_server_proto.dir/build.make CMakeFiles/status_server_proto.dir/include/grpc_cpp_out/GateServer.Status.pb.cc.s
 .PHONY : include/grpc_cpp_out/GateServer.Status.pb.cc.s
+
+src/CallData.o: src/CallData.cpp.o
+.PHONY : src/CallData.o
+
+# target to build an object file
+src/CallData.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ChatServer.dir/build.make CMakeFiles/ChatServer.dir/src/CallData.cpp.o
+.PHONY : src/CallData.cpp.o
+
+src/CallData.i: src/CallData.cpp.i
+.PHONY : src/CallData.i
+
+# target to preprocess a source file
+src/CallData.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ChatServer.dir/build.make CMakeFiles/ChatServer.dir/src/CallData.cpp.i
+.PHONY : src/CallData.cpp.i
+
+src/CallData.s: src/CallData.cpp.s
+.PHONY : src/CallData.s
+
+# target to generate assembly for a file
+src/CallData.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ChatServer.dir/build.make CMakeFiles/ChatServer.dir/src/CallData.cpp.s
+.PHONY : src/CallData.cpp.s
+
+src/ChatGrpcClient.o: src/ChatGrpcClient.cpp.o
+.PHONY : src/ChatGrpcClient.o
+
+# target to build an object file
+src/ChatGrpcClient.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ChatServer.dir/build.make CMakeFiles/ChatServer.dir/src/ChatGrpcClient.cpp.o
+.PHONY : src/ChatGrpcClient.cpp.o
+
+src/ChatGrpcClient.i: src/ChatGrpcClient.cpp.i
+.PHONY : src/ChatGrpcClient.i
+
+# target to preprocess a source file
+src/ChatGrpcClient.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ChatServer.dir/build.make CMakeFiles/ChatServer.dir/src/ChatGrpcClient.cpp.i
+.PHONY : src/ChatGrpcClient.cpp.i
+
+src/ChatGrpcClient.s: src/ChatGrpcClient.cpp.s
+.PHONY : src/ChatGrpcClient.s
+
+# target to generate assembly for a file
+src/ChatGrpcClient.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ChatServer.dir/build.make CMakeFiles/ChatServer.dir/src/ChatGrpcClient.cpp.s
+.PHONY : src/ChatGrpcClient.cpp.s
+
+src/ChatGrpcServerImpl.o: src/ChatGrpcServerImpl.cpp.o
+.PHONY : src/ChatGrpcServerImpl.o
+
+# target to build an object file
+src/ChatGrpcServerImpl.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ChatServer.dir/build.make CMakeFiles/ChatServer.dir/src/ChatGrpcServerImpl.cpp.o
+.PHONY : src/ChatGrpcServerImpl.cpp.o
+
+src/ChatGrpcServerImpl.i: src/ChatGrpcServerImpl.cpp.i
+.PHONY : src/ChatGrpcServerImpl.i
+
+# target to preprocess a source file
+src/ChatGrpcServerImpl.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ChatServer.dir/build.make CMakeFiles/ChatServer.dir/src/ChatGrpcServerImpl.cpp.i
+.PHONY : src/ChatGrpcServerImpl.cpp.i
+
+src/ChatGrpcServerImpl.s: src/ChatGrpcServerImpl.cpp.s
+.PHONY : src/ChatGrpcServerImpl.s
+
+# target to generate assembly for a file
+src/ChatGrpcServerImpl.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ChatServer.dir/build.make CMakeFiles/ChatServer.dir/src/ChatGrpcServerImpl.cpp.s
+.PHONY : src/ChatGrpcServerImpl.cpp.s
 
 src/ChatServer.o: src/ChatServer.cpp.o
 .PHONY : src/ChatServer.o
@@ -440,12 +573,28 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... ChatServer"
 	@echo "... chat_server_proto"
+	@echo "... status_server_proto"
+	@echo "... include/grpc_cpp_out/ChatServer.Chat.grpc.pb.o"
+	@echo "... include/grpc_cpp_out/ChatServer.Chat.grpc.pb.i"
+	@echo "... include/grpc_cpp_out/ChatServer.Chat.grpc.pb.s"
+	@echo "... include/grpc_cpp_out/ChatServer.Chat.pb.o"
+	@echo "... include/grpc_cpp_out/ChatServer.Chat.pb.i"
+	@echo "... include/grpc_cpp_out/ChatServer.Chat.pb.s"
 	@echo "... include/grpc_cpp_out/GateServer.Status.grpc.pb.o"
 	@echo "... include/grpc_cpp_out/GateServer.Status.grpc.pb.i"
 	@echo "... include/grpc_cpp_out/GateServer.Status.grpc.pb.s"
 	@echo "... include/grpc_cpp_out/GateServer.Status.pb.o"
 	@echo "... include/grpc_cpp_out/GateServer.Status.pb.i"
 	@echo "... include/grpc_cpp_out/GateServer.Status.pb.s"
+	@echo "... src/CallData.o"
+	@echo "... src/CallData.i"
+	@echo "... src/CallData.s"
+	@echo "... src/ChatGrpcClient.o"
+	@echo "... src/ChatGrpcClient.i"
+	@echo "... src/ChatGrpcClient.s"
+	@echo "... src/ChatGrpcServerImpl.o"
+	@echo "... src/ChatGrpcServerImpl.i"
+	@echo "... src/ChatGrpcServerImpl.s"
 	@echo "... src/ChatServer.o"
 	@echo "... src/ChatServer.i"
 	@echo "... src/ChatServer.s"

@@ -1,2 +1,2 @@
-/usr/bin/ar qc libchat_server_proto.a CMakeFiles/chat_server_proto.dir/include/grpc_cpp_out/GateServer.Status.grpc.pb.cc.o CMakeFiles/chat_server_proto.dir/include/grpc_cpp_out/GateServer.Status.pb.cc.o
+/usr/bin/ar qc libchat_server_proto.a CMakeFiles/chat_server_proto.dir/include/grpc_cpp_out/ChatServer.Chat.grpc.pb.cc.o CMakeFiles/chat_server_proto.dir/include/grpc_cpp_out/ChatServer.Chat.pb.cc.o
 /usr/bin/ranlib libchat_server_proto.a

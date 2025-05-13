@@ -64,6 +64,7 @@ CMAKE_BINARY_DIR = /home/xxxten/ChatProj/CharServerProj/ChatServer/build
 
 # The main recursive "all" target.
 all: CMakeFiles/chat_server_proto.dir/all
+all: CMakeFiles/status_server_proto.dir/all
 all: CMakeFiles/ChatServer.dir/all
 .PHONY : all
 
@@ -73,6 +74,7 @@ preinstall:
 
 # The main recursive "clean" target.
 clean: CMakeFiles/chat_server_proto.dir/clean
+clean: CMakeFiles/status_server_proto.dir/clean
 clean: CMakeFiles/ChatServer.dir/clean
 .PHONY : clean
 
@@ -83,7 +85,7 @@ clean: CMakeFiles/ChatServer.dir/clean
 CMakeFiles/chat_server_proto.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/chat_server_proto.dir/build.make CMakeFiles/chat_server_proto.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/chat_server_proto.dir/build.make CMakeFiles/chat_server_proto.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/xxxten/ChatProj/CharServerProj/ChatServer/build/CMakeFiles --progress-num=12,13,14 "Built target chat_server_proto"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/xxxten/ChatProj/CharServerProj/ChatServer/build/CMakeFiles --progress-num=15,16,17 "Built target chat_server_proto"
 .PHONY : CMakeFiles/chat_server_proto.dir/all
 
 # Build rule for subdir invocation for target.
@@ -103,18 +105,45 @@ CMakeFiles/chat_server_proto.dir/clean:
 .PHONY : CMakeFiles/chat_server_proto.dir/clean
 
 #=============================================================================
+# Target rules for target CMakeFiles/status_server_proto.dir
+
+# All Build rule for target.
+CMakeFiles/status_server_proto.dir/all:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/status_server_proto.dir/build.make CMakeFiles/status_server_proto.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/status_server_proto.dir/build.make CMakeFiles/status_server_proto.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/xxxten/ChatProj/CharServerProj/ChatServer/build/CMakeFiles --progress-num=18,19,20 "Built target status_server_proto"
+.PHONY : CMakeFiles/status_server_proto.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/status_server_proto.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/xxxten/ChatProj/CharServerProj/ChatServer/build/CMakeFiles 3
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/status_server_proto.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/xxxten/ChatProj/CharServerProj/ChatServer/build/CMakeFiles 0
+.PHONY : CMakeFiles/status_server_proto.dir/rule
+
+# Convenience name for target.
+status_server_proto: CMakeFiles/status_server_proto.dir/rule
+.PHONY : status_server_proto
+
+# clean rule for target.
+CMakeFiles/status_server_proto.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/status_server_proto.dir/build.make CMakeFiles/status_server_proto.dir/clean
+.PHONY : CMakeFiles/status_server_proto.dir/clean
+
+#=============================================================================
 # Target rules for target CMakeFiles/ChatServer.dir
 
 # All Build rule for target.
 CMakeFiles/ChatServer.dir/all: CMakeFiles/chat_server_proto.dir/all
+CMakeFiles/ChatServer.dir/all: CMakeFiles/status_server_proto.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ChatServer.dir/build.make CMakeFiles/ChatServer.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ChatServer.dir/build.make CMakeFiles/ChatServer.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/xxxten/ChatProj/CharServerProj/ChatServer/build/CMakeFiles --progress-num=1,2,3,4,5,6,7,8,9,10,11 "Built target ChatServer"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/xxxten/ChatProj/CharServerProj/ChatServer/build/CMakeFiles --progress-num=1,2,3,4,5,6,7,8,9,10,11,12,13,14 "Built target ChatServer"
 .PHONY : CMakeFiles/ChatServer.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/ChatServer.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/xxxten/ChatProj/CharServerProj/ChatServer/build/CMakeFiles 14
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/xxxten/ChatProj/CharServerProj/ChatServer/build/CMakeFiles 20
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/ChatServer.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/xxxten/ChatProj/CharServerProj/ChatServer/build/CMakeFiles 0
 .PHONY : CMakeFiles/ChatServer.dir/rule

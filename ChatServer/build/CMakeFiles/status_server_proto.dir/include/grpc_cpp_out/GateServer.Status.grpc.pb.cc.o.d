@@ -1,4 +1,4 @@
-CMakeFiles/chat_server_proto.dir/include/grpc_cpp_out/GateServer.Status.grpc.pb.cc.o: \
+CMakeFiles/status_server_proto.dir/include/grpc_cpp_out/GateServer.Status.grpc.pb.cc.o: \
  /home/xxxten/ChatProj/CharServerProj/ChatServer/include/grpc_cpp_out/GateServer.Status.grpc.pb.cc \
  /usr/include/stdc-predef.h \
  /home/xxxten/ChatProj/CharServerProj/ChatServer/include/grpc_cpp_out/GateServer.Status.pb.h \

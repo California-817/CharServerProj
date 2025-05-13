@@ -14,6 +14,9 @@
 #include<cctype>
 #include <boost/uuid/uuid_generators.hpp>
 #include <arpa/inet.h>
+#include"grpc_cpp_out/ChatServer.Chat.pb.h"
+#include"grpc_cpp_out/ChatServer.Chat.grpc.pb.h"
+#include <grpcpp/grpcpp.h>
 #include <iostream>
 #include<mysql.h>
 #include"nlohmann/json.hpp"
@@ -56,9 +59,12 @@ enum MSGID
     MSGID_CHAT_LOGIN_RSP=1006, //登录的回应
     MSGID_SEARCH_USER=1007, //搜索好友请求
     MSGID_SEARCH_USER_RSP=1008, //搜索好友响应
+    MSGID_ADD_FRIEND=1009,  //添加好友请求
+    MSGID_ADD_FRIEND_RSP=1010, //添加好友回复
+    MSGID_NOTIFY_ADD_FRIEND=1011, //通知添加好友请求
 };
 
-#define USERIPPREFIX  "uip_"
+#define USERIPPREFIX  "uip_"  //用户所在的ip的uidkey值
 #define USERTOKENPREFIX  "utoken_"
 #define IPCOUNTPREFIX  "ipcount_" 
 #define USER_BASE_INFO "ubaseinfo_" //一个hash名称 存放一个用户的基本信息 通过uid

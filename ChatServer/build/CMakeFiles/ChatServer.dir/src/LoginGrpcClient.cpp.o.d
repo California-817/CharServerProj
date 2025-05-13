@@ -1432,87 +1432,20 @@ CMakeFiles/ChatServer.dir/src/LoginGrpcClient.cpp.o: \
  /usr/include/asm/unistd_64.h /usr/include/bits/syscall.h \
  /usr/include/boost/uuid/detail/random_provider_include_platform.hpp \
  /usr/include/boost/uuid/detail/random_provider_getrandom.ipp \
- /usr/include/sys/random.h /usr/include/c++/12/iostream \
- /usr/local/include/mysql.h /usr/local/include/mysql_version.h \
- /usr/local/include/mysql_com.h /usr/local/include/binary_log_types.h \
- /usr/local/include/my_command.h /usr/local/include/mysql_time.h \
- /usr/local/include/my_list.h /usr/local/include/mysql/client_plugin.h \
- /usr/local/include/mysql/plugin_auth_common.h \
- /usr/local/include/typelib.h /usr/local/include/my_alloc.h \
- /usr/local/include/mysql/psi/psi_memory.h \
- /usr/local/include/mysql/psi/psi_base.h \
- /home/xxxten/ChatProj/CharServerProj/ChatServer/src/../include/nlohmann/json.hpp \
- /usr/include/c++/12/forward_list /usr/include/c++/12/bits/forward_list.h \
- /usr/include/c++/12/bits/forward_list.tcc /usr/include/c++/12/map \
- /usr/include/c++/12/bits/stl_tree.h /usr/include/c++/12/bits/stl_map.h \
- /usr/include/c++/12/bits/stl_multimap.h /usr/include/c++/12/valarray \
- /usr/include/c++/12/bits/valarray_array.h \
- /usr/include/c++/12/bits/valarray_array.tcc \
- /usr/include/c++/12/bits/valarray_before.h \
- /usr/include/c++/12/bits/slice_array.h \
- /usr/include/c++/12/bits/valarray_after.h \
- /usr/include/c++/12/bits/gslice.h \
- /usr/include/c++/12/bits/gslice_array.h \
- /usr/include/c++/12/bits/mask_array.h \
- /usr/include/c++/12/bits/indirect_array.h /usr/include/c++/12/filesystem \
- /usr/include/c++/12/bits/fs_fwd.h /usr/include/c++/12/bits/fs_path.h \
- /usr/include/c++/12/iomanip /usr/include/c++/12/bits/quoted_string.h \
- /usr/include/c++/12/codecvt /usr/include/c++/12/bits/fs_dir.h \
- /usr/include/c++/12/bits/fs_ops.h /usr/include/c++/12/optional \
- /usr/include/c++/12/numeric /usr/include/c++/12/bits/stl_numeric.h \
- /usr/include/c++/12/pstl/glue_numeric_defs.h \
- /home/xxxten/ChatProj/CharServerProj/ChatServer/src/../include/mini/ini.h \
- /usr/include/c++/12/fstream \
- /usr/include/c++/12/x86_64-OpenCloudOS-linux/bits/basic_file.h \
- /usr/include/c++/12/x86_64-OpenCloudOS-linux/bits/c++io.h \
- /usr/include/c++/12/bits/fstream.tcc \
- /root/.local/include/grpcpp/grpcpp.h /root/.local/include/grpc/grpc.h \
- /root/.local/include/grpc/byte_buffer.h \
- /root/.local/include/grpc/impl/grpc_types.h \
- /root/.local/include/grpc/impl/channel_arg_names.h \
- /root/.local/include/grpc/impl/compression_types.h \
- /root/.local/include/grpc/support/port_platform.h \
- /root/.local/include/grpc/slice.h \
- /root/.local/include/grpc/impl/slice_type.h \
- /root/.local/include/grpc/support/sync.h \
- /root/.local/include/grpc/support/time.h \
- /root/.local/include/grpc/support/sync_generic.h \
- /root/.local/include/grpc/support/atm.h \
- /root/.local/include/grpc/support/atm_gcc_atomic.h \
- /root/.local/include/grpc/support/sync_abseil.h \
- /root/.local/include/grpc/status.h \
- /root/.local/include/grpc/slice_buffer.h \
- /root/.local/include/grpc/impl/connectivity_state.h \
- /root/.local/include/grpc/impl/propagation_bits.h \
- /root/.local/include/grpcpp/channel.h \
- /root/.local/include/grpcpp/completion_queue.h \
- /root/.local/include/grpcpp/impl/codegen/rpc_service_method.h \
- /root/.local/include/grpcpp/impl/rpc_service_method.h \
- /root/.local/include/grpcpp/impl/rpc_method.h \
- /root/.local/include/grpcpp/impl/codegen/channel_interface.h \
- /root/.local/include/grpcpp/impl/channel_interface.h \
- /root/.local/include/grpcpp/impl/call.h \
- /root/.local/include/grpcpp/impl/call_hook.h \
- /root/.local/include/grpcpp/support/status.h \
- /root/.local/include/grpcpp/impl/status.h \
- /root/.local/include/grpcpp/support/config.h \
- /root/.local/include/grpcpp/support/status_code_enum.h \
- /root/.local/include/grpcpp/support/time.h \
- /root/.local/include/grpcpp/support/byte_buffer.h \
- /root/.local/include/grpcpp/impl/serialization_traits.h \
- /root/.local/include/grpcpp/support/slice.h \
- /root/.local/include/grpcpp/support/string_ref.h \
- /root/.local/include/absl/log/absl_check.h \
- /root/.local/include/absl/log/internal/check_impl.h \
- /root/.local/include/absl/base/optimization.h \
+ /usr/include/sys/random.h \
+ /home/xxxten/ChatProj/CharServerProj/ChatServer/src/../include/grpc_cpp_out/ChatServer.Chat.pb.h \
+ /root/.local/include/google/protobuf/runtime_version.h \
+ /root/.local/include/google/protobuf/io/coded_stream.h \
+ /root/.local/include/absl/log/absl_log.h \
+ /root/.local/include/absl/log/internal/log_impl.h \
+ /root/.local/include/absl/log/absl_vlog_is_on.h \
+ /root/.local/include/absl/base/attributes.h \
  /root/.local/include/absl/base/config.h \
  /root/.local/include/absl/base/options.h \
  /root/.local/include/absl/base/policy_checks.h \
- /root/.local/include/absl/log/internal/check_op.h \
- /root/.local/include/absl/base/attributes.h \
- /root/.local/include/absl/log/internal/nullguard.h \
- /root/.local/include/absl/log/internal/nullstream.h \
- /root/.local/include/absl/base/log_severity.h \
+ /root/.local/include/absl/log/internal/vlog_config.h \
+ /root/.local/include/absl/base/optimization.h \
+ /root/.local/include/absl/base/thread_annotations.h \
  /root/.local/include/absl/strings/string_view.h \
  /root/.local/include/absl/base/nullability.h \
  /root/.local/include/absl/base/internal/nullability_impl.h \
@@ -1520,9 +1453,12 @@ CMakeFiles/ChatServer.dir/src/LoginGrpcClient.cpp.o: \
  /root/.local/include/absl/base/internal/throw_delegate.h \
  /root/.local/include/absl/base/macros.h \
  /root/.local/include/absl/base/port.h \
- /root/.local/include/absl/log/internal/strip.h \
+ /root/.local/include/absl/log/internal/conditions.h \
+ /root/.local/include/absl/log/internal/voidify.h \
  /root/.local/include/absl/log/internal/log_message.h \
  /root/.local/include/absl/base/internal/errno_saver.h \
+ /root/.local/include/absl/base/log_severity.h \
+ /root/.local/include/absl/log/internal/nullguard.h \
  /root/.local/include/absl/log/log_entry.h \
  /root/.local/include/absl/log/internal/config.h \
  /root/.local/include/absl/time/time.h \
@@ -1535,72 +1471,26 @@ CMakeFiles/ChatServer.dir/src/LoginGrpcClient.cpp.o: \
  /root/.local/include/absl/algorithm/algorithm.h \
  /root/.local/include/absl/log/log_sink.h \
  /root/.local/include/absl/strings/has_absl_stringify.h \
- /root/.local/include/absl/log/internal/conditions.h \
- /root/.local/include/absl/log/internal/voidify.h \
- /root/.local/include/absl/log/absl_log.h \
- /root/.local/include/absl/log/internal/log_impl.h \
- /root/.local/include/absl/log/absl_vlog_is_on.h \
- /root/.local/include/absl/log/internal/vlog_config.h \
- /root/.local/include/absl/base/thread_annotations.h \
- /root/.local/include/grpcpp/impl/codegen/status.h \
- /root/.local/include/grpcpp/impl/codegen/sync.h \
- /root/.local/include/grpcpp/impl/sync.h \
- /root/.local/include/absl/synchronization/mutex.h \
- /root/.local/include/absl/base/const_init.h \
- /root/.local/include/absl/base/internal/identity.h \
- /root/.local/include/absl/base/internal/low_level_alloc.h \
- /root/.local/include/absl/base/internal/thread_identity.h \
- /root/.local/include/absl/base/internal/per_thread_tls.h \
- /root/.local/include/absl/base/internal/tsan_mutex_interface.h \
- /root/.local/include/absl/synchronization/internal/kernel_timeout.h \
- /root/.local/include/absl/base/internal/raw_logging.h \
- /root/.local/include/absl/base/internal/atomic_hook.h \
- /root/.local/include/absl/time/clock.h \
- /root/.local/include/absl/synchronization/internal/per_thread_sem.h \
- /root/.local/include/absl/synchronization/internal/create_thread_identity.h \
- /root/.local/include/grpcpp/impl/codegen/time.h \
- /root/.local/include/grpcpp/impl/completion_queue_tag.h \
- /root/.local/include/grpcpp/impl/grpc_library.h \
- /root/.local/include/grpcpp/impl/codegen/config.h \
- /usr/include/c++/12/list /usr/include/c++/12/bits/stl_list.h \
- /usr/include/c++/12/bits/list.tcc \
- /root/.local/include/grpcpp/support/client_interceptor.h \
- /root/.local/include/grpcpp/support/interceptor.h \
- /root/.local/include/grpcpp/impl/metadata_map.h \
- /root/.local/include/grpcpp/client_context.h \
- /root/.local/include/grpcpp/impl/create_auth_context.h \
- /root/.local/include/grpcpp/security/auth_context.h \
- /root/.local/include/grpcpp/create_channel.h \
- /root/.local/include/grpcpp/security/credentials.h \
- /root/.local/include/grpc/grpc_security_constants.h \
- /root/.local/include/grpcpp/security/tls_credentials_options.h \
- /root/.local/include/grpc/grpc_security.h \
- /usr/lib/gcc/x86_64-OpenCloudOS-linux/12/include/stdbool.h \
- /root/.local/include/grpcpp/security/tls_certificate_provider.h \
- /root/.local/include/grpc/credentials.h \
- /root/.local/include/absl/status/statusor.h \
- /root/.local/include/absl/base/call_once.h \
- /root/.local/include/absl/base/internal/invoke.h \
- /root/.local/include/absl/base/internal/low_level_scheduling.h \
- /root/.local/include/absl/base/internal/scheduling_mode.h \
- /root/.local/include/absl/base/internal/spinlock_wait.h \
- /root/.local/include/absl/status/internal/statusor_internal.h \
- /root/.local/include/absl/status/status.h \
- /root/.local/include/absl/functional/function_ref.h \
- /root/.local/include/absl/functional/internal/function_ref.h \
- /root/.local/include/absl/functional/any_invocable.h \
- /root/.local/include/absl/functional/internal/any_invocable.h \
- /root/.local/include/absl/utility/utility.h \
- /root/.local/include/absl/base/internal/inline_variable.h \
- /root/.local/include/absl/status/internal/status_internal.h \
- /root/.local/include/absl/container/inlined_vector.h \
- /root/.local/include/absl/container/internal/inlined_vector.h \
- /root/.local/include/absl/container/internal/compressed_tuple.h \
- /root/.local/include/absl/memory/memory.h \
+ /root/.local/include/absl/log/internal/strip.h \
+ /root/.local/include/absl/log/internal/nullstream.h \
+ /root/.local/include/absl/log/absl_check.h \
+ /root/.local/include/absl/log/internal/check_impl.h \
+ /root/.local/include/absl/log/internal/check_op.h \
+ /root/.local/include/absl/numeric/bits.h \
+ /root/.local/include/absl/numeric/internal/bits.h \
  /root/.local/include/absl/strings/cord.h \
  /root/.local/include/absl/base/internal/endian.h \
  /root/.local/include/absl/base/casts.h \
+ /root/.local/include/absl/base/internal/identity.h \
  /root/.local/include/absl/base/internal/unaligned_access.h \
+ /root/.local/include/absl/base/internal/per_thread_tls.h \
+ /root/.local/include/absl/container/inlined_vector.h \
+ /root/.local/include/absl/container/internal/inlined_vector.h \
+ /root/.local/include/absl/container/internal/compressed_tuple.h \
+ /root/.local/include/absl/utility/utility.h \
+ /root/.local/include/absl/base/internal/inline_variable.h \
+ /root/.local/include/absl/base/internal/invoke.h \
+ /root/.local/include/absl/memory/memory.h \
  /root/.local/include/absl/crc/internal/crc_cord_state.h \
  /root/.local/include/absl/crc/crc32c.h \
  /root/.local/include/absl/crc/internal/crc32c_inline.h \
@@ -1615,87 +1505,47 @@ CMakeFiles/ChatServer.dir/src/LoginGrpcClient.cpp.o: \
  /root/.local/include/absl/strings/internal/str_format/bind.h \
  /root/.local/include/absl/strings/internal/str_format/checker.h \
  /root/.local/include/absl/strings/internal/str_format/constexpr_parser.h \
+ /root/.local/include/absl/base/const_init.h \
  /root/.local/include/absl/strings/internal/str_format/parser.h \
+ /root/.local/include/absl/functional/function_ref.h \
+ /root/.local/include/absl/functional/internal/function_ref.h \
+ /root/.local/include/absl/functional/any_invocable.h \
+ /root/.local/include/absl/functional/internal/any_invocable.h \
  /root/.local/include/absl/strings/cord_analysis.h \
  /root/.local/include/absl/strings/internal/cord_internal.h \
  /root/.local/include/absl/container/internal/container_memory.h \
  /root/.local/include/absl/strings/cord_buffer.h \
- /root/.local/include/absl/numeric/bits.h \
- /root/.local/include/absl/numeric/internal/bits.h \
  /root/.local/include/absl/strings/internal/cord_rep_flat.h \
  /root/.local/include/absl/strings/internal/cord_data_edge.h \
  /root/.local/include/absl/strings/internal/cord_rep_btree.h \
+ /root/.local/include/absl/base/internal/raw_logging.h \
+ /root/.local/include/absl/base/internal/atomic_hook.h \
  /root/.local/include/absl/strings/internal/cord_rep_btree_reader.h \
  /root/.local/include/absl/strings/internal/cord_rep_btree_navigator.h \
+ /usr/include/c++/12/iostream \
  /root/.local/include/absl/strings/internal/cord_rep_crc.h \
  /root/.local/include/absl/strings/internal/cordz_functions.h \
  /root/.local/include/absl/strings/internal/cordz_info.h \
  /root/.local/include/absl/base/internal/spinlock.h \
  /root/.local/include/absl/base/dynamic_annotations.h \
  /root/.local/include/absl/base/internal/dynamic_annotations.h \
+ /root/.local/include/absl/base/internal/low_level_scheduling.h \
+ /root/.local/include/absl/base/internal/scheduling_mode.h \
+ /root/.local/include/absl/base/internal/tsan_mutex_interface.h \
  /root/.local/include/absl/strings/internal/cordz_handle.h \
  /root/.local/include/absl/strings/internal/cordz_statistics.h \
  /root/.local/include/absl/strings/internal/cordz_update_tracker.h \
+ /root/.local/include/absl/synchronization/mutex.h \
+ /root/.local/include/absl/base/internal/low_level_alloc.h \
+ /root/.local/include/absl/base/internal/thread_identity.h \
+ /root/.local/include/absl/synchronization/internal/kernel_timeout.h \
+ /root/.local/include/absl/time/clock.h \
+ /root/.local/include/absl/synchronization/internal/per_thread_sem.h \
+ /root/.local/include/absl/synchronization/internal/create_thread_identity.h \
  /root/.local/include/absl/strings/internal/cordz_update_scope.h \
  /root/.local/include/absl/strings/internal/resize_uninitialized.h \
  /root/.local/include/absl/strings/internal/string_constant.h \
- /root/.local/include/absl/types/optional.h \
- /root/.local/include/absl/strings/has_ostream_operator.h \
- /root/.local/include/absl/types/variant.h /usr/include/c++/12/variant \
- /root/.local/include/grpcpp/security/tls_certificate_verifier.h \
- /root/.local/include/grpcpp/security/tls_crl_provider.h \
- /root/.local/include/grpc/grpc_crl_provider.h \
- /root/.local/include/grpcpp/support/channel_arguments.h \
- /root/.local/include/grpc/compression.h \
- /root/.local/include/grpcpp/resource_quota.h \
- /root/.local/include/grpcpp/create_channel_posix.h \
- /root/.local/include/grpcpp/server.h \
- /root/.local/include/grpcpp/health_check_service_interface.h \
- /root/.local/include/grpcpp/security/server_credentials.h \
- /root/.local/include/grpcpp/security/auth_metadata_processor.h \
- /root/.local/include/grpcpp/server_interface.h \
- /root/.local/include/grpcpp/impl/codegen/interceptor_common.h \
- /root/.local/include/grpcpp/impl/interceptor_common.h \
- /root/.local/include/grpcpp/impl/call_op_set_interface.h \
- /root/.local/include/grpcpp/impl/intercepted_channel.h \
- /root/.local/include/grpcpp/support/server_interceptor.h \
- /root/.local/include/grpcpp/server_context.h \
- /root/.local/include/grpc/impl/call.h \
- /root/.local/include/grpcpp/impl/call_op_set.h \
- /root/.local/include/grpc/support/alloc.h \
- /root/.local/include/grpcpp/impl/codegen/intercepted_channel.h \
- /root/.local/include/grpcpp/impl/codegen/create_auth_context.h \
- /root/.local/include/grpcpp/impl/codegen/metadata_map.h \
- /root/.local/include/grpcpp/support/callback_common.h \
- /root/.local/include/grpcpp/support/global_callback_hook.h \
- /root/.local/include/grpcpp/support/message_allocator.h \
- /root/.local/include/grpcpp/support/server_callback.h \
- /root/.local/include/grpcpp/server_builder.h \
- /root/.local/include/grpc/event_engine/event_engine.h \
- /root/.local/include/grpc/event_engine/endpoint_config.h \
- /root/.local/include/grpc/event_engine/extensible.h \
- /root/.local/include/grpc/event_engine/memory_allocator.h \
- /root/.local/include/grpc/event_engine/internal/memory_allocator_impl.h \
- /root/.local/include/grpc/event_engine/memory_request.h \
- /root/.local/include/grpc/event_engine/port.h \
- /root/.local/include/grpc/event_engine/slice_buffer.h \
- /root/.local/include/grpc/event_engine/internal/slice_cast.h \
- /root/.local/include/grpc/event_engine/slice.h \
- /root/.local/include/grpc/impl/codegen/slice.h \
- /root/.local/include/grpc/passive_listener.h \
- /root/.local/include/grpc/support/cpu.h \
- /root/.local/include/grpc/support/workaround_list.h \
- /root/.local/include/grpcpp/impl/channel_argument_option.h \
- /root/.local/include/grpcpp/impl/server_builder_option.h \
- /root/.local/include/grpcpp/impl/server_builder_plugin.h \
- /root/.local/include/grpcpp/passive_listener.h \
- /root/.local/include/grpcpp/security/authorization_policy_provider.h \
- /root/.local/include/grpcpp/server_posix.h \
- /root/.local/include/grpcpp/version_info.h \
- /home/xxxten/ChatProj/CharServerProj/ChatServer/src/../include/grpc_cpp_out/GateServer.Status.grpc.pb.h \
- /home/xxxten/ChatProj/CharServerProj/ChatServer/src/../include/grpc_cpp_out/GateServer.Status.pb.h \
- /root/.local/include/google/protobuf/runtime_version.h \
- /root/.local/include/google/protobuf/io/coded_stream.h \
+ /root/.local/include/absl/types/optional.h /usr/include/c++/12/optional \
  /root/.local/include/google/protobuf/endian.h \
  /root/.local/include/google/protobuf/port_def.inc \
  /root/.local/include/google/protobuf/port_undef.inc \
@@ -1728,6 +1578,8 @@ CMakeFiles/ChatServer.dir/src/LoginGrpcClient.cpp.o: \
  /root/.local/include/google/protobuf/repeated_ptr_field.h \
  /root/.local/include/google/protobuf/wire_format_lite.h \
  /root/.local/include/google/protobuf/generated_message_util.h \
+ /root/.local/include/absl/base/call_once.h \
+ /root/.local/include/absl/base/internal/spinlock_wait.h \
  /root/.local/include/google/protobuf/any.h \
  /root/.local/include/google/protobuf/has_bits.h \
  /root/.local/include/google/protobuf/implicit_weak_message.h \
@@ -1745,7 +1597,9 @@ CMakeFiles/ChatServer.dir/src/LoginGrpcClient.cpp.o: \
  /root/.local/include/absl/container/internal/btree_container.h \
  /root/.local/include/absl/container/flat_hash_map.h \
  /root/.local/include/absl/algorithm/container.h \
- /usr/include/c++/12/random /usr/include/c++/12/bits/random.h \
+ /usr/include/c++/12/numeric /usr/include/c++/12/bits/stl_numeric.h \
+ /usr/include/c++/12/pstl/glue_numeric_defs.h /usr/include/c++/12/random \
+ /usr/include/c++/12/bits/random.h \
  /usr/include/c++/12/x86_64-OpenCloudOS-linux/bits/opt_random.h \
  /usr/include/c++/12/bits/random.tcc /usr/include/c++/12/unordered_set \
  /usr/include/c++/12/bits/unordered_set.h \
@@ -1754,11 +1608,22 @@ CMakeFiles/ChatServer.dir/src/LoginGrpcClient.cpp.o: \
  /root/.local/include/absl/hash/hash.h \
  /root/.local/include/absl/hash/internal/hash.h \
  /usr/include/c++/12/ciso646 /usr/include/c++/12/bitset \
- /usr/include/c++/12/set /usr/include/c++/12/bits/stl_set.h \
+ /usr/include/c++/12/forward_list /usr/include/c++/12/bits/forward_list.h \
+ /usr/include/c++/12/bits/forward_list.tcc /usr/include/c++/12/list \
+ /usr/include/c++/12/bits/stl_list.h /usr/include/c++/12/bits/list.tcc \
+ /usr/include/c++/12/map /usr/include/c++/12/bits/stl_tree.h \
+ /usr/include/c++/12/bits/stl_map.h \
+ /usr/include/c++/12/bits/stl_multimap.h /usr/include/c++/12/set \
+ /usr/include/c++/12/bits/stl_set.h \
  /usr/include/c++/12/bits/stl_multiset.h \
  /root/.local/include/absl/container/fixed_array.h \
  /root/.local/include/absl/hash/internal/city.h \
  /root/.local/include/absl/hash/internal/low_level_hash.h \
+ /root/.local/include/absl/types/variant.h /usr/include/c++/12/variant \
+ /usr/include/c++/12/filesystem /usr/include/c++/12/bits/fs_fwd.h \
+ /usr/include/c++/12/bits/fs_path.h /usr/include/c++/12/iomanip \
+ /usr/include/c++/12/bits/quoted_string.h /usr/include/c++/12/codecvt \
+ /usr/include/c++/12/bits/fs_dir.h /usr/include/c++/12/bits/fs_ops.h \
  /root/.local/include/absl/container/internal/raw_hash_map.h \
  /root/.local/include/absl/container/internal/raw_hash_set.h \
  /root/.local/include/absl/container/internal/hash_policy_traits.h \
@@ -1775,11 +1640,77 @@ CMakeFiles/ChatServer.dir/src/LoginGrpcClient.cpp.o: \
  /root/.local/include/google/protobuf/map.h \
  /root/.local/include/google/protobuf/map_type_handler.h \
  /root/.local/include/google/protobuf/reflection.h \
+ /home/xxxten/ChatProj/CharServerProj/ChatServer/src/../include/grpc_cpp_out/ChatServer.Chat.grpc.pb.h \
+ /home/xxxten/ChatProj/CharServerProj/ChatServer/src/../include/grpc_cpp_out/ChatServer.Chat.pb.h \
  /root/.local/include/grpcpp/generic/async_generic_service.h \
+ /root/.local/include/grpc/support/port_platform.h \
  /root/.local/include/grpcpp/generic/callback_generic_service.h \
  /root/.local/include/grpcpp/impl/server_callback_handlers.h \
+ /root/.local/include/grpc/grpc.h /root/.local/include/grpc/byte_buffer.h \
+ /root/.local/include/grpc/impl/grpc_types.h \
+ /root/.local/include/grpc/impl/channel_arg_names.h \
+ /root/.local/include/grpc/impl/compression_types.h \
+ /root/.local/include/grpc/slice.h \
+ /root/.local/include/grpc/impl/slice_type.h \
+ /root/.local/include/grpc/support/sync.h \
+ /root/.local/include/grpc/support/time.h \
+ /root/.local/include/grpc/support/sync_generic.h \
+ /root/.local/include/grpc/support/atm.h \
+ /root/.local/include/grpc/support/atm_gcc_atomic.h \
+ /root/.local/include/grpc/support/sync_abseil.h \
+ /root/.local/include/grpc/status.h \
+ /root/.local/include/grpc/slice_buffer.h \
+ /root/.local/include/grpc/impl/connectivity_state.h \
+ /root/.local/include/grpc/impl/propagation_bits.h \
+ /root/.local/include/grpc/impl/call.h \
+ /root/.local/include/grpcpp/impl/rpc_service_method.h \
+ /root/.local/include/grpcpp/impl/rpc_method.h \
+ /root/.local/include/grpcpp/impl/codegen/channel_interface.h \
+ /root/.local/include/grpcpp/impl/channel_interface.h \
+ /root/.local/include/grpcpp/impl/call.h \
+ /root/.local/include/grpcpp/impl/call_hook.h \
+ /root/.local/include/grpcpp/support/status.h \
+ /root/.local/include/grpcpp/impl/status.h \
+ /root/.local/include/grpcpp/support/config.h \
+ /root/.local/include/grpcpp/support/status_code_enum.h \
+ /root/.local/include/grpcpp/support/time.h \
+ /root/.local/include/grpcpp/support/byte_buffer.h \
+ /root/.local/include/grpcpp/impl/serialization_traits.h \
+ /root/.local/include/grpcpp/support/slice.h \
+ /root/.local/include/grpcpp/support/string_ref.h \
+ /root/.local/include/grpcpp/server_context.h \
+ /root/.local/include/grpcpp/impl/call_op_set.h \
+ /root/.local/include/grpc/support/alloc.h \
+ /root/.local/include/grpcpp/client_context.h \
+ /root/.local/include/grpcpp/impl/create_auth_context.h \
+ /root/.local/include/grpcpp/security/auth_context.h \
+ /root/.local/include/grpcpp/impl/metadata_map.h \
+ /root/.local/include/grpcpp/impl/sync.h \
+ /root/.local/include/grpcpp/support/client_interceptor.h \
+ /root/.local/include/grpcpp/support/interceptor.h \
+ /root/.local/include/grpcpp/completion_queue.h \
+ /root/.local/include/grpcpp/impl/codegen/rpc_service_method.h \
+ /root/.local/include/grpcpp/impl/codegen/status.h \
+ /root/.local/include/grpcpp/impl/codegen/sync.h \
+ /root/.local/include/grpcpp/impl/codegen/time.h \
+ /root/.local/include/grpcpp/impl/completion_queue_tag.h \
+ /root/.local/include/grpcpp/impl/grpc_library.h \
+ /root/.local/include/grpcpp/impl/codegen/config.h \
+ /root/.local/include/grpcpp/impl/call_op_set_interface.h \
+ /root/.local/include/grpcpp/impl/codegen/intercepted_channel.h \
+ /root/.local/include/grpcpp/impl/intercepted_channel.h \
+ /root/.local/include/grpcpp/impl/interceptor_common.h \
+ /root/.local/include/grpcpp/support/server_interceptor.h \
+ /root/.local/include/grpcpp/impl/codegen/create_auth_context.h \
+ /root/.local/include/grpcpp/impl/codegen/metadata_map.h \
+ /root/.local/include/grpcpp/support/callback_common.h \
+ /root/.local/include/grpcpp/support/global_callback_hook.h \
+ /root/.local/include/grpcpp/support/message_allocator.h \
+ /root/.local/include/grpcpp/support/server_callback.h \
  /root/.local/include/grpcpp/support/async_stream.h \
  /root/.local/include/grpcpp/impl/service_type.h \
+ /root/.local/include/grpcpp/server_interface.h \
+ /root/.local/include/grpcpp/impl/codegen/interceptor_common.h \
  /root/.local/include/grpcpp/support/async_unary_call.h \
  /root/.local/include/grpcpp/support/client_callback.h \
  /root/.local/include/grpcpp/support/method_handler.h \
@@ -1791,6 +1722,8 @@ CMakeFiles/ChatServer.dir/src/LoginGrpcClient.cpp.o: \
  /root/.local/include/google/protobuf/descriptor_database.h \
  /root/.local/include/google/protobuf/util/json_util.h \
  /root/.local/include/google/protobuf/json/json.h \
+ /root/.local/include/absl/status/status.h \
+ /root/.local/include/absl/status/internal/status_internal.h \
  /root/.local/include/google/protobuf/util/type_resolver.h \
  /root/.local/include/google/protobuf/any.pb.h \
  /root/.local/include/google/protobuf/type.pb.h \
@@ -1802,5 +1735,76 @@ CMakeFiles/ChatServer.dir/src/LoginGrpcClient.cpp.o: \
  /root/.local/include/grpcpp/support/stub_options.h \
  /root/.local/include/grpcpp/ports_def.inc \
  /root/.local/include/grpcpp/ports_undef.inc \
+ /root/.local/include/grpcpp/grpcpp.h \
+ /root/.local/include/grpcpp/channel.h \
+ /root/.local/include/grpcpp/create_channel.h \
+ /root/.local/include/grpcpp/security/credentials.h \
+ /root/.local/include/grpc/grpc_security_constants.h \
+ /root/.local/include/grpcpp/security/tls_credentials_options.h \
+ /root/.local/include/grpc/grpc_security.h \
+ /usr/lib/gcc/x86_64-OpenCloudOS-linux/12/include/stdbool.h \
+ /root/.local/include/grpcpp/security/tls_certificate_provider.h \
+ /root/.local/include/grpc/credentials.h \
+ /root/.local/include/absl/status/statusor.h \
+ /root/.local/include/absl/status/internal/statusor_internal.h \
+ /root/.local/include/absl/strings/has_ostream_operator.h \
+ /root/.local/include/grpcpp/security/tls_certificate_verifier.h \
+ /root/.local/include/grpcpp/security/tls_crl_provider.h \
+ /root/.local/include/grpc/grpc_crl_provider.h \
+ /root/.local/include/grpcpp/support/channel_arguments.h \
+ /root/.local/include/grpc/compression.h \
+ /root/.local/include/grpcpp/resource_quota.h \
+ /root/.local/include/grpcpp/create_channel_posix.h \
+ /root/.local/include/grpcpp/server.h \
+ /root/.local/include/grpcpp/health_check_service_interface.h \
+ /root/.local/include/grpcpp/security/server_credentials.h \
+ /root/.local/include/grpcpp/security/auth_metadata_processor.h \
+ /root/.local/include/grpcpp/server_builder.h \
+ /root/.local/include/grpc/event_engine/event_engine.h \
+ /root/.local/include/grpc/event_engine/endpoint_config.h \
+ /root/.local/include/grpc/event_engine/extensible.h \
+ /root/.local/include/grpc/event_engine/memory_allocator.h \
+ /root/.local/include/grpc/event_engine/internal/memory_allocator_impl.h \
+ /root/.local/include/grpc/event_engine/memory_request.h \
+ /root/.local/include/grpc/event_engine/port.h \
+ /root/.local/include/grpc/event_engine/slice_buffer.h \
+ /root/.local/include/grpc/event_engine/internal/slice_cast.h \
+ /root/.local/include/grpc/event_engine/slice.h \
+ /root/.local/include/grpc/impl/codegen/slice.h \
+ /root/.local/include/grpc/passive_listener.h \
+ /root/.local/include/grpc/support/cpu.h \
+ /root/.local/include/grpc/support/workaround_list.h \
+ /root/.local/include/grpcpp/impl/channel_argument_option.h \
+ /root/.local/include/grpcpp/impl/server_builder_option.h \
+ /root/.local/include/grpcpp/impl/server_builder_plugin.h \
+ /root/.local/include/grpcpp/passive_listener.h \
+ /root/.local/include/grpcpp/security/authorization_policy_provider.h \
+ /root/.local/include/grpcpp/server_posix.h \
+ /root/.local/include/grpcpp/version_info.h /usr/local/include/mysql.h \
+ /usr/local/include/mysql_version.h /usr/local/include/mysql_com.h \
+ /usr/local/include/binary_log_types.h /usr/local/include/my_command.h \
+ /usr/local/include/mysql_time.h /usr/local/include/my_list.h \
+ /usr/local/include/mysql/client_plugin.h \
+ /usr/local/include/mysql/plugin_auth_common.h \
+ /usr/local/include/typelib.h /usr/local/include/my_alloc.h \
+ /usr/local/include/mysql/psi/psi_memory.h \
+ /usr/local/include/mysql/psi/psi_base.h \
+ /home/xxxten/ChatProj/CharServerProj/ChatServer/src/../include/nlohmann/json.hpp \
+ /usr/include/c++/12/valarray /usr/include/c++/12/bits/valarray_array.h \
+ /usr/include/c++/12/bits/valarray_array.tcc \
+ /usr/include/c++/12/bits/valarray_before.h \
+ /usr/include/c++/12/bits/slice_array.h \
+ /usr/include/c++/12/bits/valarray_after.h \
+ /usr/include/c++/12/bits/gslice.h \
+ /usr/include/c++/12/bits/gslice_array.h \
+ /usr/include/c++/12/bits/mask_array.h \
+ /usr/include/c++/12/bits/indirect_array.h \
+ /home/xxxten/ChatProj/CharServerProj/ChatServer/src/../include/mini/ini.h \
+ /usr/include/c++/12/fstream \
+ /usr/include/c++/12/x86_64-OpenCloudOS-linux/bits/basic_file.h \
+ /usr/include/c++/12/x86_64-OpenCloudOS-linux/bits/c++io.h \
+ /usr/include/c++/12/bits/fstream.tcc \
+ /home/xxxten/ChatProj/CharServerProj/ChatServer/src/../include/grpc_cpp_out/GateServer.Status.grpc.pb.h \
+ /home/xxxten/ChatProj/CharServerProj/ChatServer/src/../include/grpc_cpp_out/GateServer.Status.pb.h \
  /home/xxxten/ChatProj/CharServerProj/ChatServer/src/../include/grpc_cpp_out/GateServer.Status.pb.h \
  /home/xxxten/ChatProj/CharServerProj/ChatServer/src/../include/Singleton.h

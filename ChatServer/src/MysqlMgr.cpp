@@ -94,7 +94,7 @@ bool MysqlMgr::GetUserInfo(int uid,UserInfo& userinfo) //根据uid查找用户�
 
 bool MysqlMgr::GetUserInfo(std::string name,UserInfo& userinfo) //根据名字查找用户信息
 {
-     auto con=_pool->GetConnection().get();
+    auto con=_pool->GetConnection().get();
     MYSQL_STMT* stmt;
     MYSQL_BIND bind[1];
     std::string query="select * from user where name= ?";
@@ -169,3 +169,34 @@ bool MysqlMgr::GetUserInfo(std::string name,UserInfo& userinfo) //根据名字�
     mysql_stmt_close(stmt);
     return true;   
 }
+
+bool MysqlMgr::AddFriendApply(int from_uid,int to_uid) //向friend_apply表中添加一条好友申请记录
+{
+    auto con=_pool->GetConnection().get();
+    MYSQL_STMT* stmt;
+    MYSQL_BIND bind[2];
+    std::string query="INSERT INTO friend_apply (from_uid,to_uid) VALUES (?,?) ";
+    stmt=mysql_stmt_init(con);
+    if (mysql_stmt_prepare(stmt, query.c_str(), query.length())) {
+        std::cerr << "mysql_stmt_prepare() failed: " << mysql_stmt_error(stmt) << std::endl;
+        mysql_stmt_close(stmt);
+        return false;}
+    memset(bind,0,sizeof bind);
+    bind[0].buffer_type=MYSQL_TYPE_LONG;
+    bind[0].buffer=(char*)&from_uid;
+    bind[1].buffer_type=MYSQL_TYPE_LONG;
+    bind[1].buffer=(char*)&to_uid;
+    if (mysql_stmt_bind_param(stmt, bind)) {
+        std::cerr << "mysql_stmt_bind_param() failed: " << mysql_stmt_error(stmt) << std::endl;
+        mysql_stmt_close(stmt);
+        return false;}
+    // 执行预处理语句
+     if (mysql_stmt_execute(stmt)) {
+        std::cerr << "mysql_stmt_execute() failed: " << mysql_stmt_error(stmt) << std::endl;
+        mysql_stmt_close(stmt);
+        return false;}
+    //执行增加记录语句成功
+    mysql_stmt_close(stmt);
+    return true;
+}
+

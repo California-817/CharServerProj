@@ -8,6 +8,9 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
+  "/home/xxxten/ChatProj/CharServerProj/ChatServer/src/CallData.cpp" "CMakeFiles/ChatServer.dir/src/CallData.cpp.o" "gcc" "CMakeFiles/ChatServer.dir/src/CallData.cpp.o.d"
+  "/home/xxxten/ChatProj/CharServerProj/ChatServer/src/ChatGrpcClient.cpp" "CMakeFiles/ChatServer.dir/src/ChatGrpcClient.cpp.o" "gcc" "CMakeFiles/ChatServer.dir/src/ChatGrpcClient.cpp.o.d"
+  "/home/xxxten/ChatProj/CharServerProj/ChatServer/src/ChatGrpcServerImpl.cpp" "CMakeFiles/ChatServer.dir/src/ChatGrpcServerImpl.cpp.o" "gcc" "CMakeFiles/ChatServer.dir/src/ChatGrpcServerImpl.cpp.o.d"
   "/home/xxxten/ChatProj/CharServerProj/ChatServer/src/ChatServer.cpp" "CMakeFiles/ChatServer.dir/src/ChatServer.cpp.o" "gcc" "CMakeFiles/ChatServer.dir/src/ChatServer.cpp.o.d"
   "/home/xxxten/ChatProj/CharServerProj/ChatServer/src/IOContextPool.cpp" "CMakeFiles/ChatServer.dir/src/IOContextPool.cpp.o" "gcc" "CMakeFiles/ChatServer.dir/src/IOContextPool.cpp.o.d"
   "/home/xxxten/ChatProj/CharServerProj/ChatServer/src/LogicSystem.cpp" "CMakeFiles/ChatServer.dir/src/LogicSystem.cpp.o" "gcc" "CMakeFiles/ChatServer.dir/src/LogicSystem.cpp.o.d"

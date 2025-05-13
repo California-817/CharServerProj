@@ -1,8 +1,6 @@
 #pragma once
 #include"Const.h"
 #include"Singleton.h"
-#include"grpc_cpp_out/ChatServer.Chat.pb.h"
-#include"grpc_cpp_out/ChatServer.Chat.grpc.pb.h"
 #include"GrpcConPool.hpp"
 using grpc::Channel;
 using grpc::ClientContext;
@@ -18,6 +16,9 @@ class ChatGrpcClient :public Singleton<ChatGrpcClient>
 {
 public:
     friend class Singleton<ChatGrpcClient>;
+    AddFriendRsp NotifyAddFriend(const std::string& ip,const AddFriendReq& req);
+    AuthFriendRsp NotifyAuthFriend(const std::string& ip,const AuthFriendReq& req);
+    TextChatMsgRsp NotifyTextChatMsg(const std::string& ip,const TextChatMsgReq& req);
     ~ChatGrpcClient();
 private:
     ChatGrpcClient();

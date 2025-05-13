@@ -7,6 +7,7 @@
 #include"RedisMgr.h"
 #include"MysqlMgr.h"
 #include"LoginGrpcClient.h"
+#include"ChatGrpcClient.h"
 // 这是CRTP编程方式 这种编程方式 可以让父类对象访问子类对象的成员函数和成员变量（模板参数） 就好像是自己的类一样
 // 可以用来实现静态多态（不同的子类对于父类不同模板参数 从而调用不同子类的函数实现多态） 避免动态多态的虚函数开销
 class Session;
@@ -27,6 +28,7 @@ public: //为啥声明基类是他的友元类还是访问不了私有成员
     void HelloWorldCallback(std::shared_ptr<Session> session, const uint16_t &msg_id, const std::string &msg_data);
     void LoginCallback(std::shared_ptr<Session> session, const uint16_t &msg_id, const std::string &msg_data);
     void SearchCallback(std::shared_ptr<Session> session, const uint16_t &msg_id, const std::string &msg_data);
+    void AddFriendCallBack(std::shared_ptr<Session> session, const uint16_t &msg_id, const std::string &msg_data);
     // 注册消息id和对应回调函数的映射关系
     void RegisterCallBacks();
     bool IsPureDigit(std::string);

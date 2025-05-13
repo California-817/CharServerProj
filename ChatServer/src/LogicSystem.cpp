@@ -92,6 +92,9 @@ void LogicSystem::RegisterCallBacks()
                                                  std::placeholders::_1, std::placeholders::_2, std::placeholders::_3);
     _fun_callbacks[MSGID_SEARCH_USER]=std::bind(&LogicSystem::SearchCallback,this,
                                                  std::placeholders::_1, std::placeholders::_2, std::placeholders::_3);
+    _fun_callbacks[MSGID_ADD_FRIEND]=std::bind(&LogicSystem::AddFriendCallBack,this,
+                                                 std::placeholders::_1, std::placeholders::_2, std::placeholders::_3);   
+
 }
 
 LogicSystem::~LogicSystem()
@@ -362,4 +365,107 @@ bool LogicSystem::SearchInfoByName(std::string name,UserInfo& userinfo)
     }
     return false;    
 }
+
+void LogicSystem::AddFriendCallBack(std::shared_ptr<Session> session, const uint16_t &msg_id, const std::string &msg_data)
+{
+    mINI::INIFile file("../conf/config.ini");
+    mINI::INIStructure ini;
+    file.read(ini);
+    //请求
+    // jsonObj["uid"] = uid;
+    // jsonObj["applyname"] = name;
+    // jsonObj["bakname"] = bakname;
+    // jsonObj["touid"] = _si->_uid;
+    //给自己的响应
+    //jsonObj["error"].toInt();
+    nlohmann::json root; //回包
+    nlohmann::json src_root;
+    try{
+        src_root=nlohmann::json::parse(msg_data);
+    }catch(const nlohmann::json::parse_error& err)
+    { //反序列化失败
+      std::cout<<"Fail to parse json "<<err.what()<<std::endl;
+      root["error"]=ErrorCodes::Error_Json;
+      auto jsonstr=root.dump(4); //序列化
+      session->Write(MSGID_ADD_FRIEND_RSP,jsonstr.size(),jsonstr.c_str());
+      return;
+    }
+    root["error"]=ErrorCodes::Success;
+    Defer defer([&root,&session](){
+      auto jsonstr=root.dump(4); //序列化
+      session->Write(MSGID_ADD_FRIEND_RSP,jsonstr.size(),jsonstr.c_str());
+    });
+    int from_uid=src_root["uid"].get<int>();
+    int to_uid=src_root["touid"].get<int>();
+    std::string applyname=src_root["applyname"].get<std::string>();
+    std::string bakname=src_root["bakname"].get<std::string>();
+    //更新数据库的申请好友表
+    bool insert_ret=MysqlMgr::GetInstance()->AddFriendApply(from_uid,to_uid);
+    if(!insert_ret)
+    { //插入记录失败
+        root["error"]=ErrorCodes::UidInvalid;
+        return;
+    }
+    //将申请者的基本信息获取
+    std::shared_ptr<UserInfo> userinfo=std::make_shared<UserInfo>();
+    bool info_get=LogicSystem::GetUserInfo(from_uid,*(userinfo.get()));
+    if(!info_get)
+    { //基本信息获取失败
+        root["error"]=ErrorCodes::UidInvalid;
+        return;
+    }
+    //向对方发送通知好友申请的请求
+    //0.查看对方的ip
+    std::string to_uid_str=USERIPPREFIX;
+    to_uid_str+=std::to_string(to_uid); //uip_1
+    auto redis_con=RedisMgr::GetInstance()->GetRedisCon();
+    auto redis_ret=redis_con->hget(UID_IPS,to_uid_str);
+    if(!redis_ret.has_value())
+    {
+        root["error"]=ErrorCodes::UidInvalid;
+        return;        
+    }
+    std::string touid_ip=redis_ret.value();
+    //给对方的请求
+    //jsonObj["error"].toInt();
+    //jsonObj["applyuid"].toInt();
+    //jsonObj["name"].toString();
+    //jsonObj["desc"].toString();
+    //jsonObj["icon"].toString();
+    //jsonObj["nick"].toString();
+    //jsonObj["sex"].toInt();
+    //1.对方在本服务器上
+    if(touid_ip==ini["SelfServer"]["name"])
+    {
+        //找到对方的session
+        auto to_session=UserMgr::GetInstance()->GetUidSession(to_uid);
+        if(to_session.get()){ //对方在线
+        nlohmann::json to_root;
+        to_root["error"]=ErrorCodes::Success;
+        to_root["applyuid"]=from_uid;
+        to_root["name"]=userinfo->_name;
+        to_root["desc"]=userinfo->_desc;
+        to_root["icon"]=userinfo->_icon;
+        to_root["nick"]=userinfo->_nick;
+        to_root["sex"]=userinfo->_sex;
+        std::string to_jsonstr=to_root.dump(4);
+        //给对方发送申请好友请求
+        to_session->Write(MSGID_NOTIFY_ADD_FRIEND,to_jsonstr.size(),to_jsonstr.c_str());
+        }
+        //对方不在线
+        return;
+    }
+    //2.对方在其他服务器上 --调用grpc的申请好友服务
+    AddFriendReq req;
+    req.set_applyuid(from_uid);
+    req.set_touid(to_uid);
+    req.set_desc(userinfo->_desc);
+    req.set_icon(userinfo->_icon);
+    req.set_name(userinfo->_name);
+    req.set_nick(userinfo->_nick);
+    req.set_sex(userinfo->_sex);
+    ChatGrpcClient::GetInstance()->NotifyAddFriend(touid_ip,req);
+}
+
+
 

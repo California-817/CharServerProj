@@ -69,44 +69,44 @@ include CMakeFiles/chat_server_proto.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/chat_server_proto.dir/flags.make
 
-CMakeFiles/chat_server_proto.dir/include/grpc_cpp_out/GateServer.Status.grpc.pb.cc.o: CMakeFiles/chat_server_proto.dir/flags.make
-CMakeFiles/chat_server_proto.dir/include/grpc_cpp_out/GateServer.Status.grpc.pb.cc.o: /home/xxxten/ChatProj/CharServerProj/ChatServer/include/grpc_cpp_out/GateServer.Status.grpc.pb.cc
-CMakeFiles/chat_server_proto.dir/include/grpc_cpp_out/GateServer.Status.grpc.pb.cc.o: CMakeFiles/chat_server_proto.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/xxxten/ChatProj/CharServerProj/ChatServer/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/chat_server_proto.dir/include/grpc_cpp_out/GateServer.Status.grpc.pb.cc.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/chat_server_proto.dir/include/grpc_cpp_out/GateServer.Status.grpc.pb.cc.o -MF CMakeFiles/chat_server_proto.dir/include/grpc_cpp_out/GateServer.Status.grpc.pb.cc.o.d -o CMakeFiles/chat_server_proto.dir/include/grpc_cpp_out/GateServer.Status.grpc.pb.cc.o -c /home/xxxten/ChatProj/CharServerProj/ChatServer/include/grpc_cpp_out/GateServer.Status.grpc.pb.cc
+CMakeFiles/chat_server_proto.dir/include/grpc_cpp_out/ChatServer.Chat.grpc.pb.cc.o: CMakeFiles/chat_server_proto.dir/flags.make
+CMakeFiles/chat_server_proto.dir/include/grpc_cpp_out/ChatServer.Chat.grpc.pb.cc.o: /home/xxxten/ChatProj/CharServerProj/ChatServer/include/grpc_cpp_out/ChatServer.Chat.grpc.pb.cc
+CMakeFiles/chat_server_proto.dir/include/grpc_cpp_out/ChatServer.Chat.grpc.pb.cc.o: CMakeFiles/chat_server_proto.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/xxxten/ChatProj/CharServerProj/ChatServer/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/chat_server_proto.dir/include/grpc_cpp_out/ChatServer.Chat.grpc.pb.cc.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/chat_server_proto.dir/include/grpc_cpp_out/ChatServer.Chat.grpc.pb.cc.o -MF CMakeFiles/chat_server_proto.dir/include/grpc_cpp_out/ChatServer.Chat.grpc.pb.cc.o.d -o CMakeFiles/chat_server_proto.dir/include/grpc_cpp_out/ChatServer.Chat.grpc.pb.cc.o -c /home/xxxten/ChatProj/CharServerProj/ChatServer/include/grpc_cpp_out/ChatServer.Chat.grpc.pb.cc
 
-CMakeFiles/chat_server_proto.dir/include/grpc_cpp_out/GateServer.Status.grpc.pb.cc.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/chat_server_proto.dir/include/grpc_cpp_out/GateServer.Status.grpc.pb.cc.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/xxxten/ChatProj/CharServerProj/ChatServer/include/grpc_cpp_out/GateServer.Status.grpc.pb.cc > CMakeFiles/chat_server_proto.dir/include/grpc_cpp_out/GateServer.Status.grpc.pb.cc.i
+CMakeFiles/chat_server_proto.dir/include/grpc_cpp_out/ChatServer.Chat.grpc.pb.cc.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/chat_server_proto.dir/include/grpc_cpp_out/ChatServer.Chat.grpc.pb.cc.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/xxxten/ChatProj/CharServerProj/ChatServer/include/grpc_cpp_out/ChatServer.Chat.grpc.pb.cc > CMakeFiles/chat_server_proto.dir/include/grpc_cpp_out/ChatServer.Chat.grpc.pb.cc.i
 
-CMakeFiles/chat_server_proto.dir/include/grpc_cpp_out/GateServer.Status.grpc.pb.cc.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/chat_server_proto.dir/include/grpc_cpp_out/GateServer.Status.grpc.pb.cc.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/xxxten/ChatProj/CharServerProj/ChatServer/include/grpc_cpp_out/GateServer.Status.grpc.pb.cc -o CMakeFiles/chat_server_proto.dir/include/grpc_cpp_out/GateServer.Status.grpc.pb.cc.s
+CMakeFiles/chat_server_proto.dir/include/grpc_cpp_out/ChatServer.Chat.grpc.pb.cc.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/chat_server_proto.dir/include/grpc_cpp_out/ChatServer.Chat.grpc.pb.cc.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/xxxten/ChatProj/CharServerProj/ChatServer/include/grpc_cpp_out/ChatServer.Chat.grpc.pb.cc -o CMakeFiles/chat_server_proto.dir/include/grpc_cpp_out/ChatServer.Chat.grpc.pb.cc.s
 
-CMakeFiles/chat_server_proto.dir/include/grpc_cpp_out/GateServer.Status.pb.cc.o: CMakeFiles/chat_server_proto.dir/flags.make
-CMakeFiles/chat_server_proto.dir/include/grpc_cpp_out/GateServer.Status.pb.cc.o: /home/xxxten/ChatProj/CharServerProj/ChatServer/include/grpc_cpp_out/GateServer.Status.pb.cc
-CMakeFiles/chat_server_proto.dir/include/grpc_cpp_out/GateServer.Status.pb.cc.o: CMakeFiles/chat_server_proto.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/xxxten/ChatProj/CharServerProj/ChatServer/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/chat_server_proto.dir/include/grpc_cpp_out/GateServer.Status.pb.cc.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/chat_server_proto.dir/include/grpc_cpp_out/GateServer.Status.pb.cc.o -MF CMakeFiles/chat_server_proto.dir/include/grpc_cpp_out/GateServer.Status.pb.cc.o.d -o CMakeFiles/chat_server_proto.dir/include/grpc_cpp_out/GateServer.Status.pb.cc.o -c /home/xxxten/ChatProj/CharServerProj/ChatServer/include/grpc_cpp_out/GateServer.Status.pb.cc
+CMakeFiles/chat_server_proto.dir/include/grpc_cpp_out/ChatServer.Chat.pb.cc.o: CMakeFiles/chat_server_proto.dir/flags.make
+CMakeFiles/chat_server_proto.dir/include/grpc_cpp_out/ChatServer.Chat.pb.cc.o: /home/xxxten/ChatProj/CharServerProj/ChatServer/include/grpc_cpp_out/ChatServer.Chat.pb.cc
+CMakeFiles/chat_server_proto.dir/include/grpc_cpp_out/ChatServer.Chat.pb.cc.o: CMakeFiles/chat_server_proto.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/xxxten/ChatProj/CharServerProj/ChatServer/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/chat_server_proto.dir/include/grpc_cpp_out/ChatServer.Chat.pb.cc.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/chat_server_proto.dir/include/grpc_cpp_out/ChatServer.Chat.pb.cc.o -MF CMakeFiles/chat_server_proto.dir/include/grpc_cpp_out/ChatServer.Chat.pb.cc.o.d -o CMakeFiles/chat_server_proto.dir/include/grpc_cpp_out/ChatServer.Chat.pb.cc.o -c /home/xxxten/ChatProj/CharServerProj/ChatServer/include/grpc_cpp_out/ChatServer.Chat.pb.cc
 
-CMakeFiles/chat_server_proto.dir/include/grpc_cpp_out/GateServer.Status.pb.cc.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/chat_server_proto.dir/include/grpc_cpp_out/GateServer.Status.pb.cc.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/xxxten/ChatProj/CharServerProj/ChatServer/include/grpc_cpp_out/GateServer.Status.pb.cc > CMakeFiles/chat_server_proto.dir/include/grpc_cpp_out/GateServer.Status.pb.cc.i
+CMakeFiles/chat_server_proto.dir/include/grpc_cpp_out/ChatServer.Chat.pb.cc.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/chat_server_proto.dir/include/grpc_cpp_out/ChatServer.Chat.pb.cc.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/xxxten/ChatProj/CharServerProj/ChatServer/include/grpc_cpp_out/ChatServer.Chat.pb.cc > CMakeFiles/chat_server_proto.dir/include/grpc_cpp_out/ChatServer.Chat.pb.cc.i
 
-CMakeFiles/chat_server_proto.dir/include/grpc_cpp_out/GateServer.Status.pb.cc.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/chat_server_proto.dir/include/grpc_cpp_out/GateServer.Status.pb.cc.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/xxxten/ChatProj/CharServerProj/ChatServer/include/grpc_cpp_out/GateServer.Status.pb.cc -o CMakeFiles/chat_server_proto.dir/include/grpc_cpp_out/GateServer.Status.pb.cc.s
+CMakeFiles/chat_server_proto.dir/include/grpc_cpp_out/ChatServer.Chat.pb.cc.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/chat_server_proto.dir/include/grpc_cpp_out/ChatServer.Chat.pb.cc.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/xxxten/ChatProj/CharServerProj/ChatServer/include/grpc_cpp_out/ChatServer.Chat.pb.cc -o CMakeFiles/chat_server_proto.dir/include/grpc_cpp_out/ChatServer.Chat.pb.cc.s
 
 # Object files for target chat_server_proto
 chat_server_proto_OBJECTS = \
-"CMakeFiles/chat_server_proto.dir/include/grpc_cpp_out/GateServer.Status.grpc.pb.cc.o" \
-"CMakeFiles/chat_server_proto.dir/include/grpc_cpp_out/GateServer.Status.pb.cc.o"
+"CMakeFiles/chat_server_proto.dir/include/grpc_cpp_out/ChatServer.Chat.grpc.pb.cc.o" \
+"CMakeFiles/chat_server_proto.dir/include/grpc_cpp_out/ChatServer.Chat.pb.cc.o"
 
 # External object files for target chat_server_proto
 chat_server_proto_EXTERNAL_OBJECTS =
 
-libchat_server_proto.a: CMakeFiles/chat_server_proto.dir/include/grpc_cpp_out/GateServer.Status.grpc.pb.cc.o
-libchat_server_proto.a: CMakeFiles/chat_server_proto.dir/include/grpc_cpp_out/GateServer.Status.pb.cc.o
+libchat_server_proto.a: CMakeFiles/chat_server_proto.dir/include/grpc_cpp_out/ChatServer.Chat.grpc.pb.cc.o
+libchat_server_proto.a: CMakeFiles/chat_server_proto.dir/include/grpc_cpp_out/ChatServer.Chat.pb.cc.o
 libchat_server_proto.a: CMakeFiles/chat_server_proto.dir/build.make
 libchat_server_proto.a: CMakeFiles/chat_server_proto.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/xxxten/ChatProj/CharServerProj/ChatServer/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX static library libchat_server_proto.a"

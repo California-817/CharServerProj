@@ -1,6 +1,12 @@
 file(REMOVE_RECURSE
   "/home/xxxten/ChatProj/CharServerProj/ChatServer/bin/ChatServer"
   "/home/xxxten/ChatProj/CharServerProj/ChatServer/bin/ChatServer.pdb"
+  "CMakeFiles/ChatServer.dir/src/CallData.cpp.o"
+  "CMakeFiles/ChatServer.dir/src/CallData.cpp.o.d"
+  "CMakeFiles/ChatServer.dir/src/ChatGrpcClient.cpp.o"
+  "CMakeFiles/ChatServer.dir/src/ChatGrpcClient.cpp.o.d"
+  "CMakeFiles/ChatServer.dir/src/ChatGrpcServerImpl.cpp.o"
+  "CMakeFiles/ChatServer.dir/src/ChatGrpcServerImpl.cpp.o.d"
   "CMakeFiles/ChatServer.dir/src/ChatServer.cpp.o"
   "CMakeFiles/ChatServer.dir/src/ChatServer.cpp.o.d"
   "CMakeFiles/ChatServer.dir/src/IOContextPool.cpp.o"
