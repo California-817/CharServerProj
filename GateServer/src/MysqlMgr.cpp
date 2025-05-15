@@ -94,7 +94,8 @@ int MysqlMgr::RegUser(const std::string& name,const std::string& email,const std
 
 bool MysqlMgr::CheckEmail(const std::string& name,const std::string& email)
 {
-    auto con=_pool->GetConnection().get();
+    auto shared_con=_pool->GetConnection(); //该智能指针对象会一直持续到话括号结束再析构 归还连接
+    auto con=shared_con.get();
     MYSQL_STMT* stmt;
     MYSQL_BIND bind[1];
     std::string select_email;
@@ -179,7 +180,8 @@ bool MysqlMgr::CheckEmail(const std::string& name,const std::string& email)
 
 bool MysqlMgr::UpdatePwd(const std::string& name,const std::string& password)
 {
-    auto con=_pool->GetConnection().get();
+    auto shared_con=_pool->GetConnection(); //该智能指针对象会一直持续到话括号结束再析构 归还连接
+    auto con=shared_con.get();
     MYSQL_STMT* stmt;
     MYSQL_BIND bind[2];
     std::string query="update user set password = ? where name = ?";
@@ -210,7 +212,8 @@ bool MysqlMgr::UpdatePwd(const std::string& name,const std::string& password)
 
 bool MysqlMgr::CheckPwd(const std::string& email,const std::string& password,UserInfo& userinfo)
 {
-    auto con=_pool->GetConnection().get();
+    auto shared_con=_pool->GetConnection(); //该智能指针对象会一直持续到话括号结束再析构 归还连接
+    auto con=shared_con.get();
     MYSQL_STMT* stmt;
     MYSQL_BIND bind[1];
     std::string query="select * from user where email= ?";
