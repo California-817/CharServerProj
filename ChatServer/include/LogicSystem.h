@@ -26,9 +26,14 @@ public: //为啥声明基类是他的友元类还是访问不了私有成员
     LogicSystem();
     // 逻辑单元自带的基本func
     void HelloWorldCallback(std::shared_ptr<Session> session, const uint16_t &msg_id, const std::string &msg_data);
+    //登录回调
     void LoginCallback(std::shared_ptr<Session> session, const uint16_t &msg_id, const std::string &msg_data);
+    //搜索好友回调
     void SearchCallback(std::shared_ptr<Session> session, const uint16_t &msg_id, const std::string &msg_data);
-    void AddFriendCallBack(std::shared_ptr<Session> session, const uint16_t &msg_id, const std::string &msg_data);
+    //添加好友回调
+    void AddFriendCallback(std::shared_ptr<Session> session, const uint16_t &msg_id, const std::string &msg_data);
+    //认证好友回调
+    void AuthFriendCallback(std::shared_ptr<Session> session, const uint16_t &msg_id, const std::string &msg_data);
     // 注册消息id和对应回调函数的映射关系
     void RegisterCallBacks();
     bool IsPureDigit(std::string);

@@ -62,11 +62,12 @@ enum MSGID
     MSGID_ADD_FRIEND=1009,  //添加好友请求
     MSGID_ADD_FRIEND_RSP=1010, //添加好友回复
     MSGID_NOTIFY_ADD_FRIEND=1011, //通知添加好友请求
+    MSGID_AUTH_FRIEND=1013,//认证好友请求
+    MSGID_AUTH_FRIEND_RSP=1014,//认证好友回复
+    MSGID_NOTIFY_AUTH_FRIEND=1015,//通知认证好友请求
 };
 
 #define USERIPPREFIX  "uip_"  //用户所在的ip的uidkey值
-#define USERTOKENPREFIX  "utoken_"
-#define IPCOUNTPREFIX  "ipcount_" 
 #define USER_BASE_INFO "ubaseinfo_" //一个hash名称 存放一个用户的基本信息 通过uid
 #define USER_NAME "user_name_"  //用于查找用户通过名字查找存放用户信息
 #define LOGIN_COUNT  "logincount" //一个hash名称 存放所有服务器的连接数
@@ -89,8 +90,8 @@ private:
 //用户信息的结构体
 struct UserInfo
 {
-    UserInfo(int uid,std::string name,std::string email,std::string pwd,std::string nick,std::string desc,std::string icon,int sex)
-    :_uid(uid),_name(name),_email(email),_pwd(pwd),_desc(desc),_icon(icon),_sex(sex),_nick(nick){}
+    UserInfo(int uid,std::string name,std::string email,std::string pwd,std::string nick,std::string desc,std::string icon,int sex,std::string back)
+    :_uid(uid),_name(name),_email(email),_pwd(pwd),_desc(desc),_icon(icon),_sex(sex),_nick(nick),_back(back){}
     UserInfo(){};
     int _uid;
     std::string _name;
@@ -100,4 +101,19 @@ struct UserInfo
     std::string _desc;
     std::string _icon; //头像
     int _sex; //性别
+    std::string _back; //备注名 用于好友列表
+};
+//申请人结构体
+struct ApplyInfo
+{
+    ApplyInfo(int uid,std::string name,std::string nick,std::string desc,std::string icon,int sex,int status)
+    :_uid(uid),_name(name),_desc(desc),_icon(icon),_sex(sex),_nick(nick),_status(status){}
+    ApplyInfo(){};
+	int _uid;
+	std::string _name;
+    std::string _nick;
+	std::string _desc;
+	std::string _icon;
+	int _sex;
+	int _status; //是否已经添加
 };

@@ -92,9 +92,10 @@ void LogicSystem::RegisterCallBacks()
                                                  std::placeholders::_1, std::placeholders::_2, std::placeholders::_3);
     _fun_callbacks[MSGID_SEARCH_USER]=std::bind(&LogicSystem::SearchCallback,this,
                                                  std::placeholders::_1, std::placeholders::_2, std::placeholders::_3);
-    _fun_callbacks[MSGID_ADD_FRIEND]=std::bind(&LogicSystem::AddFriendCallBack,this,
+    _fun_callbacks[MSGID_ADD_FRIEND]=std::bind(&LogicSystem::AddFriendCallback,this,
                                                  std::placeholders::_1, std::placeholders::_2, std::placeholders::_3);   
-
+    _fun_callbacks[MSGID_AUTH_FRIEND]=std::bind(&LogicSystem::AuthFriendCallback,this,
+                                                 std::placeholders::_1, std::placeholders::_2, std::placeholders::_3);  
 }
 
 LogicSystem::~LogicSystem()
@@ -114,7 +115,7 @@ void LogicSystem::HelloWorldCallback(std::shared_ptr<Session> session, const uin
     session->Write(msg_id, resp.size(), resp.c_str());
 }
 
-//登录逻辑的处理函数
+//登录逻辑的处理函数 -----未来会用到分布式锁来独占登录
 void LogicSystem::LoginCallback(std::shared_ptr<Session> session, const uint16_t &msg_id, const std::string &msg_data)
 {
     // jsonObj["uid"] = _uid;
@@ -169,7 +170,52 @@ void LogicSystem::LoginCallback(std::shared_ptr<Session> session, const uint16_t
     root["email"]=userinfo._email;
     root["desc"]=userinfo._desc;
     //3.加载申请列表 todo
+    std::vector<std::shared_ptr<ApplyInfo>> applylist; //申请人列表
+    if(MysqlMgr::GetInstance()->GetFriendApply(uid,applylist,0,10))
+    { //成功获取并写入applylist
+        nlohmann::json jsonarray;
+        for(auto& apply: applylist)
+        {
+            nlohmann::json _apply_root;
+            _apply_root["name"]=apply->_name;
+            _apply_root["desc"]=apply->_desc;
+            _apply_root["icon"]=apply->_icon;
+            _apply_root["nick"]=apply->_nick;
+            _apply_root["sex"]=apply->_sex;
+            _apply_root["uid"]=apply->_uid;
+            _apply_root["status"]=apply->_status;
+            jsonarray.push_back(_apply_root);
+        }
+        //向响应中写入applylist
+        root["apply_list"]=jsonarray;
+    }
     //4.加载好友列表 todo
+    std::vector<std::shared_ptr<UserInfo>> friendlist; //好友列表
+    if(MysqlMgr::GetInstance()->GetFriendList(uid,friendlist))
+    { //成功获取并写入applylist
+        // auto name = value["name"].toString();
+        // auto desc = value["desc"].toString();
+        // auto icon = value["icon"].toString();
+        // auto nick = value["nick"].toString();
+        // auto sex = value["sex"].toInt();
+        // auto uid = value["uid"].toInt();
+        // auto back = value["back"].toString();
+        nlohmann::json jsonarray;
+        for(auto& frd: friendlist)
+        {
+            nlohmann::json _frd_root;
+            _frd_root["name"]=frd->_name;
+            _frd_root["desc"]=frd->_desc;
+            _frd_root["icon"]=frd->_icon;
+            _frd_root["nick"]=frd->_nick;
+            _frd_root["sex"]=frd->_sex;
+            _frd_root["uid"]=frd->_uid;
+            _frd_root["back"]=frd->_back;
+            jsonarray.push_back(_frd_root);
+        }
+        //向响应中写入applylist
+        root["friend_list"]=jsonarray;
+    }    
     //5.设置连接数增加写入redis
     auto redis_con=RedisMgr::GetInstance()->GetRedisCon();
     mINI::INIFile file("../conf/config.ini");
@@ -190,7 +236,6 @@ void LogicSystem::LoginCallback(std::shared_ptr<Session> session, const uint16_t
     //7.本地绑定uid和session的映射关系
     session->SetUid(uid);
     UserMgr::GetInstance()->SetUidSession(uid,session);
-    
     auto ret_str=root.dump(4);
     session->Write(MSGID_CHAT_LOGIN_RSP,ret_str.size(),ret_str.c_str());
 }
@@ -366,7 +411,7 @@ bool LogicSystem::SearchInfoByName(std::string name,UserInfo& userinfo)
     return false;    
 }
 
-void LogicSystem::AddFriendCallBack(std::shared_ptr<Session> session, const uint16_t &msg_id, const std::string &msg_data)
+void LogicSystem::AddFriendCallback(std::shared_ptr<Session> session, const uint16_t &msg_id, const std::string &msg_data)
 {
     mINI::INIFile file("../conf/config.ini");
     mINI::INIStructure ini;
@@ -466,6 +511,31 @@ void LogicSystem::AddFriendCallBack(std::shared_ptr<Session> session, const uint
     req.set_sex(userinfo->_sex);
     ChatGrpcClient::GetInstance()->NotifyAddFriend(touid_ip,req);
 }
+
+
+void LogicSystem::AuthFriendCallback(std::shared_ptr<Session> session, const uint16_t &msg_id, const std::string &msg_data)
+{
+    //请求
+    // jsonObj["fromuid"] = uid; 
+    // jsonObj["touid"] = _apply_info->_uid;
+    // jsonObj["back"] = back_name;
+    //回复（给自己）
+    // int err = jsonObj["error"].toInt();
+    // auto name = jsonObj["name"].toString();
+    // auto nick = jsonObj["nick"].toString();
+    // auto icon = jsonObj["icon"].toString();
+    // auto sex = jsonObj["sex"].toInt();
+    // auto uid = jsonObj["uid"].toInt();
+    //通知对方认证好友请求（给对方）
+    // int err = jsonObj["error"].toInt();
+    // int from_uid = jsonObj["fromuid"].toInt();
+    // QString name = jsonObj["name"].toString();
+    // QString nick = jsonObj["nick"].toString();
+    // QString icon = jsonObj["icon"].toString();
+    // int sex = jsonObj["sex"].toInt();
+}
+
+
 
 
 

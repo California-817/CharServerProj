@@ -1,6 +1,6 @@
 #include"../include/CallData.h"
 #include"../include/ChatGrpcServerImpl.h"
-
+#include"../include/Session.h"
 Calldata::Calldata(ChatService::AsyncService* service,ServerCompletionQueue* cq,ChatServerImpl* impl)
     :_service(service),_cq(cq),_status(CREATE),_impl(impl)
     {}
@@ -31,7 +31,21 @@ void NotifyAddFriendCalldata::Proceed()
             std::string prefix("my chat server has received : addfriend request");
             std::cout<<prefix<<std::endl;
             //添加好友处理逻辑
-            
+            //找到对方的session
+            auto to_session=UserMgr::GetInstance()->GetUidSession(_req.touid());
+            if(to_session.get()){ //对方在线
+            nlohmann::json to_root;
+            to_root["error"]=ErrorCodes::Success;
+            to_root["applyuid"]=_req.applyuid();
+            to_root["name"]=_req.name();
+            to_root["desc"]=_req.desc();
+            to_root["icon"]=_req.icon();
+            to_root["nick"]=_req.nick();
+            to_root["sex"]=_req.sex();
+            std::string to_jsonstr=to_root.dump(4);
+            //给对方发送申请好友请求
+            to_session->Write(MSGID_NOTIFY_ADD_FRIEND,to_jsonstr.size(),to_jsonstr.c_str());
+            }
             //处理完毕
             _status=FINISH;
             //告诉grpc框架处理完毕发送响应 进行一次注册逻辑 当grpc框架处理完毕后通过完成队列返回一个事件

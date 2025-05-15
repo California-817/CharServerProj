@@ -15,7 +15,19 @@ Server::Server(std::shared_ptr<boost::asio::io_context> io_context, uint16_t por
     StartAccecp();                                   //              开始接收连接
 }
 void Server::ClearSession(std::string &session_id)
-{ //要进行两个存储结构中session的删除
+{ //要进行两个存储结构中session的删除 删除redis中uid与ip映射关系 更改redis中服务器连接数
+    auto redis_con=RedisMgr::GetInstance()->GetRedisCon();
+    mINI::INIFile file("../conf/config.ini");
+    mINI::INIStructure ini;
+    file.read(ini);
+    auto ret_redis=redis_con->hget(LOGIN_COUNT,ini["SelfServer"]["name"].c_str());
+    //更新连接数-1并写入redis  ---未来会用到分布式锁
+    redis_con->hset(LOGIN_COUNT,ini["SelfServer"]["name"].c_str(),std::to_string((atoi(ret_redis.value().c_str())-1)));
+    //删除redis中缓存的uid与ip的映射关系
+    std::string ip_key=USERIPPREFIX; // uip_1
+    ip_key+=std::to_string(_sessions[session_id]->GetUid());
+    redis_con->hdel(UID_IPS,ip_key.c_str());
+    
     if(_sessions.find(session_id)!=_sessions.end())
     { //删除uid与session映射管理中的session
         UserMgr::GetInstance()->RmUidSession(_sessions[session_id]->GetUid()); //这个函数内部会加一把锁

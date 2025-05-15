@@ -1803,4 +1803,47 @@ CMakeFiles/ChatServer.dir/src/CallData.cpp.o: \
  /usr/include/c++/12/x86_64-OpenCloudOS-linux/bits/basic_file.h \
  /usr/include/c++/12/x86_64-OpenCloudOS-linux/bits/c++io.h \
  /usr/include/c++/12/bits/fstream.tcc \
- /home/xxxten/ChatProj/CharServerProj/ChatServer/src/../include/ChatGrpcServerImpl.h
+ /home/xxxten/ChatProj/CharServerProj/ChatServer/src/../include/UserMgr.h \
+ /home/xxxten/ChatProj/CharServerProj/ChatServer/src/../include/Singleton.h \
+ /home/xxxten/ChatProj/CharServerProj/ChatServer/src/../include/ChatGrpcServerImpl.h \
+ /home/xxxten/ChatProj/CharServerProj/ChatServer/src/../include/Session.h \
+ /home/xxxten/ChatProj/CharServerProj/ChatServer/src/../include/Server.h \
+ /home/xxxten/ChatProj/CharServerProj/ChatServer/src/../include/IOContextPool.h \
+ /home/xxxten/ChatProj/CharServerProj/ChatServer/src/../include/MsgNode.h \
+ /home/xxxten/ChatProj/CharServerProj/ChatServer/src/../include/LogicSystem.h \
+ /home/xxxten/ChatProj/CharServerProj/ChatServer/src/../include/RedisMgr.h \
+ /usr/local/include/sw/redis++/redis++.h \
+ /usr/local/include/sw/redis++/redis.h \
+ /usr/local/include/sw/redis++/connection_pool.h \
+ /usr/local/include/sw/redis++/connection.h \
+ /usr/local/include/hiredis/hiredis.h /usr/local/include/hiredis/read.h \
+ /usr/local/include/hiredis/sds.h /usr/local/include/hiredis/alloc.h \
+ /usr/local/include/sw/redis++/errors.h \
+ /usr/local/include/sw/redis++/reply.h \
+ /usr/local/include/sw/redis++/utils.h \
+ /usr/local/include/sw/redis++/cxx_utils.h \
+ /usr/local/include/sw/redis++/tls.h \
+ /usr/local/include/sw/redis++/hiredis_features.h \
+ /usr/local/include/sw/redis++/sentinel.h \
+ /usr/local/include/sw/redis++/shards.h \
+ /usr/local/include/sw/redis++/command_options.h \
+ /usr/local/include/sw/redis++/subscriber.h \
+ /usr/local/include/sw/redis++/command.h \
+ /usr/local/include/sw/redis++/command_args.h \
+ /usr/local/include/sw/redis++/pipeline.h \
+ /usr/local/include/sw/redis++/transaction.h \
+ /usr/local/include/sw/redis++/redis_uri.h \
+ /usr/local/include/sw/redis++/redis.hpp \
+ /usr/local/include/sw/redis++/redis_cluster.h \
+ /usr/local/include/sw/redis++/shards_pool.h \
+ /usr/local/include/sw/redis++/redis_cluster.hpp \
+ /usr/local/include/sw/redis++/queued_redis.h \
+ /usr/local/include/sw/redis++/queued_redis.hpp \
+ /home/xxxten/ChatProj/CharServerProj/ChatServer/src/../include/MysqlMgr.h \
+ /home/xxxten/ChatProj/CharServerProj/ChatServer/src/../include/MysqlPool.hpp \
+ /home/xxxten/ChatProj/CharServerProj/ChatServer/src/../include/LoginGrpcClient.h \
+ /home/xxxten/ChatProj/CharServerProj/ChatServer/src/../include/GrpcConPool.hpp \
+ /home/xxxten/ChatProj/CharServerProj/ChatServer/src/../include/grpc_cpp_out/GateServer.Status.grpc.pb.h \
+ /home/xxxten/ChatProj/CharServerProj/ChatServer/src/../include/grpc_cpp_out/GateServer.Status.pb.h \
+ /home/xxxten/ChatProj/CharServerProj/ChatServer/src/../include/grpc_cpp_out/GateServer.Status.pb.h \
+ /home/xxxten/ChatProj/CharServerProj/ChatServer/src/../include/ChatGrpcClient.h

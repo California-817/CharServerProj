@@ -1803,4 +1803,6 @@ CMakeFiles/ChatServer.dir/src/ChatGrpcServerImpl.cpp.o: \
  /usr/include/c++/12/x86_64-OpenCloudOS-linux/bits/basic_file.h \
  /usr/include/c++/12/x86_64-OpenCloudOS-linux/bits/c++io.h \
  /usr/include/c++/12/bits/fstream.tcc \
- /home/xxxten/ChatProj/CharServerProj/ChatServer/src/../include/CallData.h
+ /home/xxxten/ChatProj/CharServerProj/ChatServer/src/../include/CallData.h \
+ /home/xxxten/ChatProj/CharServerProj/ChatServer/src/../include/UserMgr.h \
+ /home/xxxten/ChatProj/CharServerProj/ChatServer/src/../include/Singleton.h

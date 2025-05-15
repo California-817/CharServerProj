@@ -59,6 +59,7 @@ std::string GetChatServerCalldata::generate_unique_string()
      std::string unique_string = to_string(uuid);
       return unique_string;
 }
+//获取最小连接数的chatServer也有可能涉及到分布式锁的使用
 ChatServer_struct GetChatServerCalldata::getChatServer()
 {
     std::lock_guard<std::mutex> _lock(_impl->_servers_mtx);

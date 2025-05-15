@@ -1,0 +1,61 @@
+syntax = "proto3";
+//chatserver之间的grpc调用
+//添加好友请求与响应
+package ChatServer.Chat;
+message AddFriendReq
+{
+	int32  applyuid = 1; //申请好友一方
+	string name = 2;
+	string desc = 3;
+	string icon = 4;
+	string nick = 5;
+	int32  sex = 6;
+	int32  touid = 7;   //对方
+}
+message AddFriendRsp
+{
+	int32 error = 1;
+	int32 applyuid = 2;
+	int32 touid = 3;
+}
+//验证好友请求与响应
+message AuthFriendReq
+{
+	int32 fromuid = 1; //接收好友请求一方
+	int32 touid = 2; //发起好友请求一方
+}
+message AuthFriendRsp
+{
+	int32 error = 1;
+	int32 fromuid = 2;
+	int32 touid = 3;
+}
+//发送消息的请求与响应
+message TextChatMsgReq
+{
+    int32 fromid=1;
+    int32 toid=2;
+    repeated TextChatData textmsgs=3;
+}
+message TextChatData
+{
+    string msgid=1;
+    string msgcontent=2;
+}
+message TextChatMsgRsp
+{
+    int32 error=4;
+    int32 fromid=1;
+    int32 toid=2;
+    repeated TextChatData textmsgs=3;
+}
+//踢人的请求与响应
+//todo
+
+//rpc服务
+service ChatService
+{
+    rpc NotifyAddFriend (AddFriendReq) returns (AddFriendRsp) {}
+    rpc NotifyAuthFriend (AuthFriendReq) returns (AuthFriendRsp) {}
+    rpc NotifyTextChatMsg (TextChatMsgReq) returns (TextChatMsgRsp) {}
+}

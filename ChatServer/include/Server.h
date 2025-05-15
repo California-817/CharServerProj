@@ -3,6 +3,7 @@
 #include"IOContextPool.h"
 #include"MsgNode.h"
 #include"UserMgr.h"
+#include"RedisMgr.h"
 #include"Const.h"
 class Session;
 class MsgNode;

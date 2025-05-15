@@ -1808,7 +1808,6 @@ CMakeFiles/ChatServer.dir/src/MsgNode.cpp.o: \
  /usr/include/c++/12/x86_64-OpenCloudOS-linux/bits/c++io.h \
  /usr/include/c++/12/bits/fstream.tcc \
  /home/xxxten/ChatProj/CharServerProj/ChatServer/src/../include/UserMgr.h \
- /home/xxxten/ChatProj/CharServerProj/ChatServer/src/../include/LogicSystem.h \
  /home/xxxten/ChatProj/CharServerProj/ChatServer/src/../include/RedisMgr.h \
  /usr/local/include/sw/redis++/redis++.h \
  /usr/local/include/sw/redis++/redis.h \
@@ -1837,6 +1836,7 @@ CMakeFiles/ChatServer.dir/src/MsgNode.cpp.o: \
  /usr/local/include/sw/redis++/redis_cluster.hpp \
  /usr/local/include/sw/redis++/queued_redis.h \
  /usr/local/include/sw/redis++/queued_redis.hpp \
+ /home/xxxten/ChatProj/CharServerProj/ChatServer/src/../include/LogicSystem.h \
  /home/xxxten/ChatProj/CharServerProj/ChatServer/src/../include/MysqlMgr.h \
  /home/xxxten/ChatProj/CharServerProj/ChatServer/src/../include/MysqlPool.hpp \
  /home/xxxten/ChatProj/CharServerProj/ChatServer/src/../include/LoginGrpcClient.h \
