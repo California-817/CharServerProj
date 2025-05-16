@@ -57,5 +57,12 @@ private:
 //文本消息通信的grpc处理逻辑
 class NotifyTextChatMsgCalldata:public Calldata
 {
-
+public:
+    NotifyTextChatMsgCalldata(ChatService::AsyncService* service, ServerCompletionQueue* cq,ChatServerImpl* impl);
+    virtual void Proceed();
+    virtual ~NotifyTextChatMsgCalldata()=default;
+private:
+    TextChatMsgReq _req;
+    TextChatMsgRsp _rsp;
+    ServerAsyncResponseWriter<TextChatMsgRsp> _responder; //写入响应的对象
 };

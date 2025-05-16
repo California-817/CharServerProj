@@ -95,7 +95,9 @@ void LogicSystem::RegisterCallBacks()
     _fun_callbacks[MSGID_ADD_FRIEND]=std::bind(&LogicSystem::AddFriendCallback,this,
                                                  std::placeholders::_1, std::placeholders::_2, std::placeholders::_3);   
     _fun_callbacks[MSGID_AUTH_FRIEND]=std::bind(&LogicSystem::AuthFriendCallback,this,
-                                                 std::placeholders::_1, std::placeholders::_2, std::placeholders::_3);  
+                                                 std::placeholders::_1, std::placeholders::_2, std::placeholders::_3);
+    _fun_callbacks[MSGID_TEXT_CHAT]=std::bind(&LogicSystem::TextChatCallback,this,
+                                                 std::placeholders::_1, std::placeholders::_2, std::placeholders::_3);   
 }
 
 LogicSystem::~LogicSystem()
@@ -613,6 +615,87 @@ void LogicSystem::AuthFriendCallback(std::shared_ptr<Session> session, const uin
     // QString icon = jsonObj["icon"].toString();
     // int sex = jsonObj["sex"].toInt();
 }
+//文本信息发送回调
+void LogicSystem::TextChatCallback(std::shared_ptr<Session> session, const uint16_t &msg_id, const std::string &msg_data)
+{
+    //请求
+    // textObj["fromuid"] = user_info->_uid;
+    // textObj["touid"] = _user_info->_uid;
+    // textObj["text_array"] = textArray;
+    mINI::INIFile file("../conf/config.ini");
+    mINI::INIStructure ini;
+    file.read(ini);
+    nlohmann::json root; //回包
+    nlohmann::json src_root;
+    try{
+        src_root=nlohmann::json::parse(msg_data);
+    }catch(const nlohmann::json::parse_error& err)
+    { //反序列化失败
+      std::cout<<"Fail to parse json "<<err.what()<<std::endl;
+      root["error"]=ErrorCodes::Error_Json;
+      auto jsonstr=root.dump(4); //序列化
+      session->Write(MSGID_TEXT_CHAT_RSP,jsonstr.size(),jsonstr.c_str());
+      return;
+    }
+    root["error"]=ErrorCodes::Success;
+    Defer defer([&session,&root](){
+      auto jsonstr=root.dump(4); //序列化
+      session->Write(MSGID_TEXT_CHAT_RSP,jsonstr.size(),jsonstr.c_str());    
+    });
+    int from_uid=src_root["fromuid"].get<int>();   
+    int to_uid=src_root["touid"].get<int>();
+    //数组字段处理 [json1,json2,json3]
+    nlohmann::json textarrays=src_root["text_array"];
+    //查找对方所在的服务器
+    std::string to_uid_str=USERIPPREFIX;
+    to_uid_str+=std::to_string(to_uid); //uip_1
+    auto redis_con=RedisMgr::GetInstance()->GetRedisCon();
+    auto redis_ret=redis_con->hget(UID_IPS,to_uid_str);
+    if(!redis_ret.has_value())
+    { //对方没有上线---需要暂时保存消息 ----后期需要进行添加功能
+        return;        
+    }
+    std::string touid_ip=redis_ret.value();
+    //1.对方在本服务器上
+    if(touid_ip==ini["SelfServer"]["name"])
+    {
+        //找到对方的session
+        auto to_session=UserMgr::GetInstance()->GetUidSession(to_uid);
+        if(to_session.get()){ //对方在线
+         //给对方请求
+         // int err = jsonObj["error"].toInt();
+         // jsonObj["fromuid"].toInt(),
+         // jsonObj["touid"].toInt(),jsonObj["text_array"].toArray();
+         //将我的信息发送给对方
+        nlohmann::json to_root;
+        to_root["error"]=ErrorCodes::Success;
+        to_root["fromuid"]=from_uid;
+        to_root["touid"]=to_uid;
+        to_root["text_array"]=textarrays;
+        std::string to_jsonstr=to_root.dump(4);
+        //给对方发送申请好友请求
+        to_session->Write(MSGID_NOTIFY_TEXT_CHAT,to_jsonstr.size(),to_jsonstr.c_str());
+        }
+        //对方不在线---需要暂时保存消息 ----后期需要进行添加功能
+        return;
+    }
+    //2.对方在其他服务器上 --调用grpc的文本通信服务
+    TextChatMsgReq req;
+    req.set_fromid(from_uid);
+    req.set_toid(to_uid);
+    //循环遍历json的array结构
+    for(const auto& element:textarrays)
+    { //对protobuf的数组结构进行设置值
+        auto text_data=req.add_textmsgs();  //先repeated结构中添加一个对象
+        //为对象赋值
+        text_data->set_msgid(element["msgid"].get<std::string>());
+        text_data->set_msgcontent(element["content"].get<std::string>());
+    }
+    ChatGrpcClient::GetInstance()->NotifyTextChatMsg(touid_ip,req);
+    //给自己回复
+    // int err = jsonObj["error"].toInt();
+}
+
 
 
 

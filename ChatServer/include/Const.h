@@ -65,6 +65,9 @@ enum MSGID
     MSGID_AUTH_FRIEND=1013,//认证好友请求
     MSGID_AUTH_FRIEND_RSP=1014,//认证好友回复
     MSGID_NOTIFY_AUTH_FRIEND=1015,//通知认证好友请求
+    MSGID_TEXT_CHAT=1017, //文本聊天信息请求
+    MSGID_TEXT_CHAT_RSP=1018, //文本聊天信息回复
+    MSGID_NOTIFY_TEXT_CHAT=1019, //文本聊天信息请求
 };
 
 #define USERIPPREFIX  "uip_"  //用户所在的ip的uidkey值
