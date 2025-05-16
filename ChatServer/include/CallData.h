@@ -45,7 +45,14 @@ private:
 //认证好友的grpc处理逻辑
 class NotifyAuthFriendCalldata:public Calldata
 {
-
+public:
+    NotifyAuthFriendCalldata(ChatService::AsyncService* service, ServerCompletionQueue* cq,ChatServerImpl* impl);
+    virtual void Proceed();
+    virtual ~NotifyAuthFriendCalldata()=default;
+private:
+    AuthFriendReq _req;
+    AuthFriendRsp _rsp;
+    ServerAsyncResponseWriter<AuthFriendRsp> _responder; //写入响应的对象
 };
 //文本消息通信的grpc处理逻辑
 class NotifyTextChatMsgCalldata:public Calldata

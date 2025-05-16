@@ -50,7 +50,30 @@ AddFriendRsp ChatGrpcClient::NotifyAddFriend(const std::string& ip,const AddFrie
 //认证好友
 AuthFriendRsp ChatGrpcClient::NotifyAuthFriend(const std::string& ip,const AuthFriendReq& req)
 {
-    return AuthFriendRsp();
+    //1.根据ip找到指定的pool
+    auto it=_pools.find(ip);
+    if(it==_pools.end())
+    { //没找到这个ip对应的pool
+        return AuthFriendRsp();}
+    auto grpc_pool=it->second;
+    AuthFriendRsp rsp;
+    ClientContext clicontext;
+    //the actual grpc 客户端同步调用grpc
+    auto stub=grpc_pool->GetGrpcCon(); //从grpc连接池中获取连接
+    Defer defer([&stub,&grpc_pool](){
+        grpc_pool->ReturnGrpcCon(std::move(stub)); //归还连接
+    });
+    Status status=stub->NotifyAuthFriend(&clicontext,req,&rsp);
+    if(status.ok())
+    { //调用正常
+        return rsp;
+    }else{
+        std::cout << status.error_code() << ": " << status.error_message()
+        << std::endl;
+        rsp.set_error(ErrorCodes::RPCFailed); //调用失败 自己这端给响应设置错误值
+        return rsp;
+    }
+    return rsp;   
 }
 //文本消息通信
 TextChatMsgRsp ChatGrpcClient::NotifyTextChatMsg(const std::string& ip,const TextChatMsgReq& req)

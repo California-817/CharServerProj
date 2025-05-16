@@ -332,7 +332,7 @@ bool MysqlMgr::GetFriendList(int uid,std::vector<std::shared_ptr<UserInfo>>& fri
     //判断是否有数据
     if(!mysql_stmt_num_rows(stmt))
     {//没有数据
-        std::cout << "没有该用户信息 " << std::endl;
+        std::cout << "没有好友列表信息 " << std::endl;
         mysql_stmt_close(stmt);
         return false;
     }
@@ -366,6 +366,100 @@ bool MysqlMgr::GetFriendList(int uid,std::vector<std::shared_ptr<UserInfo>>& fri
     }
     return true;       
 }
+//更新申请列表 向好友列表添加好友记录
+bool MysqlMgr::AuthAddFriend(int from_uid,int to_uid,std::string back)
+{
+    auto shared_con=_pool->GetConnection(); //该智能指针对象会一直持续到话括号结束再析构 归还连接
+    auto con=shared_con.get();
+    MYSQL_STMT* stmt1;
+    MYSQL_STMT* stmt2;
+    MYSQL_STMT* stmt3;
+    MYSQL_BIND bind1[2];
+    MYSQL_BIND bind2[3];
+    MYSQL_BIND bind3[3];
+    std::string query1="update friend_apply set apply_status = 1 where from_uid=? and to_uid=?";
+    std::string query2="insert into friend (self_uid,to_uid,back) values (?,?,?)";
+    std::string query3="insert into friend (self_uid,to_uid,back) values (?,?,?)";
+    stmt1=mysql_stmt_init(con);
+    stmt2=mysql_stmt_init(con);
+    stmt3=mysql_stmt_init(con);
+    Defer defer([&stmt1,&stmt2,&stmt3](){
+        mysql_stmt_close(stmt1);
+        mysql_stmt_close(stmt2);
+        mysql_stmt_close(stmt3);
+    });
+    if (mysql_stmt_prepare(stmt1, query1.c_str(), query1.length())) {
+        std::cerr << "mysql_stmt_prepare() failed: " << mysql_stmt_error(stmt1) << std::endl;
+        return false;}
+    if (mysql_stmt_prepare(stmt2, query2.c_str(), query2.length())) {
+        std::cerr << "mysql_stmt_prepare() failed: " << mysql_stmt_error(stmt2) << std::endl;
+        return false;}
+    if (mysql_stmt_prepare(stmt3, query3.c_str(), query3.length())) {
+        std::cerr << "mysql_stmt_prepare() failed: " << mysql_stmt_error(stmt3) << std::endl;
+        return false;}
+    memset(bind1,0,sizeof bind1);
+    memset(bind2,0,sizeof bind2);
+    memset(bind3,0,sizeof bind3);
+    bind1[0].buffer_type=MYSQL_TYPE_LONG;
+    bind1[0].buffer=(char*)&to_uid;
+    bind1[1].buffer_type=MYSQL_TYPE_LONG;
+    bind1[1].buffer=(char*)&from_uid;
+
+    bind2[0].buffer_type=MYSQL_TYPE_LONG;
+    bind2[0].buffer=(char*)&from_uid;
+    bind2[1].buffer_type=MYSQL_TYPE_LONG;
+    bind2[1].buffer=(char*)&to_uid;
+    bind2[2].buffer_type=MYSQL_TYPE_STRING;
+    bind2[2].buffer=(char*)back.c_str();
+    bind2[2].buffer_length=back.length();
+
+    bind3[0].buffer_type=MYSQL_TYPE_LONG;
+    bind3[0].buffer=(char*)&to_uid;
+    bind3[1].buffer_type=MYSQL_TYPE_LONG;
+    bind3[1].buffer=(char*)&from_uid;
+    bind3[2].buffer_type=MYSQL_TYPE_STRING;
+    std::string form_back=" "; //这个申请人设置的备注在添加好友的时候没有进行保留 这里用空字符串表示 后面进行添加
+    bind3[2].buffer=(char*)form_back.c_str();
+    bind3[2].buffer_length=form_back.length();
+    if (mysql_stmt_bind_param(stmt1, bind1)) {
+        std::cerr << "mysql_stmt_bind_param() failed: " << mysql_stmt_error(stmt1) << std::endl;
+        return false;}
+    if (mysql_stmt_bind_param(stmt2, bind2)) {
+        std::cerr << "mysql_stmt_bind_param() failed: " << mysql_stmt_error(stmt2) << std::endl;
+        return false;}
+    if (mysql_stmt_bind_param(stmt3, bind3)) {
+        std::cerr << "mysql_stmt_bind_param() failed: " << mysql_stmt_error(stmt3) << std::endl;
+        return false;}
+    //开启一个事务
+    if(mysql_query(con,"START TRANSACTION"))
+    { //开启事务失败
+        std::cerr << "Error: " << mysql_error(con) << std::endl;
+        return false;
+    }
+    // 执行预处理语句
+    if (mysql_stmt_execute(stmt1)) {
+        std::cerr << "mysql_stmt_execute() failed: " << mysql_stmt_error(stmt1) << std::endl;
+        //某一条语句失败则进行回滚事务
+        mysql_query(con, "ROLLBACK");
+        return false;}
+    if (mysql_stmt_execute(stmt2)) {
+        std::cerr << "mysql_stmt_execute() failed: " << mysql_stmt_error(stmt2) << std::endl;
+        mysql_query(con, "ROLLBACK");
+        return false;}
+    if (mysql_stmt_execute(stmt3)) {
+        std::cerr << "mysql_stmt_execute() failed: " << mysql_stmt_error(stmt3) << std::endl;
+        mysql_query(con, "ROLLBACK");
+        return false;}
+    //三条语句都执行成功 进行事务提交
+    if(mysql_query(con, "COMMIT"))
+    { //提交事务失败
+        std::cerr << "Error: " << mysql_error(con) << std::endl;
+        return false;        
+    }
+    //事务执行完成并成功提交
+    return true;
+}
+
 
 
 

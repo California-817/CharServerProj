@@ -65,3 +65,53 @@ ChatServerImpl::~ChatServerImpl()
         } 
     }
 }
+
+bool ChatServerImpl::GetUserInfo(int uid,UserInfo& userinfo)
+{
+    //1.先去redis中获取用户信息
+    auto redis_con=RedisMgr::GetInstance()->GetRedisCon();
+    if(redis_con.get()==nullptr)
+    {
+        return false;}
+    std::string info_key=USER_BASE_INFO;
+    info_key+=std::to_string(uid);   // ubaseinfo_1
+    // std::unordered_map<std::string,std::string> redis_ret;
+    // auto redis_ret=redis_con->hgetall<std::unordered_map<std::string, std::string>>(info_key);
+    // 用于存储结果的容器
+    std::unordered_map<std::string, std::string> redis_ret;
+    std::vector<std::string> fields{"uid","name","email","nick","pwd","desc","icon","sex"};
+    // 对每个字段调用 hget
+    for (const auto& field : fields) {
+        auto value = redis_con->hget(info_key, field);
+        if (value.has_value()) {
+            redis_ret[field] = value.value();
+        }
+    }
+    if(!redis_ret.empty())
+    { //redis中有该用户信息的缓存
+        userinfo._uid=atoi(redis_ret["uid"].c_str());
+        userinfo._name=redis_ret["name"];
+        userinfo._email=redis_ret["email"];
+        userinfo._nick=redis_ret["nick"];
+        userinfo._pwd=redis_ret["pwd"];
+        userinfo._desc=redis_ret["desc"];
+        userinfo._icon=redis_ret["icon"];
+        userinfo._sex=atoi(redis_ret["sex"].c_str());
+        return true;
+    }
+    //redis中没有数据缓存 到MySQL获取 并且写入redis
+    bool ret=MysqlMgr::GetInstance()->GetUserInfo(uid,userinfo);
+    if(ret)
+    { //成功获取并写入了userinfo  写入redis  
+        redis_con->hmset(info_key,{std::make_pair("uid", std::to_string(userinfo._uid).c_str()),
+            std::make_pair("name", userinfo._name.c_str()),
+            std::make_pair("nick", userinfo._nick.c_str()),
+            std::make_pair("pwd", userinfo._pwd.c_str()),
+            std::make_pair("desc", userinfo._desc.c_str()),
+            std::make_pair("icon", userinfo._icon.c_str()),
+            std::make_pair("sex", std::to_string(userinfo._sex).c_str()),
+            std::make_pair("email", userinfo._email.c_str())});
+        return true;
+    }
+    return false;   
+}

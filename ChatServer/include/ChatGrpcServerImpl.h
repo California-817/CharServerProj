@@ -1,6 +1,8 @@
 #pragma once
 #include"Const.h"
 #include"CallData.h"
+#include"RedisMgr.h"
+#include"MysqlMgr.h"
 //grpc服务端
 using grpc::ServerAsyncResponseWriter;
 using grpc::ServerBuilder;
@@ -21,6 +23,7 @@ public:
     void Run(uint16_t port);
     // This can be run in multiple threads if needed.
     void HandleRpcs();
+    bool GetUserInfo(int uid,UserInfo& userinfo); //获取用户信息
     ~ChatServerImpl();
 private:
     ChatService::AsyncService _service;   //异步grpc服务

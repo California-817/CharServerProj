@@ -11,6 +11,7 @@ public:
     bool AddFriendApply(int from_uid,int to_uid); //向friend_apply表中添加一条好友申请记录
     bool GetFriendApply(int uid,std::vector<std::shared_ptr<ApplyInfo>>& applylist,int begin,int end); //获取这个user的所有申请人列表
     bool GetFriendList(int uid,std::vector<std::shared_ptr<UserInfo>>& friendlist); //获取这个user的所有好友列表
+    bool AuthAddFriend(int from_uid,int to_uid,std::string back) ; //更新申请列表 向好友列表添加好友记录
     ~MysqlMgr()=default;
 private:
     MysqlMgr();

@@ -456,7 +456,6 @@ void LogicSystem::AddFriendCallback(std::shared_ptr<Session> session, const uint
     bool info_get=LogicSystem::GetUserInfo(from_uid,*(userinfo.get()));
     if(!info_get)
     { //基本信息获取失败
-        root["error"]=ErrorCodes::UidInvalid;
         return;
     }
     //向对方发送通知好友申请的请求
@@ -467,7 +466,6 @@ void LogicSystem::AddFriendCallback(std::shared_ptr<Session> session, const uint
     auto redis_ret=redis_con->hget(UID_IPS,to_uid_str);
     if(!redis_ret.has_value())
     {
-        root["error"]=ErrorCodes::UidInvalid;
         return;        
     }
     std::string touid_ip=redis_ret.value();
@@ -515,10 +513,45 @@ void LogicSystem::AddFriendCallback(std::shared_ptr<Session> session, const uint
 
 void LogicSystem::AuthFriendCallback(std::shared_ptr<Session> session, const uint16_t &msg_id, const std::string &msg_data)
 {
+    mINI::INIFile file("../conf/config.ini");
+    mINI::INIStructure ini;
+    file.read(ini);
     //请求
     // jsonObj["fromuid"] = uid; 
     // jsonObj["touid"] = _apply_info->_uid;
     // jsonObj["back"] = back_name;
+    nlohmann::json root; //回包
+    nlohmann::json src_root;
+    try{
+        src_root=nlohmann::json::parse(msg_data);
+    }catch(const nlohmann::json::parse_error& err)
+    { //反序列化失败
+      std::cout<<"Fail to parse json "<<err.what()<<std::endl;
+      root["error"]=ErrorCodes::Error_Json;
+      auto jsonstr=root.dump(4); //序列化
+      session->Write(MSGID_AUTH_FRIEND_RSP,jsonstr.size(),jsonstr.c_str());
+      return;
+    }
+    root["error"]=ErrorCodes::Success;
+    Defer defer([&session,&root](){
+      auto jsonstr=root.dump(4); //序列化
+      session->Write(MSGID_AUTH_FRIEND_RSP,jsonstr.size(),jsonstr.c_str());    
+    });
+    int from_uid=src_root["fromuid"].get<int>();
+    int to_uid=src_root["touid"].get<int>();
+    std::string back=src_root["back"].get<std::string>();
+    UserInfo userinfo;
+    bool ret=LogicSystem::GetUserInfo(to_uid,userinfo);
+    if(!ret) //查找对方信息失败
+    {
+        root["error"]=ErrorCodes::UidInvalid;
+        return;
+    }
+    root["name"]=userinfo._name;
+    root["nick"]=userinfo._nick;
+    root["icon"]=userinfo._icon;
+    root["sex"]=userinfo._sex;
+    root["uid"]=userinfo._uid;
     //回复（给自己）
     // int err = jsonObj["error"].toInt();
     // auto name = jsonObj["name"].toString();
@@ -526,6 +559,52 @@ void LogicSystem::AuthFriendCallback(std::shared_ptr<Session> session, const uin
     // auto icon = jsonObj["icon"].toString();
     // auto sex = jsonObj["sex"].toInt();
     // auto uid = jsonObj["uid"].toInt();
+    //更新mysql中的好友申请表 和 好友列表 -- 以事务的形式
+    bool mysql_ret=MysqlMgr::GetInstance()->AuthAddFriend(from_uid,to_uid,back);
+    if(!mysql_ret)
+    {
+        root["error"]=ErrorCodes::UidInvalid;
+        return;       
+    }
+    //给对方发送认证好友请求
+    //查找对方所在的服务器
+    std::string to_uid_str=USERIPPREFIX;
+    to_uid_str+=std::to_string(to_uid); //uip_1
+    auto redis_con=RedisMgr::GetInstance()->GetRedisCon();
+    auto redis_ret=redis_con->hget(UID_IPS,to_uid_str);
+    if(!redis_ret.has_value())
+    { //对方没有上线
+        return;        
+    }
+    std::string touid_ip=redis_ret.value();
+    //1.对方在本服务器上
+    if(touid_ip==ini["SelfServer"]["name"])
+    {
+        //找到对方的session
+        auto to_session=UserMgr::GetInstance()->GetUidSession(to_uid);
+        if(to_session.get()){ //对方在线
+        //将我的信息发送给对方
+        UserInfo userinfo;
+        LogicSystem::GetUserInfo(from_uid,userinfo);     
+        nlohmann::json to_root;
+        to_root["error"]=ErrorCodes::Success;
+        to_root["fromuid"]=userinfo._uid;
+        to_root["name"]=userinfo._name;
+        to_root["nick"]=userinfo._nick;
+        to_root["icon"]=userinfo._icon;
+        to_root["sex"]=userinfo._sex;
+        std::string to_jsonstr=to_root.dump(4);
+        //给对方发送申请好友请求
+        to_session->Write(MSGID_NOTIFY_AUTH_FRIEND,to_jsonstr.size(),to_jsonstr.c_str());
+        }
+        //对方不在线
+        return;
+    }
+    //2.对方在其他服务器上 --调用grpc的申请好友服务
+    AuthFriendReq req;
+    req.set_fromuid(from_uid);
+    req.set_touid(to_uid);
+    ChatGrpcClient::GetInstance()->NotifyAuthFriend(touid_ip,req);
     //通知对方认证好友请求（给对方）
     // int err = jsonObj["error"].toInt();
     // int from_uid = jsonObj["fromuid"].toInt();

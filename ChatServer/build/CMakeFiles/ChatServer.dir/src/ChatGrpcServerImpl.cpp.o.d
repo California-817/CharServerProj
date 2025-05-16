@@ -1805,4 +1805,34 @@ CMakeFiles/ChatServer.dir/src/ChatGrpcServerImpl.cpp.o: \
  /usr/include/c++/12/bits/fstream.tcc \
  /home/xxxten/ChatProj/CharServerProj/ChatServer/src/../include/CallData.h \
  /home/xxxten/ChatProj/CharServerProj/ChatServer/src/../include/UserMgr.h \
- /home/xxxten/ChatProj/CharServerProj/ChatServer/src/../include/Singleton.h
+ /home/xxxten/ChatProj/CharServerProj/ChatServer/src/../include/Singleton.h \
+ /home/xxxten/ChatProj/CharServerProj/ChatServer/src/../include/RedisMgr.h \
+ /usr/local/include/sw/redis++/redis++.h \
+ /usr/local/include/sw/redis++/redis.h \
+ /usr/local/include/sw/redis++/connection_pool.h \
+ /usr/local/include/sw/redis++/connection.h \
+ /usr/local/include/hiredis/hiredis.h /usr/local/include/hiredis/read.h \
+ /usr/local/include/hiredis/sds.h /usr/local/include/hiredis/alloc.h \
+ /usr/local/include/sw/redis++/errors.h \
+ /usr/local/include/sw/redis++/reply.h \
+ /usr/local/include/sw/redis++/utils.h \
+ /usr/local/include/sw/redis++/cxx_utils.h \
+ /usr/local/include/sw/redis++/tls.h \
+ /usr/local/include/sw/redis++/hiredis_features.h \
+ /usr/local/include/sw/redis++/sentinel.h \
+ /usr/local/include/sw/redis++/shards.h \
+ /usr/local/include/sw/redis++/command_options.h \
+ /usr/local/include/sw/redis++/subscriber.h \
+ /usr/local/include/sw/redis++/command.h \
+ /usr/local/include/sw/redis++/command_args.h \
+ /usr/local/include/sw/redis++/pipeline.h \
+ /usr/local/include/sw/redis++/transaction.h \
+ /usr/local/include/sw/redis++/redis_uri.h \
+ /usr/local/include/sw/redis++/redis.hpp \
+ /usr/local/include/sw/redis++/redis_cluster.h \
+ /usr/local/include/sw/redis++/shards_pool.h \
+ /usr/local/include/sw/redis++/redis_cluster.hpp \
+ /usr/local/include/sw/redis++/queued_redis.h \
+ /usr/local/include/sw/redis++/queued_redis.hpp \
+ /home/xxxten/ChatProj/CharServerProj/ChatServer/src/../include/MysqlMgr.h \
+ /home/xxxten/ChatProj/CharServerProj/ChatServer/src/../include/MysqlPool.hpp
