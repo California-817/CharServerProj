@@ -103,7 +103,36 @@ TextChatMsgRsp ChatGrpcClient::NotifyTextChatMsg(const std::string& ip,const Tex
     }
     return rsp;      
 }
+//踢人通知
+KickUserRsp ChatGrpcClient::NotifyKickUser(const std::string& ip,const KickUserReq& req)
+{
+    //1.根据ip找到指定的pool
+    auto it=_pools.find(ip);
+    if(it==_pools.end())
+    { //没找到这个ip对应的pool
+        return KickUserRsp();}
+    auto grpc_pool=it->second;
+    KickUserRsp rsp;
+    ClientContext clicontext;
+    //the actual grpc 客户端同步调用grpc
+    auto stub=grpc_pool->GetGrpcCon(); //从grpc连接池中获取连接
+    Defer defer([&stub,&grpc_pool](){
+        grpc_pool->ReturnGrpcCon(std::move(stub)); //归还连接
+    });
+    Status status=stub->NotifyKickUser(&clicontext,req,&rsp);
+    if(status.ok())
+    { //调用正常
+        return rsp;
+    }else{
+        std::cout << status.error_code() << ": " << status.error_message()
+        << std::endl;
+        rsp.set_error(ErrorCodes::RPCFailed); //调用失败 自己这端给响应设置错误值
+        return rsp;
+    }
+    return rsp;   
+}
 ChatGrpcClient::~ChatGrpcClient()
 {
     _pools.clear();
 }
+

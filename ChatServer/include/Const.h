@@ -68,15 +68,20 @@ enum MSGID
     MSGID_TEXT_CHAT=1017, //文本聊天信息请求
     MSGID_TEXT_CHAT_RSP=1018, //文本聊天信息回复
     MSGID_NOTIFY_TEXT_CHAT=1019, //文本聊天信息请求
+    MSGID_NOTIFY_OFF_LINE = 1021, //通知用户下线
 };
-
+#define USERSESSIONIDPREFIX "usessionid_" //用户sessionid的key值
 #define USERIPPREFIX  "uip_"  //用户所在的ip的uidkey值
 #define USER_BASE_INFO "ubaseinfo_" //一个hash名称 存放一个用户的基本信息 通过uid
 #define USER_NAME "user_name_"  //用于查找用户通过名字查找存放用户信息
 #define LOGIN_COUNT  "logincount" //一个hash名称 存放所有服务器的连接数
 #define UID_TOKENS "uid_tokens" //一个hash名称 存放所有uid以及tokens
 #define UID_IPS "uid_at_ip"   //一个hash名称 存放所有uid以及所在服务器的名称
-
+#define UID_SESSIONS "uid_bind_sessionid" //存放所有uid对应的session的id
+#define LOCK_PREFIX "lock:" //用户级锁的key前缀
+#define LOCK_COUNT "lock_count" //读写连接数的系统级锁
+#define LOCKTIMEOUT 10 //锁存活时间 防止死锁
+#define ACQUIRETIME 5 //获取锁的时间
 class Defer
 {  //实现类似go的defer 当出了函数作用域 对象销毁自动调用析构函数 在析构函数内部调用外部需要执行的操作_func
 public:

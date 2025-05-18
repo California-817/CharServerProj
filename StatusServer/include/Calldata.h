@@ -1,6 +1,7 @@
 #pragma once
 #include"Const.h"
 #include"RedisMgr.h"
+#include"DistLock.h"
 using grpc::Server;
 using grpc::ServerAsyncResponseWriter;
 using grpc::ServerBuilder;

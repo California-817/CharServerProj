@@ -12,28 +12,16 @@ Server::Server(std::shared_ptr<boost::asio::io_context> io_context, uint16_t por
     {
         std::cout<<"accecptor设置端口复用失败"<<std::endl;
     }
-    StartAccecp();                                   //              开始接收连接
+    StartAccecp(); // 开始接收连接
 }
 void Server::ClearSession(std::string &session_id)
-{ //要进行两个存储结构中session的删除 删除redis中uid与ip映射关系 更改redis中服务器连接数
-    auto redis_con=RedisMgr::GetInstance()->GetRedisCon();
-    mINI::INIFile file("../conf/config.ini");
-    mINI::INIStructure ini;
-    file.read(ini);
-    auto ret_redis=redis_con->hget(LOGIN_COUNT,ini["SelfServer"]["name"].c_str());
-    //更新连接数-1并写入redis  ---未来会用到分布式锁
-    redis_con->hset(LOGIN_COUNT,ini["SelfServer"]["name"].c_str(),std::to_string((atoi(ret_redis.value().c_str())-1)));
-    //删除redis中缓存的uid与ip的映射关系
-    std::string ip_key=USERIPPREFIX; // uip_1
-    ip_key+=std::to_string(_sessions[session_id]->GetUid());
-    redis_con->hdel(UID_IPS,ip_key.c_str());
-    
+{ //只进行两个存储结构中session的删除 不进行redis中一些数据的修改 ---涉及到分布式锁来保证安全性
+    //可能是多个io线程调用来删除 
+    std::lock_guard<std::mutex> _lock(_mtx); //_sessions.find(session_id)防止查找的时候进行修改
     if(_sessions.find(session_id)!=_sessions.end())
     { //删除uid与session映射管理中的session
-        UserMgr::GetInstance()->RmUidSession(_sessions[session_id]->GetUid()); //这个函数内部会加一把锁
+        UserMgr::GetInstance()->RmUidSession(_sessions[session_id]->GetUid(),session_id); //这个函数内部会加一把锁
     }
-    //可能是多个线程调用来删除 这里的锁加在下面而不是上面 是为了防止嵌套加多把锁造成死锁情况产生
-    std::lock_guard<std::mutex> _lock(_mtx);
     _sessions.erase(session_id);
 }
 // 接收完的回调函数
@@ -69,3 +57,14 @@ Server::~Server()
 {
     _accecptor.close();
 }
+
+bool Server::CheckValid(const std::string& sessionid)
+{
+    auto it=_sessions.find(sessionid);
+    if(it==_sessions.end())
+    {
+        return false;
+    }
+    return true;
+}
+

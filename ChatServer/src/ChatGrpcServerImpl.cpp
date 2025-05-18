@@ -1,5 +1,7 @@
 #include "../include/ChatGrpcServerImpl.h"
-ChatServerImpl::ChatServerImpl()
+#include"../include/Server.h"
+ChatServerImpl::ChatServerImpl(Server* p_server)
+:_p_server(p_server)
 {}
 void ChatServerImpl::Run(uint16_t port)
 {
@@ -35,6 +37,9 @@ void ChatServerImpl::HandleRpcs()
 {
     // 如果有多种请求 需要每种创建一个calldata进行注册到grpc框架接受请求返回事件到cq
     new NotifyAddFriendCalldata(&_service, _cq.get(), this); //添加好友的请求放入完成队列
+    new NotifyAuthFriendCalldata(&_service, _cq.get(), this); //认证好友的请求放入完成队列
+    new NotifyTextChatMsgCalldata(&_service, _cq.get(), this); //文本消息通信的请求放入完成队列
+    new NotifyKickUserCalldata(&_service, _cq.get(), this);//踢人通知请求放入完成对列
     void *tag; // uniquely identifies a request.
     bool ok;
     while (true)

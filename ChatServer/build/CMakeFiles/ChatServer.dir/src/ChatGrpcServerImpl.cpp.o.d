@@ -1835,4 +1835,16 @@ CMakeFiles/ChatServer.dir/src/ChatGrpcServerImpl.cpp.o: \
  /usr/local/include/sw/redis++/queued_redis.h \
  /usr/local/include/sw/redis++/queued_redis.hpp \
  /home/xxxten/ChatProj/CharServerProj/ChatServer/src/../include/MysqlMgr.h \
- /home/xxxten/ChatProj/CharServerProj/ChatServer/src/../include/MysqlPool.hpp
+ /home/xxxten/ChatProj/CharServerProj/ChatServer/src/../include/MysqlPool.hpp \
+ /home/xxxten/ChatProj/CharServerProj/ChatServer/src/../include/Server.h \
+ /home/xxxten/ChatProj/CharServerProj/ChatServer/src/../include/Session.h \
+ /home/xxxten/ChatProj/CharServerProj/ChatServer/src/../include/MsgNode.h \
+ /home/xxxten/ChatProj/CharServerProj/ChatServer/src/../include/LogicSystem.h \
+ /home/xxxten/ChatProj/CharServerProj/ChatServer/src/../include/LoginGrpcClient.h \
+ /home/xxxten/ChatProj/CharServerProj/ChatServer/src/../include/GrpcConPool.hpp \
+ /home/xxxten/ChatProj/CharServerProj/ChatServer/src/../include/grpc_cpp_out/GateServer.Status.grpc.pb.h \
+ /home/xxxten/ChatProj/CharServerProj/ChatServer/src/../include/grpc_cpp_out/GateServer.Status.pb.h \
+ /home/xxxten/ChatProj/CharServerProj/ChatServer/src/../include/grpc_cpp_out/GateServer.Status.pb.h \
+ /home/xxxten/ChatProj/CharServerProj/ChatServer/src/../include/ChatGrpcClient.h \
+ /home/xxxten/ChatProj/CharServerProj/ChatServer/src/../include/DistLock.h \
+ /home/xxxten/ChatProj/CharServerProj/ChatServer/src/../include/IOContextPool.h

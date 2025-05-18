@@ -51,3 +51,19 @@ public:
 #define USER_BASE_INFO "ubaseinfo_"
 #define LOGIN_COUNT  "logincount"
 #define UID_TOKENS "uid_tokens"
+#define LOCK_PREFIX "lock:" //用户级锁的key前缀
+#define LOCK_COUNT "lock_count" //读写连接数的系统级锁
+#define LOCKTIMEOUT 10 //锁存活时间 防止死锁
+#define ACQUIRETIME 5 //获取锁的时间
+class Defer
+{  //实现类似go的defer 当出了函数作用域 对象销毁自动调用析构函数 在析构函数内部调用外部需要执行的操作_func
+public:
+    Defer(std::function<void()> func)
+    :_func(func){}
+    ~Defer()
+    {
+        _func();
+    }
+private:
+    std::function<void()> _func;
+};

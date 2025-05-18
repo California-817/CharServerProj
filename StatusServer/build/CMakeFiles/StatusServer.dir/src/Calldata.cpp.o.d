@@ -1821,4 +1821,5 @@ CMakeFiles/StatusServer.dir/src/Calldata.cpp.o: \
  /usr/local/include/sw/redis++/redis_cluster.hpp \
  /usr/local/include/sw/redis++/queued_redis.h \
  /usr/local/include/sw/redis++/queued_redis.hpp \
+ /home/xxxten/ChatProj/CharServerProj/StatusServer/src/../include/DistLock.h \
  /home/xxxten/ChatProj/CharServerProj/StatusServer/src/../include/StatusServerImpl.h

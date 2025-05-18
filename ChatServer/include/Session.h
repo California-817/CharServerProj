@@ -14,6 +14,7 @@ public:
     std::string &GetSessionId();
     void SetUid(int uid);
     int GetUid();
+    void NotifyOffline(int uid);
     ~Session();
         void Close();
 private:
@@ -25,6 +26,7 @@ private:
     void AsyncReadFull(size_t max_length,std::function<void(const boost::system::error_code&, std::size_t)> handler);
     void AsyncReadLen(std::size_t read_len, std::size_t total_len, 
         std::function<void(const boost::system::error_code&, std::size_t)> handler);
+    void DealExceptionSession(); //客户端主动断开连接之后对连接信息的处理
 
 public:
     // 上层调用 不需要额外的Read接口 因为服务器的读时间是从Start函数开始就持续注册的

@@ -83,10 +83,24 @@ CMakeFiles/StatusServer.dir/src/Calldata.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/StatusServer.dir/src/Calldata.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/xxxten/ChatProj/CharServerProj/StatusServer/src/Calldata.cpp -o CMakeFiles/StatusServer.dir/src/Calldata.cpp.s
 
+CMakeFiles/StatusServer.dir/src/DistLock.cpp.o: CMakeFiles/StatusServer.dir/flags.make
+CMakeFiles/StatusServer.dir/src/DistLock.cpp.o: /home/xxxten/ChatProj/CharServerProj/StatusServer/src/DistLock.cpp
+CMakeFiles/StatusServer.dir/src/DistLock.cpp.o: CMakeFiles/StatusServer.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/xxxten/ChatProj/CharServerProj/StatusServer/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/StatusServer.dir/src/DistLock.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/StatusServer.dir/src/DistLock.cpp.o -MF CMakeFiles/StatusServer.dir/src/DistLock.cpp.o.d -o CMakeFiles/StatusServer.dir/src/DistLock.cpp.o -c /home/xxxten/ChatProj/CharServerProj/StatusServer/src/DistLock.cpp
+
+CMakeFiles/StatusServer.dir/src/DistLock.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/StatusServer.dir/src/DistLock.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/xxxten/ChatProj/CharServerProj/StatusServer/src/DistLock.cpp > CMakeFiles/StatusServer.dir/src/DistLock.cpp.i
+
+CMakeFiles/StatusServer.dir/src/DistLock.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/StatusServer.dir/src/DistLock.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/xxxten/ChatProj/CharServerProj/StatusServer/src/DistLock.cpp -o CMakeFiles/StatusServer.dir/src/DistLock.cpp.s
+
 CMakeFiles/StatusServer.dir/src/RedisMgr.cpp.o: CMakeFiles/StatusServer.dir/flags.make
 CMakeFiles/StatusServer.dir/src/RedisMgr.cpp.o: /home/xxxten/ChatProj/CharServerProj/StatusServer/src/RedisMgr.cpp
 CMakeFiles/StatusServer.dir/src/RedisMgr.cpp.o: CMakeFiles/StatusServer.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/xxxten/ChatProj/CharServerProj/StatusServer/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/StatusServer.dir/src/RedisMgr.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/xxxten/ChatProj/CharServerProj/StatusServer/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/StatusServer.dir/src/RedisMgr.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/StatusServer.dir/src/RedisMgr.cpp.o -MF CMakeFiles/StatusServer.dir/src/RedisMgr.cpp.o.d -o CMakeFiles/StatusServer.dir/src/RedisMgr.cpp.o -c /home/xxxten/ChatProj/CharServerProj/StatusServer/src/RedisMgr.cpp
 
 CMakeFiles/StatusServer.dir/src/RedisMgr.cpp.i: cmake_force
@@ -100,7 +114,7 @@ CMakeFiles/StatusServer.dir/src/RedisMgr.cpp.s: cmake_force
 CMakeFiles/StatusServer.dir/src/StatusServer.cpp.o: CMakeFiles/StatusServer.dir/flags.make
 CMakeFiles/StatusServer.dir/src/StatusServer.cpp.o: /home/xxxten/ChatProj/CharServerProj/StatusServer/src/StatusServer.cpp
 CMakeFiles/StatusServer.dir/src/StatusServer.cpp.o: CMakeFiles/StatusServer.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/xxxten/ChatProj/CharServerProj/StatusServer/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/StatusServer.dir/src/StatusServer.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/xxxten/ChatProj/CharServerProj/StatusServer/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/StatusServer.dir/src/StatusServer.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/StatusServer.dir/src/StatusServer.cpp.o -MF CMakeFiles/StatusServer.dir/src/StatusServer.cpp.o.d -o CMakeFiles/StatusServer.dir/src/StatusServer.cpp.o -c /home/xxxten/ChatProj/CharServerProj/StatusServer/src/StatusServer.cpp
 
 CMakeFiles/StatusServer.dir/src/StatusServer.cpp.i: cmake_force
@@ -114,7 +128,7 @@ CMakeFiles/StatusServer.dir/src/StatusServer.cpp.s: cmake_force
 CMakeFiles/StatusServer.dir/src/StatusServerImpl.cpp.o: CMakeFiles/StatusServer.dir/flags.make
 CMakeFiles/StatusServer.dir/src/StatusServerImpl.cpp.o: /home/xxxten/ChatProj/CharServerProj/StatusServer/src/StatusServerImpl.cpp
 CMakeFiles/StatusServer.dir/src/StatusServerImpl.cpp.o: CMakeFiles/StatusServer.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/xxxten/ChatProj/CharServerProj/StatusServer/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/StatusServer.dir/src/StatusServerImpl.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/xxxten/ChatProj/CharServerProj/StatusServer/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/StatusServer.dir/src/StatusServerImpl.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/StatusServer.dir/src/StatusServerImpl.cpp.o -MF CMakeFiles/StatusServer.dir/src/StatusServerImpl.cpp.o.d -o CMakeFiles/StatusServer.dir/src/StatusServerImpl.cpp.o -c /home/xxxten/ChatProj/CharServerProj/StatusServer/src/StatusServerImpl.cpp
 
 CMakeFiles/StatusServer.dir/src/StatusServerImpl.cpp.i: cmake_force
@@ -128,6 +142,7 @@ CMakeFiles/StatusServer.dir/src/StatusServerImpl.cpp.s: cmake_force
 # Object files for target StatusServer
 StatusServer_OBJECTS = \
 "CMakeFiles/StatusServer.dir/src/Calldata.cpp.o" \
+"CMakeFiles/StatusServer.dir/src/DistLock.cpp.o" \
 "CMakeFiles/StatusServer.dir/src/RedisMgr.cpp.o" \
 "CMakeFiles/StatusServer.dir/src/StatusServer.cpp.o" \
 "CMakeFiles/StatusServer.dir/src/StatusServerImpl.cpp.o"
@@ -136,6 +151,7 @@ StatusServer_OBJECTS = \
 StatusServer_EXTERNAL_OBJECTS =
 
 /home/xxxten/ChatProj/CharServerProj/StatusServer/bin/StatusServer: CMakeFiles/StatusServer.dir/src/Calldata.cpp.o
+/home/xxxten/ChatProj/CharServerProj/StatusServer/bin/StatusServer: CMakeFiles/StatusServer.dir/src/DistLock.cpp.o
 /home/xxxten/ChatProj/CharServerProj/StatusServer/bin/StatusServer: CMakeFiles/StatusServer.dir/src/RedisMgr.cpp.o
 /home/xxxten/ChatProj/CharServerProj/StatusServer/bin/StatusServer: CMakeFiles/StatusServer.dir/src/StatusServer.cpp.o
 /home/xxxten/ChatProj/CharServerProj/StatusServer/bin/StatusServer: CMakeFiles/StatusServer.dir/src/StatusServerImpl.cpp.o
@@ -246,7 +262,7 @@ StatusServer_EXTERNAL_OBJECTS =
 /home/xxxten/ChatProj/CharServerProj/StatusServer/bin/StatusServer: /root/.local/lib64/libabsl_decode_rust_punycode.a
 /home/xxxten/ChatProj/CharServerProj/StatusServer/bin/StatusServer: /root/.local/lib64/libabsl_utf8_for_code_point.a
 /home/xxxten/ChatProj/CharServerProj/StatusServer/bin/StatusServer: CMakeFiles/StatusServer.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/xxxten/ChatProj/CharServerProj/StatusServer/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking CXX executable /home/xxxten/ChatProj/CharServerProj/StatusServer/bin/StatusServer"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/xxxten/ChatProj/CharServerProj/StatusServer/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Linking CXX executable /home/xxxten/ChatProj/CharServerProj/StatusServer/bin/StatusServer"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/StatusServer.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

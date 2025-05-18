@@ -214,6 +214,30 @@ src/Calldata.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/StatusServer.dir/build.make CMakeFiles/StatusServer.dir/src/Calldata.cpp.s
 .PHONY : src/Calldata.cpp.s
 
+src/DistLock.o: src/DistLock.cpp.o
+.PHONY : src/DistLock.o
+
+# target to build an object file
+src/DistLock.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/StatusServer.dir/build.make CMakeFiles/StatusServer.dir/src/DistLock.cpp.o
+.PHONY : src/DistLock.cpp.o
+
+src/DistLock.i: src/DistLock.cpp.i
+.PHONY : src/DistLock.i
+
+# target to preprocess a source file
+src/DistLock.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/StatusServer.dir/build.make CMakeFiles/StatusServer.dir/src/DistLock.cpp.i
+.PHONY : src/DistLock.cpp.i
+
+src/DistLock.s: src/DistLock.cpp.s
+.PHONY : src/DistLock.s
+
+# target to generate assembly for a file
+src/DistLock.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/StatusServer.dir/build.make CMakeFiles/StatusServer.dir/src/DistLock.cpp.s
+.PHONY : src/DistLock.cpp.s
+
 src/RedisMgr.o: src/RedisMgr.cpp.o
 .PHONY : src/RedisMgr.o
 
@@ -305,6 +329,9 @@ help:
 	@echo "... src/Calldata.o"
 	@echo "... src/Calldata.i"
 	@echo "... src/Calldata.s"
+	@echo "... src/DistLock.o"
+	@echo "... src/DistLock.i"
+	@echo "... src/DistLock.s"
 	@echo "... src/RedisMgr.o"
 	@echo "... src/RedisMgr.i"
 	@echo "... src/RedisMgr.s"

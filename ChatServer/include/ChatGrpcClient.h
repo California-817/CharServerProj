@@ -11,6 +11,8 @@ using ChatServer::Chat::AuthFriendReq;
 using ChatServer::Chat::AuthFriendRsp;
 using ChatServer::Chat::TextChatMsgReq;
 using ChatServer::Chat::TextChatMsgRsp;
+using ChatServer::Chat::KickUserReq;
+using ChatServer::Chat::KickUserRsp;
 using ChatServer::Chat::ChatService;
 class ChatGrpcClient :public Singleton<ChatGrpcClient>
 {
@@ -19,6 +21,7 @@ public:
     AddFriendRsp NotifyAddFriend(const std::string& ip,const AddFriendReq& req);
     AuthFriendRsp NotifyAuthFriend(const std::string& ip,const AuthFriendReq& req);
     TextChatMsgRsp NotifyTextChatMsg(const std::string& ip,const TextChatMsgReq& req);
+    KickUserRsp NotifyKickUser(const std::string& ip,const KickUserReq& req);
     ~ChatGrpcClient();
 private:
     ChatGrpcClient();

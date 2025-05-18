@@ -1845,6 +1845,7 @@ CMakeFiles/ChatServer.dir/src/ChatServer.cpp.o: \
  /home/xxxten/ChatProj/CharServerProj/ChatServer/src/../include/grpc_cpp_out/GateServer.Status.pb.h \
  /home/xxxten/ChatProj/CharServerProj/ChatServer/src/../include/grpc_cpp_out/GateServer.Status.pb.h \
  /home/xxxten/ChatProj/CharServerProj/ChatServer/src/../include/ChatGrpcClient.h \
+ /home/xxxten/ChatProj/CharServerProj/ChatServer/src/../include/DistLock.h \
  /home/xxxten/ChatProj/CharServerProj/ChatServer/src/../include/IOContextPool.h \
  /home/xxxten/ChatProj/CharServerProj/ChatServer/src/../include/mini/ini.h \
  /home/xxxten/ChatProj/CharServerProj/ChatServer/src/../include/ChatGrpcServerImpl.h \

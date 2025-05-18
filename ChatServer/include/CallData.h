@@ -13,6 +13,8 @@ using ChatServer::Chat::AuthFriendRsp;
 using ChatServer::Chat::TextChatMsgReq;
 using ChatServer::Chat::TextChatMsgRsp;
 using ChatServer::Chat::ChatService;
+using ChatServer::Chat::KickUserReq;
+using ChatServer::Chat::KickUserRsp;
 class ChatServerImpl;
 class Calldata
 {
@@ -66,3 +68,16 @@ private:
     TextChatMsgRsp _rsp;
     ServerAsyncResponseWriter<TextChatMsgRsp> _responder; //写入响应的对象
 };
+//踢人通知的grpc处理逻辑
+class NotifyKickUserCalldata:public Calldata
+{
+public:
+    NotifyKickUserCalldata(ChatService::AsyncService* service, ServerCompletionQueue* cq,ChatServerImpl* impl);
+    virtual void Proceed();
+    virtual ~NotifyKickUserCalldata()=default;
+private:
+    KickUserReq _req;
+    KickUserRsp _rsp;
+    ServerAsyncResponseWriter<KickUserRsp> _responder; //写入响应的对象
+};
+

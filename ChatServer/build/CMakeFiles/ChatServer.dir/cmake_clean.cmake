@@ -9,6 +9,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/ChatServer.dir/src/ChatGrpcServerImpl.cpp.o.d"
   "CMakeFiles/ChatServer.dir/src/ChatServer.cpp.o"
   "CMakeFiles/ChatServer.dir/src/ChatServer.cpp.o.d"
+  "CMakeFiles/ChatServer.dir/src/DistLock.cpp.o"
+  "CMakeFiles/ChatServer.dir/src/DistLock.cpp.o.d"
   "CMakeFiles/ChatServer.dir/src/IOContextPool.cpp.o"
   "CMakeFiles/ChatServer.dir/src/IOContextPool.cpp.o.d"
   "CMakeFiles/ChatServer.dir/src/LogicSystem.cpp.o"

@@ -347,6 +347,30 @@ src/ChatServer.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ChatServer.dir/build.make CMakeFiles/ChatServer.dir/src/ChatServer.cpp.s
 .PHONY : src/ChatServer.cpp.s
 
+src/DistLock.o: src/DistLock.cpp.o
+.PHONY : src/DistLock.o
+
+# target to build an object file
+src/DistLock.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ChatServer.dir/build.make CMakeFiles/ChatServer.dir/src/DistLock.cpp.o
+.PHONY : src/DistLock.cpp.o
+
+src/DistLock.i: src/DistLock.cpp.i
+.PHONY : src/DistLock.i
+
+# target to preprocess a source file
+src/DistLock.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ChatServer.dir/build.make CMakeFiles/ChatServer.dir/src/DistLock.cpp.i
+.PHONY : src/DistLock.cpp.i
+
+src/DistLock.s: src/DistLock.cpp.s
+.PHONY : src/DistLock.s
+
+# target to generate assembly for a file
+src/DistLock.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ChatServer.dir/build.make CMakeFiles/ChatServer.dir/src/DistLock.cpp.s
+.PHONY : src/DistLock.cpp.s
+
 src/IOContextPool.o: src/IOContextPool.cpp.o
 .PHONY : src/IOContextPool.o
 
@@ -598,6 +622,9 @@ help:
 	@echo "... src/ChatServer.o"
 	@echo "... src/ChatServer.i"
 	@echo "... src/ChatServer.s"
+	@echo "... src/DistLock.o"
+	@echo "... src/DistLock.i"
+	@echo "... src/DistLock.s"
 	@echo "... src/IOContextPool.o"
 	@echo "... src/IOContextPool.i"
 	@echo "... src/IOContextPool.s"

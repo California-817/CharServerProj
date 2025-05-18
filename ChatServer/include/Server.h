@@ -13,6 +13,7 @@ class Server
 public:
     Server(std::shared_ptr<boost::asio::io_context> io_context, uint16_t port);
     void ClearSession(std::string& uuid);
+    bool CheckValid(const std::string& sessionid);
     ~Server();
 private:
     // 接收完的回调函数

@@ -83,7 +83,7 @@ clean: CMakeFiles/StatusServer.dir/clean
 CMakeFiles/status_server_proto.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/status_server_proto.dir/build.make CMakeFiles/status_server_proto.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/status_server_proto.dir/build.make CMakeFiles/status_server_proto.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/xxxten/ChatProj/CharServerProj/StatusServer/build/CMakeFiles --progress-num=6,7,8 "Built target status_server_proto"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/xxxten/ChatProj/CharServerProj/StatusServer/build/CMakeFiles --progress-num=7,8,9 "Built target status_server_proto"
 .PHONY : CMakeFiles/status_server_proto.dir/all
 
 # Build rule for subdir invocation for target.
@@ -109,12 +109,12 @@ CMakeFiles/status_server_proto.dir/clean:
 CMakeFiles/StatusServer.dir/all: CMakeFiles/status_server_proto.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/StatusServer.dir/build.make CMakeFiles/StatusServer.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/StatusServer.dir/build.make CMakeFiles/StatusServer.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/xxxten/ChatProj/CharServerProj/StatusServer/build/CMakeFiles --progress-num=1,2,3,4,5 "Built target StatusServer"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/xxxten/ChatProj/CharServerProj/StatusServer/build/CMakeFiles --progress-num=1,2,3,4,5,6 "Built target StatusServer"
 .PHONY : CMakeFiles/StatusServer.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/StatusServer.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/xxxten/ChatProj/CharServerProj/StatusServer/build/CMakeFiles 8
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/xxxten/ChatProj/CharServerProj/StatusServer/build/CMakeFiles 9
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/StatusServer.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/xxxten/ChatProj/CharServerProj/StatusServer/build/CMakeFiles 0
 .PHONY : CMakeFiles/StatusServer.dir/rule

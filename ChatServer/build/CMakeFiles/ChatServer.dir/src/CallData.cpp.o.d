@@ -1846,4 +1846,5 @@ CMakeFiles/ChatServer.dir/src/CallData.cpp.o: \
  /home/xxxten/ChatProj/CharServerProj/ChatServer/src/../include/grpc_cpp_out/GateServer.Status.grpc.pb.h \
  /home/xxxten/ChatProj/CharServerProj/ChatServer/src/../include/grpc_cpp_out/GateServer.Status.pb.h \
  /home/xxxten/ChatProj/CharServerProj/ChatServer/src/../include/grpc_cpp_out/GateServer.Status.pb.h \
- /home/xxxten/ChatProj/CharServerProj/ChatServer/src/../include/ChatGrpcClient.h
+ /home/xxxten/ChatProj/CharServerProj/ChatServer/src/../include/ChatGrpcClient.h \
+ /home/xxxten/ChatProj/CharServerProj/ChatServer/src/../include/DistLock.h
