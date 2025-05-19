@@ -245,10 +245,12 @@ void LogicSystem::LoginCallback(std::shared_ptr<Session> session, const uint16_t
                     _p_server->ClearSession(old_sess->GetSessionId());
                 }
             }
+            else{
             //跨服务器踢人
             KickUserReq req;
             req.set_uid(uid);
             ChatGrpcClient::GetInstance()->NotifyKickUser(redis_ret.value(),req);
+            }
         }
         // 5.设置连接数增加写入redis ---加一把LOCK_COUNT的锁 -----保证这个登录数在分布式架构中读写是安全的
         {

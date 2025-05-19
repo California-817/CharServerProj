@@ -52,7 +52,8 @@ void Session::HandleReadData(const boost::system::error_code &error, size_t byte
             if(!_server->CheckValid(_session_id))
             { //服务端已经踢了但是客户端不下线仍发消息
                 Close();                      // 主动关闭socket--TIME_WAIT
-                Session::DealExceptionSession();//清理登录信息                
+                Session::DealExceptionSession();//清理登录信息  
+                return;              
             }
             // 读取包体长度成功 形成逻辑包 扔到逻辑队列
             memcpy(_recv_data_node->_data,_data,_recv_data_node->_total_len);
@@ -92,7 +93,8 @@ void Session::HandleReadHead(const boost::system::error_code &error, size_t byte
             if(!_server->CheckValid(_session_id))
             { //服务端已经踢了但是客户端不下线仍发消息
                 Close();                      // 主动关闭socket--TIME_WAIT
-                Session::DealExceptionSession();//清理登录信息                
+                Session::DealExceptionSession();//清理登录信息
+                return;                
             }           
             // 正常读取到了头部字段
             memcpy(_recv_head_node->_data,_data,HEAD_TOTAL_LEN);
@@ -142,11 +144,11 @@ void Session::HandleWrite(const boost::system::error_code &error, std::shared_pt
         if (!error.value())
         {
             //首先判断对方是不是合法用户
-            if(!_server->CheckValid(_session_id))
-            { //服务端已经踢了但是客户端不下线仍发消息
-                Close();                      // 主动关闭socket--TIME_WAIT
-                Session::DealExceptionSession();//清理登录信息                
-            }
+            // if(!_server->CheckValid(_session_id))
+            // { //服务端已经踢了但是客户端不下线仍发消息
+            //     Close();                      // 主动关闭socket--TIME_WAIT
+            //     Session::DealExceptionSession();//清理登录信息                
+            // }
             std::lock_guard<std::mutex> _lock(_mtx);
             _send_que.pop();
             if (!_send_que.empty())
