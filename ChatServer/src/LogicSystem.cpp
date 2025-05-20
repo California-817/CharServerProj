@@ -99,6 +99,8 @@ void LogicSystem::RegisterCallBacks()
                                                   std::placeholders::_1, std::placeholders::_2, std::placeholders::_3);
     _fun_callbacks[MSGID_TEXT_CHAT] = std::bind(&LogicSystem::TextChatCallback, this,
                                                 std::placeholders::_1, std::placeholders::_2, std::placeholders::_3);
+    _fun_callbacks[MSGID_HEARTBEAT] = std::bind(&LogicSystem::HeartbeatCallback, this,
+                                                std::placeholders::_1, std::placeholders::_2, std::placeholders::_3);
 }
 
 LogicSystem::~LogicSystem()
@@ -767,3 +769,27 @@ void LogicSystem::SetServer(Server* p_server)
 {
     _p_server=p_server;
 }
+//接收心跳包请求的回复
+void LogicSystem::HeartbeatCallback(std::shared_ptr<Session> session, const uint16_t &msg_id, const std::string &msg_data)
+{
+    nlohmann::json root; // 回包
+    nlohmann::json src_root;
+    try
+    {
+        src_root = nlohmann::json::parse(msg_data);
+    }
+    catch (const nlohmann::json::parse_error &err)
+    { // 反序列化失败
+        std::cout << "Fail to parse json " << err.what() << std::endl;
+        root["error"] = ErrorCodes::Error_Json;
+        auto jsonstr = root.dump(4); // 序列化
+        session->Write(MSGID_HEARTBEAT_RSP, jsonstr.size(), jsonstr.c_str());
+        return;
+    }
+    int uid=src_root["fromuid"];
+    std::cout<<"recv heartbeat from uid: "<<uid<<std::endl;
+    root["error"] = ErrorCodes::Success; 
+    auto jsonstr = root.dump(4); // 序列化
+    session->Write(MSGID_HEARTBEAT_RSP, jsonstr.size(), jsonstr.c_str());   
+}
+

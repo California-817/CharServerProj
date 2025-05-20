@@ -50,7 +50,15 @@ message TextChatMsgRsp
     repeated TextChatData textmsgs=3;
 }
 //踢人的请求与响应
-//todo
+message KickUserReq
+{
+	int32 uid=1;
+}
+message KickUserRsp
+{
+	int32 error=1;
+	int32 uid=2;
+}
 
 //rpc服务
 service ChatService
@@ -58,4 +66,5 @@ service ChatService
     rpc NotifyAddFriend (AddFriendReq) returns (AddFriendRsp) {}
     rpc NotifyAuthFriend (AuthFriendReq) returns (AuthFriendRsp) {}
     rpc NotifyTextChatMsg (TextChatMsgReq) returns (TextChatMsgRsp) {}
+	rpc NotifyKickUser (KickUserReq) returns (KickUserRsp) {}
 }

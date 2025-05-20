@@ -38,6 +38,8 @@ public: //为啥声明基类是他的友元类还是访问不了私有成员
     void AuthFriendCallback(std::shared_ptr<Session> session, const uint16_t &msg_id, const std::string &msg_data);
     //文本信息发送回调
     void TextChatCallback(std::shared_ptr<Session> session, const uint16_t &msg_id, const std::string &msg_data);
+    //心跳包回调
+    void HeartbeatCallback(std::shared_ptr<Session> session, const uint16_t &msg_id, const std::string &msg_data);
     // 注册消息id和对应回调函数的映射关系
     void RegisterCallBacks();
     void SetServer(Server* p_server);

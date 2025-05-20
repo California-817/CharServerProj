@@ -1,6 +1,7 @@
 #include "../include/Session.h"
 Session::Session(std::shared_ptr<boost::asio::io_context> io_context, Server *server)
-    : _server(server), _io_context(io_context), _socket(*_io_context) /*不打开 让os打开*/, _b_close(false),_uid(0)
+    : _server(server), _io_context(io_context), _socket(*_io_context) /*不打开 让os打开*/,
+         _b_close(false),_uid(0),_last_heartbeat(std::time(nullptr))
 {
     // 创建一个uuid唯一标识session便于管理
     boost::uuids::uuid a_uuid = boost::uuids::random_generator()();
@@ -26,6 +27,7 @@ std::string &Session::GetSessionId()
 Session::~Session()
 {
     // 不用干什么 因为都用智能指针管理着资源
+    //不在析构函数进行close关闭套接字资源 是为了防止服务端主动断开连接 造成大量TIME_WAIT状态
     std::cout<<_session_id<<"client close"<<std::endl;
     // 不需要关闭socket因为要销毁之前已经由上层调用了Close函数进行关闭
 }
@@ -33,6 +35,9 @@ Session::~Session()
 // 关闭socket套接字
 void Session::Close()
 {
+    //服务端之间ctrl+c退出 不会显示调用socket的close
+    //但是os检测到进程退出 会自动调用close关闭套接字资源 并发送fin包给客户端--此时是服务器主动断开连接
+    std::cout<<"socket close: "<<_session_id<<std::endl;
     if(_socket.is_open()){
     _socket.close(); // 1.从io_context中移除 2.关闭文件描述符
     }
@@ -44,9 +49,19 @@ void Session::HandleReadData(const boost::system::error_code &error, size_t byte
     {
         if (!error.value())
         {
+            //首先判断对方是不是合法用户
+            if(!_server->CheckValid(_session_id))
+            { //服务端已经踢了但是客户端不下线仍发消息
+                Close();                      // 主动关闭socket--TIME_WAIT
+                Session::DealExceptionSession();//清理登录信息  
+                return;              
+            }
+            //更新时间戳
+            UpdateHeartbeat();
             // 读取包体长度成功 形成逻辑包 扔到逻辑队列
             memcpy(_recv_data_node->_data,_data,_recv_data_node->_total_len);
             auto logic_msg = std::make_shared<LogicNode>(self_ptr, _recv_data_node);
+            LogicSystem::GetInstance()->SetServer(_server);
             LogicSystem::GetInstance()->PostMsgToQue(std::move(logic_msg));
             // 继续进行读取头部数据
             _recv_head_node->Clear();
@@ -56,10 +71,11 @@ void Session::HandleReadData(const boost::system::error_code &error, size_t byte
         }
         else
         {
-            // 读取错误 可能对方断开连接 需要销毁连接 减少智能指针引用计数
+            // 读取错误 可能对方断开连接 需要销毁连接 减少智能指针引用计数 ---主动断开 或者 被踢
             std::cout << "Read cilent error uuid: " << _session_id << std::endl;
-            Close();                      // 关闭socket
-            _server->ClearSession(_session_id); // 销毁socket结构
+            //此时可能是客户端正常退出 也有可能是被踢下去--- 会涉及到redis中连接数和连接所属ip的修改 需要添加分布式锁
+            Close();                      // 被动关闭socket
+            Session::DealExceptionSession();//清理登录信息
         }
     }
     catch (boost::system::system_error &exp)
@@ -76,6 +92,13 @@ void Session::HandleReadHead(const boost::system::error_code &error, size_t byte
 
         if (!error.value())
         {
+            //首先判断对方是不是合法用户
+            if(!_server->CheckValid(_session_id))
+            { //服务端已经踢了但是客户端不下线仍发消息
+                Close();                      // 主动关闭socket--TIME_WAIT
+                Session::DealExceptionSession();//清理登录信息
+                return;                
+            }           
             // 正常读取到了头部字段
             memcpy(_recv_head_node->_data,_data,HEAD_TOTAL_LEN);
             // 头部字段进行解析
@@ -103,8 +126,9 @@ void Session::HandleReadHead(const boost::system::error_code &error, size_t byte
         {
             // 读取错误 可能对方断开连接 需要销毁连接 减少智能指针引用计数
             std::cout << "Read cilent error uuid: " << _session_id << std::endl;
+            //此时可能是客户端正常退出 也有可能是被踢下去--- 会涉及到redis中连接数和连接所属ip和sessionid的修改 需要添加分布式锁
             Close();                      // 关闭socket
-            _server->ClearSession(_session_id); // 销毁socket结构
+            Session::DealExceptionSession();//清理登录信息--客户端已经主动断开连接
         }
     }
     catch (boost::system::system_error &exp)
@@ -122,6 +146,12 @@ void Session::HandleWrite(const boost::system::error_code &error, std::shared_pt
     {
         if (!error.value())
         {
+            //首先判断对方是不是合法用户
+            // if(!_server->CheckValid(_session_id))
+            // { //服务端已经踢了但是客户端不下线仍发消息
+            //     Close();                      // 主动关闭socket--TIME_WAIT
+            //     Session::DealExceptionSession();//清理登录信息                
+            // }
             std::lock_guard<std::mutex> _lock(_mtx);
             _send_que.pop();
             if (!_send_que.empty())
@@ -138,7 +168,7 @@ void Session::HandleWrite(const boost::system::error_code &error, std::shared_pt
             // 写入失败
             std::cout << "Send cilent error uuid: " << _session_id << std::endl;
             Close();                      // 关闭socket
-            _server->ClearSession(_session_id); // 销毁socket结构
+            Session::DealExceptionSession();//清理登录信息
         }
     }
     catch (boost::system::system_error &exp)
@@ -208,4 +238,84 @@ void Session::AsyncReadLen(std::size_t read_len, std::size_t total_len,
             //还没有读完整
           self->AsyncReadLen(read_len+bytesTransfered,total_len,handler);
     });
+}
+
+void Session::NotifyOffline(int uid)
+{ //向客户端发送下线请求 由客户端主动断开连接 服务端进行被动处理 防止出现大量TIME_wait状态
+    nlohmann::json root;
+    root["uid"]=uid;
+    root["error"]=ErrorCodes::Success;
+    std::string root_str=root.dump(4);
+    Session::Write(MSGID_NOTIFY_OFF_LINE,root_str.length(),root_str.c_str());
+}
+
+//客户端被踢或者主动断开链接之后 对登录信息的处理 需要和登录时加同一把用户级别锁 保证同一用户登录信息的互斥访问
+void Session::DealExceptionSession()
+{   
+    int uid=_uid;
+    {
+    //加用户级分布式锁
+     std::string identifer_user = DistLock::GetInstance()->acquireLock(std::to_string(uid), LOCKTIMEOUT, ACQUIRETIME);
+        if (identifer_user == "")
+        { // 获取用户锁失败
+            return;
+        }
+        Defer defer_userlock([this,identifer_user, uid]() { // 出{}自动解锁
+            _server->ClearSession(_session_id); //这里对内存中存储的session进行清除--会加一把session的线程锁
+            DistLock::GetInstance()->releaseLock(std::to_string(uid), identifer_user);
+        });
+        mINI::INIFile file("../conf/config.ini");
+        mINI::INIStructure ini;
+        file.read(ini);
+        auto redis_con = RedisMgr::GetInstance()->GetRedisCon();
+        // 1.设置连接数减少1写入redis ---加一把LOCK_COUNT的锁 -----保证这个登录数在分布式架构中读写是安全的
+        //这里不在每次删除一个连接的时候进行-1连接数 而是由一个单独的心跳检测机制定时去更新最新的连接数  提高服务器的性能
+        // {
+        //     std::string identifer_count = DistLock::GetInstance()->acquireLock(LOCK_COUNT, LOCKTIMEOUT, ACQUIRETIME);
+        //     Defer defer_countlock([identifer_count]() { // 出{}自动解锁
+        //         DistLock::GetInstance()->releaseLock(LOCK_COUNT, identifer_count);
+        //     });
+        //     auto ret_redis = redis_con->hget(LOGIN_COUNT, ini["SelfServer"]["name"].c_str());
+        //     if (!ret_redis.has_value())
+        //     { // redis中没有这个chatServer的连接数缓存 服务器没有启动 基本不存在这个可能
+        //         return;
+        //     }
+        //     else
+        //     { // 更新连接数-1并写入redis
+        //         redis_con->hset(LOGIN_COUNT, ini["SelfServer"]["name"].c_str(), std::to_string((atoi(ret_redis.value().c_str()) - 1)));
+        //     }
+        // }
+        // 6.将uid和所在的服务器名称redis从redis删除  &&   将uid对应的sessionid绑定关系从redis删除
+        //删除前先去判断是不是已经被新连接修改 如果修改则不进行删除 --判断的依据不是ip 而是sessionid（具有唯一性）
+        std::string session_key = USERSESSIONIDPREFIX; // usessionid_1
+        session_key += std::to_string(uid);
+        std::string ip_key=USERIPPREFIX;  //uip_1
+        ip_key+=std::to_string(uid);
+        auto ret=redis_con->hget(UID_SESSIONS, session_key.c_str());
+        if(ret.has_value())
+        { //找到sessionid
+            if(ret.value()!=_session_id)
+            { //不相等 说明先登录再下线
+                std::cout<<"新用户先登录 老用户后下线"<<std::endl;
+                return;}
+            //相等 说明先下线再登录 --需要进行删除redis中旧的登录信息
+            redis_con->hdel(UID_SESSIONS,session_key.c_str());
+            redis_con->hdel(UID_IPS,ip_key.c_str());
+        }
+    }
+}
+
+void Session::UpdateHeartbeat() //更新时间戳
+{
+    _last_heartbeat=std::time(nullptr);
+}
+bool Session::IsHeartbeatExpired() //判断是否超时
+{
+    time_t now=std::time(nullptr);
+    double deff_time=std::difftime(now,_last_heartbeat);
+    if(deff_time>EXPIRED_TIME)
+    { //超时
+        return true;
+    }
+    return false;
 }

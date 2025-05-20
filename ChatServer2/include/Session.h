@@ -14,6 +14,10 @@ public:
     std::string &GetSessionId();
     void SetUid(int uid);
     int GetUid();
+    void NotifyOffline(int uid);
+    void DealExceptionSession(); //客户端主动断开连接之后对连接信息的处理 或者超时检测处理过期连接
+    void UpdateHeartbeat(); //更新时间戳
+    bool IsHeartbeatExpired(); //判断是否超时
     ~Session();
         void Close();
 private:
@@ -25,6 +29,7 @@ private:
     void AsyncReadFull(size_t max_length,std::function<void(const boost::system::error_code&, std::size_t)> handler);
     void AsyncReadLen(std::size_t read_len, std::size_t total_len, 
         std::function<void(const boost::system::error_code&, std::size_t)> handler);
+
 
 public:
     // 上层调用 不需要额外的Read接口 因为服务器的读时间是从Start函数开始就持续注册的
@@ -50,4 +55,6 @@ private:
     std::queue<std::shared_ptr<SendNode>> _send_que;
     // 发送的锁
     std::mutex _mtx;
+    //添加上次接收数据的时间戳--用于心跳检测
+    std::atomic<time_t> _last_heartbeat; 
 };

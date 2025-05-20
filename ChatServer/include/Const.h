@@ -69,6 +69,8 @@ enum MSGID
     MSGID_TEXT_CHAT_RSP=1018, //文本聊天信息回复
     MSGID_NOTIFY_TEXT_CHAT=1019, //文本聊天信息请求
     MSGID_NOTIFY_OFF_LINE = 1021, //通知用户下线
+    MSGID_HEARTBEAT=1023, //心跳包请求
+    MSGID_HEARTBEAT_RSP=1024,//心跳包响应
 };
 #define USERSESSIONIDPREFIX "usessionid_" //用户sessionid的key值
 #define USERIPPREFIX  "uip_"  //用户所在的ip的uidkey值
@@ -82,6 +84,8 @@ enum MSGID
 #define LOCK_COUNT "lock_count" //读写连接数的系统级锁
 #define LOCKTIMEOUT 10 //锁存活时间 防止死锁
 #define ACQUIRETIME 5 //获取锁的时间
+#define CHECK_TIMEOUT 60 //每隔60s检测连接超时
+#define EXPIRED_TIME 20 //20s作为超时时间 20s内无消息接收就认为连接异常 断开连接
 class Defer
 {  //实现类似go的defer 当出了函数作用域 对象销毁自动调用析构函数 在析构函数内部调用外部需要执行的操作_func
 public:
