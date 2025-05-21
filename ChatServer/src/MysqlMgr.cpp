@@ -18,7 +18,11 @@ MysqlMgr::MysqlMgr()
 bool MysqlMgr::GetUserInfo(int uid,UserInfo& userinfo) //根据uid查找用户信息
 {
     auto shared_con=_pool->GetConnection(); //该智能指针对象会一直持续到话括号结束再析构 归还连接
-    auto con=shared_con.get();
+    auto con=shared_con->_con.get(); //获取原始连接
+    shared_con->UpdateTimeStamp(); //更新时间戳
+    Defer defer([&shared_con,this](){ //出作用域自动归还链接
+        _pool->ReturnConnection(shared_con);
+    });
     MYSQL_STMT* stmt;
     MYSQL_BIND bind[1];
     std::string query="select * from user where uid= ?";
@@ -96,7 +100,11 @@ bool MysqlMgr::GetUserInfo(int uid,UserInfo& userinfo) //根据uid查找用户�
 bool MysqlMgr::GetUserInfo(std::string name,UserInfo& userinfo) //根据名字查找用户信息
 {
     auto shared_con=_pool->GetConnection(); //该智能指针对象会一直持续到话括号结束再析构 归还连接
-    auto con=shared_con.get();
+    auto con=shared_con->_con.get(); //获取原始连接
+    shared_con->UpdateTimeStamp(); //更新时间戳
+    Defer defer([&shared_con,this](){ //出作用域自动归还链接
+        _pool->ReturnConnection(shared_con);
+    });
     MYSQL_STMT* stmt;
     MYSQL_BIND bind[1];
     std::string query="select * from user where name= ?";
@@ -175,7 +183,11 @@ bool MysqlMgr::GetUserInfo(std::string name,UserInfo& userinfo) //根据名字�
 bool MysqlMgr::AddFriendApply(int from_uid,int to_uid) //向friend_apply表中添加一条好友申请记录
 {
     auto shared_con=_pool->GetConnection(); //该智能指针对象会一直持续到话括号结束再析构 归还连接
-    auto con=shared_con.get();
+    auto con=shared_con->_con.get(); //获取原始连接
+    shared_con->UpdateTimeStamp(); //更新时间戳
+    Defer defer([&shared_con,this](){ //出作用域自动归还链接
+        _pool->ReturnConnection(shared_con);
+    });
     MYSQL_STMT* stmt;
     MYSQL_BIND bind[2];
     std::string query="INSERT INTO friend_apply (from_uid,to_uid) VALUES (?,?) ";
@@ -206,7 +218,11 @@ bool MysqlMgr::AddFriendApply(int from_uid,int to_uid) //向friend_apply表中�
 bool MysqlMgr::GetFriendApply(int uid,std::vector<std::shared_ptr<ApplyInfo>>& applylist,int begin,int end) 
 {
     auto shared_con=_pool->GetConnection(); //该智能指针对象会一直持续到话括号结束再析构 归还连接
-    auto con=shared_con.get();
+    auto con=shared_con->_con.get(); //获取原始连接
+    shared_con->UpdateTimeStamp(); //更新时间戳
+    Defer defer([&shared_con,this](){ //出作用域自动归还链接
+        _pool->ReturnConnection(shared_con);
+    });
     //联表查询申请人信息
     std::string query="SELECT friend_apply.from_uid,user.name,user.nick,user.user_desc,user.icon,user.sex,friend_apply.apply_status ";
     query+="FROM friend_apply INNER JOIN user ";
@@ -303,7 +319,11 @@ bool MysqlMgr::GetFriendList(int uid,std::vector<std::shared_ptr<UserInfo>>& fri
     std::vector<std::pair<int,std::string>> _friends;
 {
     auto shared_con=_pool->GetConnection(); //该智能指针对象会一直持续到话括号结束再析构 归还连接
-    auto con=shared_con.get();
+    auto con=shared_con->_con.get(); //获取原始连接
+    shared_con->UpdateTimeStamp(); //更新时间戳
+    Defer defer([&shared_con,this](){ //出作用域自动归还链接
+        _pool->ReturnConnection(shared_con);
+    });
     MYSQL_STMT* stmt;
     MYSQL_BIND bind[1];
     std::string query="select to_uid,back from friend where self_uid= ?";
@@ -370,7 +390,11 @@ bool MysqlMgr::GetFriendList(int uid,std::vector<std::shared_ptr<UserInfo>>& fri
 bool MysqlMgr::AuthAddFriend(int from_uid,int to_uid,std::string back)
 {
     auto shared_con=_pool->GetConnection(); //该智能指针对象会一直持续到话括号结束再析构 归还连接
-    auto con=shared_con.get();
+    auto con=shared_con->_con.get(); //获取原始连接
+    shared_con->UpdateTimeStamp(); //更新时间戳
+    Defer defer([&shared_con,this](){ //出作用域自动归还链接
+        _pool->ReturnConnection(shared_con);
+    });
     MYSQL_STMT* stmt1;
     MYSQL_STMT* stmt2;
     MYSQL_STMT* stmt3;

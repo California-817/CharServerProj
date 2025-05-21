@@ -39,6 +39,8 @@ void Session::Close()
     //但是os检测到进程退出 会自动调用close关闭套接字资源 并发送fin包给客户端--此时是服务器主动断开连接
     std::cout<<"socket close: "<<_session_id<<std::endl;
     if(_socket.is_open()){
+    //即使 socket 被关闭，所有与该 socket 关联的未触发的异步操作的回调仍然会被调用
+    //在回调中，error_code 参数会被设置为 boost::asio::error::operation_aborted，以表明操作被中止。这允许你在回调中区分正常完成和被取消的操作。
     _socket.close(); // 1.从io_context中移除 2.关闭文件描述符
     }
     _b_close = true;

@@ -17,13 +17,18 @@ MysqlMgr::MysqlMgr()
 int MysqlMgr::RegUser(const std::string& name,const std::string& email,const std::string& password,
                         const std::string& nick,const std::string& icon,int sex)  //注册用户的sql逻辑 --防止sql注入的逻辑
 {       // (new_id,new_name,new_email,new_password,new_nick,new_icon,new_sex);
-    auto conn=_pool->GetConnection(); //获取了一个mysql连接
+    auto shared_con=_pool->GetConnection(); //该智能指针对象会一直持续到话括号结束再析构 归还连接
+    auto con=shared_con->_con.get(); //获取原始连接
+    shared_con->UpdateTimeStamp(); //更新时间戳
+    Defer defer([&shared_con,this](){ //出作用域自动归还链接
+        _pool->ReturnConnection(shared_con);
+    });
     MYSQL_STMT* stmt;
     MYSQL_BIND bind[6];
     MYSQL_RES* result;
     MYSQL_ROW row;  
     std::string query="call reg_user(?,?,?,?,?,?,@result)";
-    stmt=mysql_stmt_init(conn.get());  //初始化预处理语句
+    stmt=mysql_stmt_init(con);  //初始化预处理语句
     if(mysql_stmt_prepare(stmt,query.c_str(),query.length()))
     { 
         std::cout<<"mysql_stmt_prepare err: "<<mysql_stmt_error(stmt)<<std::endl;
@@ -61,18 +66,18 @@ int MysqlMgr::RegUser(const std::string& name,const std::string& email,const std
     }
     //执行完存储过程了 查询用户自定义变量获取存储过程的输出值
     std::string select_query="select @result;";
-    if(mysql_query(conn.get(),select_query.c_str()))
+    if(mysql_query(con,select_query.c_str()))
     {
-        std::cerr << "mysql_query() failed: " << mysql_error(conn.get()) << std::endl;
+        std::cerr << "mysql_query() failed: " << mysql_error(con) << std::endl;
         mysql_stmt_close(stmt);
         return -6;
     }
     //结果集存储在conn中 需要手动获取
     //获取结果集
-    result=mysql_store_result(conn.get());
+    result=mysql_store_result(con);
     if(result==nullptr)
     {
-        std::cerr << "mysql_store_result() failed: " << mysql_error(conn.get()) << std::endl;
+        std::cerr << "mysql_store_result() failed: " << mysql_error(con) << std::endl;
         mysql_stmt_close(stmt);
         return -7;
     }
@@ -95,7 +100,11 @@ int MysqlMgr::RegUser(const std::string& name,const std::string& email,const std
 bool MysqlMgr::CheckEmail(const std::string& name,const std::string& email)
 {
     auto shared_con=_pool->GetConnection(); //该智能指针对象会一直持续到话括号结束再析构 归还连接
-    auto con=shared_con.get();
+    auto con=shared_con->_con.get(); //获取原始连接
+    shared_con->UpdateTimeStamp(); //更新时间戳
+    Defer defer([&shared_con,this](){ //出作用域自动归还链接
+        _pool->ReturnConnection(shared_con);
+    });
     MYSQL_STMT* stmt;
     MYSQL_BIND bind[1];
     std::string select_email;
@@ -181,7 +190,11 @@ bool MysqlMgr::CheckEmail(const std::string& name,const std::string& email)
 bool MysqlMgr::UpdatePwd(const std::string& name,const std::string& password)
 {
     auto shared_con=_pool->GetConnection(); //该智能指针对象会一直持续到话括号结束再析构 归还连接
-    auto con=shared_con.get();
+    auto con=shared_con->_con.get(); //获取原始连接
+    shared_con->UpdateTimeStamp(); //更新时间戳
+    Defer defer([&shared_con,this](){ //出作用域自动归还链接
+        _pool->ReturnConnection(shared_con);
+    });
     MYSQL_STMT* stmt;
     MYSQL_BIND bind[2];
     std::string query="update user set password = ? where name = ?";
@@ -213,7 +226,11 @@ bool MysqlMgr::UpdatePwd(const std::string& name,const std::string& password)
 bool MysqlMgr::CheckPwd(const std::string& email,const std::string& password,UserInfo& userinfo)
 {
     auto shared_con=_pool->GetConnection(); //该智能指针对象会一直持续到话括号结束再析构 归还连接
-    auto con=shared_con.get();
+    auto con=shared_con->_con.get(); //获取原始连接
+    shared_con->UpdateTimeStamp(); //更新时间戳
+    Defer defer([&shared_con,this](){ //出作用域自动归还链接
+        _pool->ReturnConnection(shared_con);
+    });
     MYSQL_STMT* stmt;
     MYSQL_BIND bind[1];
     std::string query="select * from user where email= ?";
