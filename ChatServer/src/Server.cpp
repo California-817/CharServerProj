@@ -73,7 +73,7 @@ bool Server::CheckValid(const std::string &sessionid)
 // 开启一次超时检测
 void Server::start_timeout_check()
 {
-    _timer.expires_from_now(boost::posix_time::seconds(CHECK_TIMEOUT)); 
+    _timer.expires_from_now(boost::posix_time::seconds(CHECK_TIMEOUT));
     _timer.async_wait(std::bind(&Server::on_timer, this, std::placeholders::_1));
 }
 // 超时回调函数
@@ -81,38 +81,57 @@ void Server::on_timer(const boost::system::error_code &error)
 { // 处理超时连接
     // 这里先去遍历session将所有超时连接拿出 解锁后再进行连接销毁处理 防止同时加多把锁因加锁顺序不一致导致的死锁问题（保证加锁顺序一致性）
     // std::scoped_lock可用来同时获取多把锁并且避免死锁 原理是try_lock尝试加锁 不成功则释放之前获取的锁 之后再重新尝试获取所有锁
-    std::vector<std::shared_ptr<Session>> expired_sessions; 
+    std::vector<std::shared_ptr<Session>> expired_sessions;
     int now_session_num = 0; // 统计未超时的session数量
+    // {
+    //     //整个遍历逻辑当用户较多的时候锁的粒度时比较大的
+    //     std::lock_guard<std::mutex> _lock(_mtx);  //这把锁的粒度比较大 考虑进行优化
+    //     auto iter = _sessions.begin();
+    //     for (iter; iter != _sessions.end(); iter++)
+    //     {
+    //         if (iter->second->IsHeartbeatExpired())
+    //         { // 超时
+    //             iter->second->Close();
+    //             expired_sessions.push_back(iter->second);
+    //         }
+    //         else{
+    //             now_session_num++;
+    //         }
+    //     }
+    // }
+    // 优化方案：加锁拷贝一个sessions的副本 线程局部处理副本不需要进行加锁遍历
+    // 可行性分析：拷贝时的sessions中已经超时的session一定超时 但部分未超时的可能超时 允许有部分误差 留到下次定时处理
+    std::unordered_map<std::string, std::shared_ptr<Session>> _copy_sessions;
     {
-        std::lock_guard<std::mutex> _lock(_mtx);  //这把锁的粒度比较大 考虑进行优化
-        auto iter = _sessions.begin();
-        for (iter; iter != _sessions.end(); iter++)
-        {
-            if (iter->second->IsHeartbeatExpired())
-            { // 超时
-                iter->second->Close();
-                expired_sessions.push_back(iter->second);
-            }
-            else{
-                now_session_num++;
-            }
+        std::lock_guard<std::mutex> _lock(_mtx); // 相比之前锁的粒度大大降低
+        _copy_sessions = _sessions;
+    }
+    auto iter = _copy_sessions.begin();
+    for (iter; iter != _copy_sessions.end(); iter++)
+    {
+        if (iter->second->IsHeartbeatExpired())
+        { // 超时
+            iter->second->Close(); //这里socket关闭 向io_context注册的未触发的事件会立即触发 调用回调函数 传入错误码 operation_abort 表示操作取消
+            expired_sessions.push_back(iter->second);
         }
+        else{
+            now_session_num++;}
     }
     // 进行连接数的重新设置 ---加一把系统级别分布式锁
     {
         mINI::INIFile file("../conf/config.ini");
         mINI::INIStructure ini;
         file.read(ini);
-        auto redis_con=RedisMgr::GetInstance()->GetRedisCon();
+        auto redis_con = RedisMgr::GetInstance()->GetRedisCon();
         std::string identifer_count = DistLock::GetInstance()->acquireLock(LOCK_COUNT, LOCKTIMEOUT, ACQUIRETIME);
         Defer defer_countlock([identifer_count]() { // 出{}自动解锁
             DistLock::GetInstance()->releaseLock(LOCK_COUNT, identifer_count);
         });
-        //更新连接数并写入redis
+        // 更新连接数并写入redis
         redis_con->hset(LOGIN_COUNT, ini["SelfServer"]["name"].c_str(), std::to_string(now_session_num));
     }
-    //进行session的销毁--先加分布式用户级锁 再加session的线程锁
-    for(auto& session:expired_sessions)
+    // 进行session的销毁--先加分布式用户级锁 再加session的线程锁
+    for (auto &session : expired_sessions)
     {
         session->DealExceptionSession();
     }
