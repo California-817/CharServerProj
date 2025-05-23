@@ -88,6 +88,7 @@ enum MSGID
 #define EXPIRED_TIME 20 //20s作为超时时间 20s内无消息接收就认为连接异常 断开连接
 #define MYSQL_CHECK_TIME 60 //mysql检测线程每隔60s进行检测
 #define MYSQL_EXPIRED_TIME 10 //mysql每隔10s视为长时间未操作
+#define REDIS_CHECK_TIME 60 //mysql检测线程每隔60s进行检测
 class Defer
 {  //实现类似go的defer 当出了函数作用域 对象销毁自动调用析构函数 在析构函数内部调用外部需要执行的操作_func
 public:

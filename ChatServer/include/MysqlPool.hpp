@@ -49,6 +49,7 @@ public:
             {
                 if(count>=MYSQL_CHECK_TIME){ //每隔60s进行连接的检测
                     CheckConnectionTask();
+                    count=0;
                 }
                 count++;
                 std::this_thread::sleep_for(std::chrono::seconds(1)); //每次休眠1s

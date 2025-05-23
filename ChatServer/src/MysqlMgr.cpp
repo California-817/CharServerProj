@@ -407,7 +407,7 @@ bool MysqlMgr::AuthAddFriend(int from_uid,int to_uid,std::string back)
     stmt1=mysql_stmt_init(con);
     stmt2=mysql_stmt_init(con);
     stmt3=mysql_stmt_init(con);
-    Defer defer([&stmt1,&stmt2,&stmt3](){
+    Defer defer_close([&stmt1,&stmt2,&stmt3](){
         mysql_stmt_close(stmt1);
         mysql_stmt_close(stmt2);
         mysql_stmt_close(stmt3);
